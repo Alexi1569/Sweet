@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Museo Cyrillic 300';
+    src: url('../fonts/MuseoCyrillic-300.eot');
+    src: url('../fonts/MuseoCyrillic-300.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/MuseoCyrillic-300.woff2') format('woff2'),
+        url('../fonts/MuseoCyrillic-300.woff') format('woff'),
+        url('../fonts/MuseoCyrillic-300.ttf') format('truetype'),
+        url('../fonts/MuseoCyrillic-300.svg#MuseoCyrillic-300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Cyrillic 700';
+    src: url('../fonts/MuseoCyrillic-700.eot');
+    src: url('../fonts/MuseoCyrillic-700.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/MuseoCyrillic-700.woff2') format('woff2'),
+        url('../fonts/MuseoCyrillic-700.woff') format('woff'),
+        url('../fonts/MuseoCyrillic-700.ttf') format('truetype'),
+        url('../fonts/MuseoCyrillic-700.svg#MuseoCyrillic-700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Cyrillic 500';
+    src: url('../fonts/MuseoCyrillic-500.eot');
+    src: url('../fonts/MuseoCyrillic-500.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/MuseoCyrillic-500.woff2') format('woff2'),
+        url('../fonts/MuseoCyrillic-500.woff') format('woff'),
+        url('../fonts/MuseoCyrillic-500.ttf') format('truetype'),
+        url('../fonts/MuseoCyrillic-500.svg#MuseoCyrillic-500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrillic 300';
+    src: url('../fonts/MuseoSansCyrillic-300.eot');
+    src: url('../fonts/MuseoSansCyrillic-300.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/MuseoSansCyrillic-300.woff2') format('woff2'),
+        url('../fonts/MuseoSansCyrillic-300.woff') format('woff'),
+        url('../fonts/MuseoSansCyrillic-300.ttf') format('truetype'),
+        url('../fonts/MuseoSansCyrillic-300.svg#MuseoSansCyrillic-300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrillic 500';
+    src: url('../fonts/MuseoSansCyrillic-500.eot');
+    src: url('../fonts/MuseoSansCyrillic-500.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/MuseoSansCyrillic-500.woff2') format('woff2'),
+        url('../fonts/MuseoSansCyrillic-500.woff') format('woff'),
+        url('../fonts/MuseoSansCyrillic-500.ttf') format('truetype'),
+        url('../fonts/MuseoSansCyrillic-500.svg#MuseoSansCyrillic-500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

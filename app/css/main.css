@@ -7,9 +7,7 @@
   appearance: none;
 }
 
-*:focus,
-*:before:focus,
-*:after:focus {
+*:focus {
   outline: none;
 }
 
@@ -18,18 +16,19 @@ select {
 }
 
 ul {
-  list-style-type: none;
+  padding-left: 20px;
 }
 
 body {
   font-size: 16px;
-  font-family: sans-serif;
+  color: #232323;
+  font-family: "Museo Cyrillic 300", sans-serif;
   font-feature-settings: 'kern';
   -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: red;
+  color: #33cccc;
   transition: 0.25s all ease-in;
 }
 
@@ -46,6 +45,7 @@ a {
 .page {
   min-height: 100vh;
   position: relative;
+  padding-left: 89px;
 }
 
 .main {
@@ -62,6 +62,7 @@ html, body {
 }
 
 button {
+  font-size: 100%;
   cursor: pointer;
 }
 
@@ -112,7 +113,7 @@ input[type="submit"] {
 
 .container {
   width: 100%;
-  max-width: 1170px;
+  max-width: 1640px;
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;
@@ -272,4 +273,61 @@ input[type="submit"] {
   display: inline-block;
   position: absolute;
   transition: 0.25s all ease-in;
+}
+
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 89px;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.8125rem 0 4.0625rem;
+  border: 1px solid #000;
+}
+
+.sidebar__nav ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.sidebar__toggler {
+  font-size: 14px;
+  font-family: "Museo Cyrillic 500";
+  background-color: transparent;
+  border: 0;
+}
+
+.sidebar__toggler-btn {
+  margin-top: 8px;
+  position: relative;
+  width: 30px;
+  height: 20px;
+}
+
+.sidebar__toggler-line {
+  position: absolute;
+  background-color: #232323;
+  border-radius: 4px;
+  height: 2px;
+  left: 0;
+}
+
+.sidebar__toggler-line:nth-of-type(1) {
+  top: 0;
+  width: 100%;
+}
+
+.sidebar__toggler-line:nth-of-type(2) {
+  top: 9px;
+  width: 23px;
+}
+
+.sidebar__toggler-line:nth-of-type(3) {
+  top: 18px;
+  width: 16px;
 }

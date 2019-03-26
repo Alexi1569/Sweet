@@ -1,2 +1,15 @@
-﻿header.header
-  p header1
+﻿header(class={'header': true, 'header--main': isMainPage})
+  .sidebar
+    button.sidebar__toggler
+      span Меню
+      .sidebar__toggler-btn
+        span.sidebar__toggler-line
+        span.sidebar__toggler-line
+        span.sidebar__toggler-line
+    nav.sidebar__nav
+      ul
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+
+            span.sidebar__nav-title Пряники

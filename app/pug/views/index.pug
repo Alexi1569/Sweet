@@ -1,5 +1,11 @@
 extends ../includes/_layout
 
+block header
+  - var isMainPage = true;
+  include ../includes/_header
+
 block main
+
   main.main
-  
+    .container
+

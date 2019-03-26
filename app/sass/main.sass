@@ -1,5 +1,13 @@
 ﻿$tr: .25s all ease-in
-$accent: red
+
+$text: #232323
+$accent: #33cccc
+
+$light: 'Museo Cyrillic 300'
+$bold: 'Museo Cyrillic 700'
+$med: 'Museo Cyrillic 500'
+$slight: 'Museo Sans Cyrillic 300'
+$smed: 'Museo Sans Cyrillic 500'
 
 *,
 *:before,
@@ -8,18 +16,20 @@ $accent: red
   margin: 0
   box-sizing: border-box
   appearance: none
-  &:focus
+
+*:focus
     outline: none
 
 select
   display: none
 
 ul
-  list-style-type: none
+  padding-left: 20px
 
 body
   font-size: 16px
-  font-family: sans-serif
+  color: $text
+  font-family: $light, sans-serif
   font-feature-settings: 'kern'
   -webkit-font-smoothing: antialiased
 
@@ -38,6 +48,7 @@ a
 .page
   min-height: 100vh
   position: relative
+  padding-left: 89px
 
 .main
   flex: 1
@@ -50,6 +61,7 @@ html, body
   overflow-x: hidden
 
 button
+  font-size: 100%
   cursor: pointer
 
 textarea
@@ -84,7 +96,7 @@ input[type="submit"]
 
 .container
   width: 100%
-  max-width: 1170px
+  max-width: 1640px
   padding-left: 15px
   padding-right: 15px
   margin: 0 auto
@@ -212,3 +224,47 @@ input[type="submit"]
       display: inline-block
       position: absolute
       transition: $tr
+
+
+.sidebar
+  position: fixed
+  height: 100%
+  width: 89px
+  left: 0
+  top: 0
+  background-color: #fff
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  padding: 2.8125rem 0 4.0625rem
+  border: 1px solid #000
+  &__nav
+    ul
+      padding-left: 0
+      list-style-type: none
+  &__toggler
+    font-size: 14px
+    font-family: $med
+    background-color: transparent
+    border: 0
+    &-btn
+      margin-top: 8px
+      position: relative
+      width: 30px
+      height: 20px
+    &-line
+      position: absolute
+      background-color: $text
+      border-radius: 4px
+      height: 2px
+      left: 0
+      &:nth-of-type(1)
+        top: 0
+        width: 100%
+      &:nth-of-type(2)
+        top: 9px
+        width: 23px
+      &:nth-of-type(3)
+        top: 18px
+        width: 16px
