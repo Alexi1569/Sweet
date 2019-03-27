@@ -7,5 +7,27 @@ block header
 block main
 
   main.main
-    .container
+    .banner#banner.active
+      .banner__overlay
+      .banner__slider.swiper-container#banner-slider
+        .swiper-wrapper
+          a(href="#").swiper-slide
+            .banner__bg(style="background-image: url('./img/banner-img-1.jpg')")
+            .container
+              .banner__inner
+                p.banner__title Лучшие пряники у нас
+                p.banner__descr Для любого повода. Для родных и близких.
+          a(href="#").swiper-slide
+            .banner__bg(style="background-image: url('./img/banner-img-2.jpg')")
+            .container
+              .banner__inner
+                p.banner__title Название 2
+                p.banner__descr Lorem ipsum dolor sit amet
+          a(href="#").swiper-slide
+            .banner__bg(style="background-image: url('./img/banner-img-1.jpg')")
+            .container
+              .banner__inner
+                p.banner__title Название 2
+                p.banner__descr Lorem ipsum dolor sit amet
 
+        .swiper-pagination

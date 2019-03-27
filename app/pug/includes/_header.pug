@@ -1,6 +1,44 @@
 ﻿header(class={'header': true, 'header--main': isMainPage})
+  .menu#sidebar-menu
+    .menu__bg
+    .container
+      nav.menu__nav
+        ul
+          li
+            a(href="#") Главная
+          li
+            a(href="#") О нас
+          li
+            a(href="#") Каталог
+          li
+            a(href="#") Вопросы и ответы
+          li
+            a(href="#") Доставка и оплата
+          li
+            a(href="#") Блог
+          li
+            a(href="#") Контакты
+      .menu__bottom
+        .menu__info
+          .menu__phones
+            a(href="tel:+38 (097) 816-46-86") +38 (097) 816-46-86
+            a(href="tel:+38 (097) 816-46-87") +38 (097) 816-46-87
+          ul.menu__socials.socials-list
+            li
+              a(href="#")
+                <svg width="19" height="15"><use xlink:href="#telegram-icon" /></svg>
+            li
+              a(href="#")
+                <svg width="16" height="16"><use xlink:href="#instagram-icon" /></svg>
+            li
+              a(href="#")
+                <svg width="16" height="16"><use xlink:href="#fb-icon" /></svg>
+        .menu__address
+          p г. Харьков,<br>ул. Плехановская, 12
+
+
   .sidebar
-    button.sidebar__toggler
+    button.sidebar__toggler#menu-toggler
       span Меню
       .sidebar__toggler-btn
         span.sidebar__toggler-line
@@ -11,5 +49,92 @@
         li
           a(href="#")
             i.sidebar__nav-icon
-
+              <svg width="32" height="32"><use xlink:href="#gingerbread-cookies-icon" /></svg>
             span.sidebar__nav-title Пряники
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="26" height="27"><use xlink:href="#cake-icon" /></svg>
+            span.sidebar__nav-title Торты
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="24" height="31"><use xlink:href="#dessert-icon" /></svg>
+            span.sidebar__nav-title Десерты
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="26" height="26"><use xlink:href="#pop-cake-icon" /></svg>
+            span.sidebar__nav-title Лединцы
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="27" height="29"><use xlink:href="#cupcake-icon" /></svg>
+            span.sidebar__nav-title Кексы
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="30" height="30"><use xlink:href="#cookies-icon" /></svg>
+            span.sidebar__nav-title Печенье
+        li
+          a(href="#")
+            i.sidebar__nav-icon
+              <svg width="28" height="28"><use xlink:href="#sweets-icon" /></svg>
+            span.sidebar__nav-title Сладости
+
+    .sidebar__bottom
+      a(href="#").sidebar__account.sidebar__link
+        .sidebar__link-inner
+          <svg width="17" height="18"><use xlink:href="#account-icon" /></svg>
+      a(href="#").sidebar__cart.sidebar__link
+        .sidebar__link-inner
+          <svg width="17" height="20"><use xlink:href="#cart-icon" /></svg>
+          .sidebar__link-amount
+            span 10
+      a(href="#").sidebar__favourite.sidebar__link
+        .sidebar__link-inner
+          <svg width="19" height="18"><use xlink:href="#favourite-icon" /></svg>
+          // show circle if amount > 0
+          .sidebar__link-amount(style="display: none")
+            span 0
+      .sidebar__language
+        p.sidebar__language-current RU
+        ul.sidebar__language-choose
+          li
+            a(href="#") RU
+          li
+            a(href="#") EN
+          li
+            a(href="#") UA
+
+  .header__line
+    .container
+      a(href="#").logo.header__logo
+        img(src="./img/logo--white.png" alt="alt")
+      .header__right
+        .header__search#header-search
+          i.header__search-icon
+            <svg><use xlink:href="#search-icon" /></svg>
+            <svg><use xlink:href="#close-icon" /></svg>
+          .header__search-inner
+            input(type="text" placeholder="Поиск..")
+        .header__call
+          .header__phones
+            .header__phones-top
+              a(href="tel:+38 (097) 816-46-86").header__phones-current +38 (097) 816-46-86
+              i.header__phones-arrow
+                <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
+            .header__phones-dropdown
+              a(href="tel:+38 (097) 816-46-86") +38 (033) 333-33-33
+              a(href="tel:+38 (097) 816-46-86") +38 (044) 444-44-44
+          a(href="#" data-fancybox data-src="#callback-modal").header__cta.dashed-link Перезвонить
+        ul.header__socials.socials-list
+          li
+            a(href="#")
+              <svg width="19" height="15"><use xlink:href="#telegram-icon" /></svg>
+          li
+            a(href="#")
+              <svg width="16" height="16"><use xlink:href="#instagram-icon" /></svg>
+          li
+            a(href="#")
+              <svg width="16" height="16"><use xlink:href="#fb-icon" /></svg>

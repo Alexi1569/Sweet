@@ -20,6 +20,9 @@ $smed: 'Museo Sans Cyrillic 500'
 *:focus
     outline: none
 
+.fancybox-bg
+  background: rgba(#384053, .8)
+
 select
   display: none
 
@@ -68,28 +71,6 @@ textarea
   resize: none
   width: 100%
   height: 100%
-
-input,
-textarea
-  font-family: sans-serif
-  font-size: 14px
-  color: #333
-  &::-webkit-input-placeholder
-    font-size: 14px
-    color: #333
-    font-family: sans-serif
-  &::-moz-placeholder
-    font-size: 14px
-    color: #333
-    font-family: sans-serif
-  &:-ms-input-placeholder
-    font-size: 14px
-    color: #333
-    font-family: sans-serif
-  &:-moz-placeholder
-    font-size: 14px
-    color: #333
-    font-family: sans-serif
 
 input[type="submit"]
   cursor: pointer
@@ -163,18 +144,86 @@ input[type="submit"]
 .form
   &__group
     position: relative
+    &.focused
+      .form__group-label
+        bottom: calc(100% + 3px)
+        font-size: 13px
+        color: $text
+    &.filled
+      .form__group-label
+        opacity: 0
+        visibility: hidden
+    input,
+    textarea
+      font-family: $slight, sans-serif
+      font-size: 16px
+      color: $text
+      border: 0
+      &::-webkit-input-placeholder
+        font-size: 16px
+        color: rgba($text, .5)
+        font-family: $light, sans-serif
+      &::-moz-placeholder
+        font-size: 16px
+        color: rgba($text, .5)
+        font-family: $light, sans-serif
+      &:-ms-input-placeholder
+        font-size: 16px
+        color: rgba($text, .5)
+        font-family: $light, sans-serif
+      &:-moz-placeholder
+        font-size: 16px
+        color: rgba($text, .5)
+        font-family: $light, sans-serif
     &.has--error
       .form__group-message
         display: inline-block
     &-label
       display: block
+      position: absolute
+      font-family: $slight
+      cursor: text
+      transition: $tr
+      bottom: 3px
+      color: rgba($text, .5)
     &-input
       display: block
+      border-bottom: 1px solid #5c6b88
+      padding-bottom: 3px
     &-message
       font-size: .8em
       color: red
       display: none
       margin-top: .2rem
+
+
+.modal
+  max-width: 100%
+  padding: 3.125rem 3.75rem 2.5rem
+  &__content
+    margin-top: 3.25rem
+  &__title
+    text-align: center
+    font-size: 1.75em
+    text-transform: uppercase
+    font-family: $bold
+  &-close
+    width: 26px
+    height: 26px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    right: 15px
+    top: 15px
+    svg
+      width: 16px
+      height: 16px
+      fill: rgba(#000, .5)
+
+.callback-modal
+  min-width: 442px
+
 
 .checkbox
   position: relative
@@ -231,15 +280,147 @@ input[type="submit"]
   height: 100%
   width: 89px
   left: 0
+  z-index: 2
   top: 0
   background-color: #fff
   display: flex
   flex-direction: column
   justify-content: space-between
   align-items: center
-  padding: 2.8125rem 0 4.0625rem
-  border: 1px solid #000
+  padding: 4.1vh 0 5.5vh
+  box-shadow: 0px 22px 30px 0px rgba(42, 42, 42, 0.1)
+  &__language
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 46px
+    position: relative
+    font-size: 14px
+    color: $text
+    &:hover
+      color: #ffffff
+      .sidebar__language-choose
+        opacity: 1
+        visibility: visible
+        transform: translate3d(0, 0, 0) translateX(0%)
+    &-current
+      transition: .25s all ease-in
+      font-family: $smed
+    &-choose
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      display: flex
+      list-style-type: none
+      align-items: center
+      padding: 0 26px 0 calc(89px + 26px)
+      background-color: $accent
+      z-index: -1
+      font-family: $slight
+      letter-spacing: 0.003em
+      transform: translate3d(0, 0, 0) translateX(-30%)
+      opacity: 0
+      transition: .45s transform ease-in, .25s opacity ease-in, .25s visibility ease-in
+      visibility: hidden
+      a
+        color: #ffffff
+        text-decoration: none
+      li
+        &:not(:last-of-type)
+          padding-right: 10px
+          margin-right: 10px
+          position: relative
+          &:after
+            content: ''
+            display: inline-block
+            position: absolute
+            right: 0
+            top: 0
+            width: 1px
+            height: 100%
+            background-color: #ffffff
+  &__link
+    height: 46px
+    display: flex
+    justify-content: center
+    align-items: center
+    &-inner
+      position: relative
+    &-amount
+      position: absolute
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      background-color: $accent
+      border-radius: 50%
+      min-width: 17px
+      padding: 0 2px
+      height: 17px
+      font-size: 10px
+      font-family: $med
+      text-align: center
+      left: calc(100% - 9px)
+      line-height: .7
+      top: calc(100% - 12px)
+      color: #ffffff
+    svg
+      transition: $tr
+      fill: $text
+    &:hover
+      svg
+        fill: $accent
+  &__bottom
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    align-items: center
+    width: 100%
+    & > *
+      width: 100%
   &__nav
+    width: 100%
+    svg
+      fill: $text
+      transition: .25s fill ease-in
+      max-height: 75%
+      width: auto
+    a
+      position: relative
+      text-align: center
+      display: block
+      text-decoration: none
+      height: 50px
+      &:hover
+        svg
+          fill: #fff
+        .sidebar__nav-title
+          opacity: 1
+          visibility: visible
+          transform: translate3d(0, 0, 0) translateX(0)
+    &-title
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      display: flex
+      align-items: center
+      padding: 0 26px 0 calc(89px + 26px)
+      background-color: $accent
+      color: #ffffff
+      font-size: 14px
+      z-index: -1
+      letter-spacing: 0.003em
+      transform: translate3d(0, 0, 0) translateX(-30%)
+      opacity: 0
+      transition: .45s transform ease-in, .25s opacity ease-in, .25s visibility ease-in
+      visibility: hidden
+    &-icon
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      height: 100%
     ul
       padding-left: 0
       list-style-type: none
@@ -248,6 +429,19 @@ input[type="submit"]
     font-family: $med
     background-color: transparent
     border: 0
+    &.disabled
+      pointer-events: none
+    &.active
+      .sidebar__toggler-line
+        &:nth-of-type(2)
+          width: 0
+        &:nth-of-type(1)
+          transform: rotate(-45deg)
+          top: 9px
+        &:nth-of-type(3)
+          top: 9px
+          transform: rotate(45deg)
+          width: 100%
     &-btn
       margin-top: 8px
       position: relative
@@ -262,9 +456,342 @@ input[type="submit"]
       &:nth-of-type(1)
         top: 0
         width: 100%
+        transition: .4s all ease-in .15s
       &:nth-of-type(2)
         top: 9px
         width: 23px
+        transition: .25s all ease-in
       &:nth-of-type(3)
         top: 18px
         width: 16px
+        transition: .4s all ease-in .15s
+
+.logo
+  width: 5.4375rem
+  img
+    width: 100%
+    height: auto
+    display: block
+
+.dashed-link
+  display: inline-block
+  text-decoration: none
+  border-bottom-width: 1px
+  border-bottom-style: dashed
+
+.socials-list
+  list-style-type: none
+  padding-left: 0
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  li
+    &:not(:last-of-type)
+      margin-right: 9px
+  a
+    display: block
+
+.header
+  &__socials
+    svg
+      fill: #fff
+  a
+    text-decoration: none
+    color: inherit
+  &__cta
+    font-size: 12px
+    border-bottom-color: rgba(#fff, .7)
+    color: rgba(#fff, .7) !important
+    &:hover
+      color: #fff !important
+      border-bottom-color: #fff
+  &.header--main
+    position: relative
+    color: #ffffff
+    .header__line
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      z-index: 2
+      padding-top: 4.0625rem
+  &__phones
+    position: relative
+    z-index: 0
+    line-height: 1
+    a
+      white-space: nowrap
+    &:hover
+      .header__phones-dropdown
+        opacity: 1
+        transform: translate3d(0, 0, 0) translateY(0%)
+        visibility: visible
+      .header__phones-arrow
+        transform: rotate(-180deg)
+    &-dropdown
+      position: absolute
+      opacity: 0
+      visibility: hidden
+      transform: translate3d(0, 0, 0) translateY(-25%)
+      transition: .85s transform cubic-bezier(.47,.98,.82,.98), .5s opacity ease-in, .5s visibility ease-in
+      background-color: #ffffff
+      left: 0
+      min-width: 100%
+      padding: 10px 16px
+      top: 100%
+      color: $text
+      font-size: 14px
+      a
+        display: block
+        &:hover
+          color: $accent
+        &:not(:last-of-type)
+          margin-bottom: 6px
+    &-top
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      font-family: $med
+      cursor: pointer
+    &-arrow
+      display: inline-block
+      transition: $tr
+      svg
+        fill: #fff
+    &-current
+      margin-right: 10px
+  &__right
+    display: inline-flex
+    align-items: flex-start
+    justify-content: flex-end
+  &__call
+    margin-right: 1.875rem
+  &__search
+    margin-right: 2rem
+    &.active
+      .header__search-icon
+        svg
+          &:nth-of-type(1)
+            transform: scale(0)
+            opacity: 0
+          &:nth-of-type(2)
+            transform: scale(1)
+            opacity: 1
+      .header__search-inner
+        transform: translate3d(0, 0, 0) translateY(0%)
+        opacity: 1
+        visibility: visible
+    &-inner
+      position: absolute
+      top: 0
+      left: -89px
+      background-color: #ffffff
+      width: calc(100% + 89px)
+      padding-left: 26.04%
+      transform: translate3d(0, 0, 0) translateY(-50%)
+      opacity: 0
+      visibility: hidden
+      transition: .85s transform cubic-bezier(.47,.98,.82,.98), .5s opacity ease-in, .5s visibility ease-in
+      input
+        height: 32px
+        background-color: transparent
+        border: 0
+        width: 100%
+        font-size: 18px
+        padding: 0 14px
+        margin-top: -8px
+        &::-webkit-input-placeholder
+          font-size: 18px
+        &::-moz-placeholder
+          font-size: 18px
+        &:-ms-input-placeholder
+          font-size: 18px
+        &:-moz-placeholder
+          font-size: 18px
+    &-icon
+      display: block
+      cursor: pointer
+      position: relative
+      z-index: 5
+      width: 16px
+      height: 16px
+      svg
+        width: 100%
+        height: 100%
+        display: block
+        transition: .85s all cubic-bezier(.47,.98,.82,.98)
+        &:nth-of-type(1)
+          transform: scale(1)
+          opacity: 1
+          fill: #fff
+        &:nth-of-type(2)
+          transform: scale(0)
+          opacity: 0
+          position: absolute
+          left: 0
+          top: 0
+          bottom: 0
+          right: 0
+          fill: rgba(#000, .5)
+  &__line
+    & > .container
+      display: flex
+      align-items: flex-start
+      justify-content: space-between
+
+.menu
+  position: fixed
+  height: 100%
+  left: 0
+  top: 0
+  width: 100%
+  z-index: 2
+  display: flex
+  align-items: center
+  padding: 4.1vh 0 5.5vh
+  justify-content: center
+  color: $text
+  padding-left: 89px
+  opacity: 0
+  visibility: hidden
+  &__bg
+    position: absolute
+    background-color: #ffffff
+    left: 0
+    top: 0
+    z-index: -1
+    bottom: 0
+    right: 0
+  &__info
+    display: inline-flex
+    align-items: flex-end
+    justify-content: flex-start
+  &__socials
+    a
+      &:hover
+        svg
+          fill: $accent
+      svg
+        transition: $tr
+
+  &__phones
+    margin-right: 26px
+    a
+      text-decoration: none
+      display: block
+      &:not(:last-of-type)
+        margin-bottom: 3px
+      &:hover
+        color: $accent
+  &__bottom
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+  & > .container
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    align-items: flex-start
+    height: 100%
+  &__nav
+    text-align: center
+    font-family: $med
+    width: 100%
+    font-size: 1.75em
+    a
+      text-decoration: none
+      &:hover
+        color: $accent
+    ul
+      padding-left: 0
+      list-style-type: none
+      li
+        position: relative
+        &:not(:last-of-type)
+          margin-bottom: 1.375rem
+
+.banner
+  height: 100vh
+  position: relative
+  .swiper-pagination
+    bottom: 5.5vh
+    display: inline-block
+    left: auto
+    width: auto
+    font-family: $med
+    .swiper-pagination-bullet
+      width: auto
+      height: auto
+      opacity: 1
+      padding-right: 0
+      position: relative
+      transition: $tr
+      color: rgba(#fff, .5)
+      background-color: transparent
+      &:after
+        content: ''
+        display: inline-block
+        position: absolute
+        top: 50%
+        transition: $tr
+        width: 0
+        height: 1px
+        background-color: #ffffff
+        right: 0
+      &.swiper-pagination-bullet-active
+        color: #ffffff
+        padding-right: 24px
+        &:after
+          width: 16px
+      &:not(:last-of-type)
+        margin: 0
+        margin-right: 12px
+  &.active
+    .banner__overlay
+      display: block
+  &__overlay
+    position: absolute
+    z-index: 2
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    display: none
+  &__slider
+    height: 100%
+  &__bg
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    z-index: -1
+  &__inner
+    width: 41.61%
+    margin-right: 4.6%
+  .swiper-slide
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #ffffff
+    text-decoration: none
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    position: absolute
+    opacity: 0
+    & > .container
+      display: flex
+      justify-content: flex-end
+  &__title
+    font-family: $med
+    font-size: 3.75em
+  &__descr
+    font-size: 1.75em
+    margin-top: 1.3rem
