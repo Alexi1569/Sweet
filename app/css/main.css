@@ -235,6 +235,43 @@ input[type="submit"] {
   position: relative;
 }
 
+.form__group.form__group--textarea.focused .form__group-label {
+  transform: translateY(0%);
+}
+
+.form__group.form__group--textarea .form__group-label {
+  bottom: calc(100% + 3px);
+  transform: translateY(100%);
+}
+
+.form__group.form__group--file.loaded span {
+  color: #5c6b88;
+}
+
+.form__group.form__group--file .form__group-input {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form__group.form__group--file .form__group-input svg {
+  width: 13px;
+  fill: #5c6b88;
+  height: 14px;
+}
+
+.form__group.form__group--file .form__group-input span {
+  width: calc(100% - 20px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.form__group.form__group--file input {
+  display: none;
+}
+
 .form__group:not(:last-of-type) {
   margin-bottom: 35px;
 }
@@ -316,12 +353,17 @@ input[type="submit"] {
   font-family: "Museo Cyrillic 500";
 }
 
+.form__group textarea {
+  height: 55px;
+}
+
 .form__group input,
 .form__group textarea {
   font-family: "Museo Sans Cyrillic 300", sans-serif;
   font-size: 16px;
   color: #232323;
   border: 0;
+  background-color: transparent;
 }
 
 .form__group input::-webkit-input-placeholder,
@@ -392,7 +434,7 @@ input[type="submit"] {
 }
 
 .modal__btn:before {
-  line-height: 58px;
+  line-height: 3.625rem;
 }
 
 .modal__content {
@@ -1210,9 +1252,32 @@ input[type="submit"] {
   background-repeat: no-repeat;
 }
 
+.constructor__btn {
+  height: 3.625rem;
+  width: 243px;
+  display: block;
+  margin: 3.125rem auto 0;
+}
+
+.constructor__btn:before {
+  line-height: 3.625rem;
+}
+
+.constructor__line {
+  position: absolute;
+  opacity: .2;
+  left: 0;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .constructor__content {
   margin-left: -15px;
   margin-right: -15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .constructor__col {
@@ -1227,6 +1292,11 @@ input[type="submit"] {
   font-size: 1.125em;
   font-family: "Museo Cyrillic 500";
   text-align: center;
+  position: relative;
+}
+
+.constructor__col-title p {
+  display: inline-block;
 }
 
 .constructor__col .form__group.filled.focused .form__group-label {
@@ -1234,7 +1304,7 @@ input[type="submit"] {
 }
 
 .constructor__col-content {
-  margin-top: 2.25rem;
+  margin-top: 3.75rem;
 }
 
 .constructor__col-img {
@@ -1251,4 +1321,47 @@ input[type="submit"] {
   width: auto;
   height: auto;
   max-height: 100%;
+}
+
+.tabs__content {
+  margin-top: 3.125rem;
+  position: relative;
+}
+
+.tabs__list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.tabs__list li {
+  line-height: 1;
+}
+
+.tabs__list li:hover a, .tabs__list li.active a {
+  border-color: #33cccc;
+}
+
+.tabs__list a {
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 12px 13px;
+  color: #232323;
+  display: block;
+  font-family: "Museo Cyrillic 500";
+  text-transform: uppercase;
+  transition: 0.25s all ease-in;
+  border-radius: 1.3125rem;
+  border: 1px solid transparent;
+}
+
+.top {
+  background-color: #f4f6fd;
+}
+
+.top__content {
+  margin-top: 1.875rem;
 }

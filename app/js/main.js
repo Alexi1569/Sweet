@@ -180,7 +180,23 @@ jQuery(document).ready(function ($) {
   })();
 
   function initInputs() {
-    var $inputs = $('.form__group');
+    var $inputs = $('.form__group:not(.form__group--file)');
+    var $files = $('.form__group--file');
+    var placeholder = 'Прикрепить фото или логотип';
+
+    $files.each(function() {
+      var $self = $(this);
+
+      $self.change(function(e) {
+        if (e.target.files.length > 0) {
+          $self.find('span').text('Загружено');
+          $self.addClass('loaded');
+        } else {
+          $self.find('span').text(placeholder);
+          $self.removeClass('loaded');
+        }
+      });
+    });
 
     $inputs.each(function() {
       var $self = $(this);
@@ -209,7 +225,7 @@ jQuery(document).ready(function ($) {
           $self.addClass('focused');
         });
 
-        $field.on('select2:close', function (e) {
+        $field.on('select2:select', function (e) {
           $self.removeClass('focused');
 
           $img.fadeOut(200, function() {
@@ -240,4 +256,57 @@ jQuery(document).ready(function ($) {
   }
 
   initSelect();
+
+  (function initConstructorLines() {
+    var TITLE_GUTTER = 30;
+    var COL_GUTTER = 45;
+    var $items = $('.constructor__col');
+    var w = $('.constructor__col').width();
+
+    function calculateLines() {
+      w = $('.constructor__col').width();
+
+      $items.each(function(idx) {
+        var $self = $(this);
+        var $wrap = $self.find('.constructor__col-title');
+        var $title = $wrap.find('p');
+        var left = $title.position().left;
+
+        if (idx === 0) {
+          $wrap.find('.constructor__line').css({
+            'width': left - TITLE_GUTTER + 'px'
+          });
+        } else if (idx === $items.length - 1) {
+          var $prevP = $($items[idx - 1]).find('.constructor__col-title p');
+          var prevRight = $prevP.position().left;
+
+          $wrap.find('.constructor__line:first-of-type').css({
+            'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
+            'left': - (prevRight + COL_GUTTER) + 'px',
+          });
+
+          $wrap.find('.constructor__line:last-of-type').css({
+            'width': left - TITLE_GUTTER + 'px',
+            'left': 'auto',
+            'right': '0',
+          });
+        }
+        else {
+          var $prevP = $($items[idx - 1]).find('.constructor__col-title p');
+          var prevRight = $prevP.position().left
+
+          $wrap.find('.constructor__line').css({
+            'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
+            'left': - (prevRight + COL_GUTTER) + 'px',
+          });
+        }
+      });
+    }
+
+    calculateLines();
+
+    $(window).resize(function() {
+      calculateLines();
+    });
+  })();
 });

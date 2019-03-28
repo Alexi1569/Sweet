@@ -3,6 +3,7 @@
 $text: #232323
 $accent: #33cccc
 $additional: #5c6b88
+$bg: #f4f6fd
 
 $light: 'Museo Cyrillic 300'
 $bold: 'Museo Cyrillic 700'
@@ -205,6 +206,33 @@ input[type="submit"]
   &__group
     text-align: left
     position: relative
+    &.form__group--textarea
+      &.focused
+        .form__group-label
+          transform: translateY(0%)
+      .form__group-label
+        bottom: calc(100% + 3px)
+        transform: translateY(100%)
+    &.form__group--file
+      &.loaded
+        span
+          color: $additional
+      .form__group-input
+        cursor: pointer
+        display: flex
+        align-items: center
+        justify-content: space-between
+        svg
+          width: 13px
+          fill: $additional
+          height: 14px
+        span
+          width: calc(100% - 20px)
+          white-space: nowrap
+          text-overflow: ellipsis
+          overflow: hidden
+      input
+        display: none
     &:not(:last-of-type)
       margin-bottom: 35px
     .select2-container.select2-container--default.select2-container--open
@@ -262,12 +290,15 @@ input[type="submit"]
         bottom: calc(100% + 3px)
         font-size: 13px
         font-family: $med
+    textarea
+      height: 55px
     input,
     textarea
       font-family: $slight, sans-serif
       font-size: 16px
       color: $text
       border: 0
+      background-color: transparent
       &::-webkit-input-placeholder
         font-size: 16px
         color: rgba($text, .5)
@@ -315,7 +346,7 @@ input[type="submit"]
     width: 243px
     margin: 35px auto 0
     &:before
-      line-height: 58px
+      line-height: 3.625rem
   &__content
     margin-top: 3.25rem
   &__title
@@ -921,9 +952,26 @@ input[type="submit"]
   background-position: center
   background-size: cover
   background-repeat: no-repeat
+  &__btn
+    height: 3.625rem
+    width: 243px
+    display: block
+    margin: 3.125rem auto 0
+    &:before
+      line-height: 3.625rem
+  &__line
+    position: absolute
+    opacity: .2
+    left: 0
+    height: auto
+    top: 50%
+    transform: translateY(-50%)
   &__content
     margin-left: -15px
     margin-right: -15px
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
   &__col
     width: calc(25% - 30px)
     margin-left: 15px
@@ -934,13 +982,16 @@ input[type="submit"]
       font-size: 1.125em
       font-family: $med
       text-align: center
+      position: relative
+      p
+       display: inline-block
     .form__group
       &.filled
         &.focused
           .form__group-label
             color: rgba($additional, .5)
     &-content
-      margin-top: 2.25rem
+      margin-top: 3.75rem
     &-img
       margin-top: 2rem
       display: flex
@@ -953,3 +1004,37 @@ input[type="submit"]
         width: auto
         height: auto
         max-height: 100%
+
+.tabs
+  &__content
+    margin-top: 3.125rem
+    position: relative
+  &__list
+    list-style-type: none
+    padding-left: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow-x: auto
+    li
+      line-height: 1
+      &:hover,
+      &.active
+        a
+          border-color: $accent
+    a
+      white-space: nowrap
+      text-decoration: none
+      padding: 12px 13px
+      color: $text
+      display: block
+      font-family: $med
+      text-transform: uppercase
+      transition: $tr
+      border-radius: 1.3125rem
+      border: 1px solid transparent
+        
+.top
+  background-color: $bg
+  &__content
+    margin-top: 1.875rem
