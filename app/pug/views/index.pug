@@ -7,7 +7,7 @@ block header
 block main
 
   main.main
-    .banner#banner.active
+    section.banner#banner.active
       .banner__overlay
       .banner__slider.swiper-container#banner-slider
         .swiper-wrapper
@@ -29,5 +29,22 @@ block main
               .banner__inner
                 p.banner__title Название 2
                 p.banner__descr Lorem ipsum dolor sit amet
-
         .swiper-pagination
+
+    section.constructor.pt.pb(style="background-image: url(./img/constructor-bg.jpg)")
+      .container
+        p.caption Конструктор заказа
+        .constructor__content.mt
+          .constructor__col
+            p.constructor__col-title Вид товара
+            .constructor__col-content
+              .form__group-inputs
+                .form__group.form__group--select
+                  label.form__group-label Вид товара
+                  .form__group-input
+                    select
+                      option(selected data-img="./img/constructor-view-img.png") Пряники
+                      option(data-img="./img/constructor-box-img.png") Печеньки
+                      option(data-img="./img/constructor-view-img.png") Сладости
+              .constructor__col-img
+                img(src="./img/constructor-view-img.png" alt="alt")

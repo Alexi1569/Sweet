@@ -2,6 +2,7 @@
 
 $text: #232323
 $accent: #33cccc
+$additional: #5c6b88
 
 $light: 'Museo Cyrillic 300'
 $bold: 'Museo Cyrillic 700'
@@ -35,6 +36,7 @@ body
   font-family: $light, sans-serif
   font-feature-settings: 'kern'
   -webkit-font-smoothing: antialiased
+  padding-bottom: 1000px
 
 a
   color: $accent
@@ -132,10 +134,68 @@ input[type="submit"]
 .fw-w
   flex-wrap: wrap
 
+.pt
+  padding-top: 6.5625rem !important
+
+.pb
+  padding-bottom: 6.5625rem !important
+
+.mt
+  margin-top: 3.125rem !important
+
 .btn
   border: 0
-  background-color: transparent
-  font-family: sans-serif
+  background-color: #fff
+  border-radius: 1.8125rem
+  font-size: 1.125em
+  font-family: $med
+  line-height: 1
+  text-align: center
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  color: #ffffff
+  text-decoration: none
+  position: relative
+  transition: $tr
+  z-index: 0
+  &:hover
+    &:before
+      clip-path: ellipse(50% 0% at 50% 0%)
+  &:before
+    content: attr(data-text)
+    display: block
+    position: absolute
+    background-color: $accent
+    left: 0
+    top: 0
+    transition: .4s all ease-in
+    bottom: 0
+    width: 100%
+    border-radius: 1.8125rem
+    z-index: 2
+    clip-path: ellipse(100% 100% at 50% 50%)
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    color: $text
+    z-index: 1
+    width: 100%
+    transition: $tr
+    border-radius: 1.8125rem
+    border: 2px solid $accent
+  span
+    position: relative
+    transition: $tr
+    z-index: 1
+    color: $accent
+
+
 
 .mobile-menu
   transition: $tr
@@ -143,16 +203,65 @@ input[type="submit"]
 
 .form
   &__group
+    text-align: left
     position: relative
-    &.focused
-      .form__group-label
-        bottom: calc(100% + 3px)
-        font-size: 13px
-        color: $text
+    &:not(:last-of-type)
+      margin-bottom: 35px
+    .select2-container.select2-container--default.select2-container--open
+      top: 100% !important
+    .select-dropdown
+      border-radius: 0 !important
+      background-color: #e1e6f1
+      border: 0
+      padding: 16px 0
+      font-size: 13px
+      box-shadow: 0px 0px 29px 0px rgba(42, 42, 42, 0.04)
+      color: #3f4757
+    .select2-container--default .select2-results__option--highlighted[aria-selected],
+    .select2-container--default .select2-results__option[aria-selected=true]
+      background-color: transparent
+      color: inherit
+    .select2-container--default .select2-results__option[aria-disabled=true]
+      color: rgba(#3f4757, .5)
+    .select2-results__option
+      padding: 5px 1.125rem
+    .select2.select2-container
+      width: 100% !important
+    .select2-selection.select2-selection--single.select-wrap
+      background-color: transparent
+      border: 0
+      border-radius: 0
+      height: auto
+      .select2-selection__rendered
+        line-height: 1.2
+        padding-left: 0
+        font-size: 16px
+      .select2-selection__arrow
+        height: 8px
+        right: 0
+        top: 50%
+        width: 8px
+        margin-top: -4px
+        b
+          border: 0em
+          width: 100%
+          height: 100%
+          background: url('../img/arrow-icon.svg') no-repeat center
+          background-size: contain
+
     &.filled
       .form__group-label
         opacity: 0
         visibility: hidden
+      &.focused
+        .form__group-label
+          opacity: 1
+          visibility: visible
+    &.focused
+      .form__group-label
+        bottom: calc(100% + 3px)
+        font-size: 13px
+        font-family: $med
     input,
     textarea
       font-family: $slight, sans-serif
@@ -184,12 +293,12 @@ input[type="submit"]
       font-family: $slight
       cursor: text
       transition: $tr
-      bottom: 3px
+      bottom: 4px
       color: rgba($text, .5)
     &-input
       display: block
-      border-bottom: 1px solid #5c6b88
-      padding-bottom: 3px
+      border-bottom: 1px solid $additional
+      padding-bottom: 4px
     &-message
       font-size: .8em
       color: red
@@ -200,16 +309,23 @@ input[type="submit"]
 .modal
   max-width: 100%
   padding: 3.125rem 3.75rem 2.5rem
+  text-align: center
+  &__btn
+    height: 3.625rem
+    width: 243px
+    margin: 35px auto 0
+    &:before
+      line-height: 58px
   &__content
     margin-top: 3.25rem
   &__title
-    text-align: center
     font-size: 1.75em
     text-transform: uppercase
     font-family: $bold
   &-close
     width: 26px
     height: 26px
+    cursor: pointer
     display: inline-flex
     align-items: center
     justify-content: center
@@ -224,6 +340,11 @@ input[type="submit"]
 .callback-modal
   min-width: 442px
 
+.caption
+  text-align: center
+  font-family: $bold
+  text-transform: uppercase
+  font-size: 1.75em
 
 .checkbox
   position: relative
@@ -795,3 +916,40 @@ input[type="submit"]
   &__descr
     font-size: 1.75em
     margin-top: 1.3rem
+
+.constructor
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  &__content
+    margin-left: -15px
+    margin-right: -15px
+  &__col
+    width: calc(25% - 30px)
+    margin-left: 15px
+    margin-right: 15px
+    padding-left: 1.875rem
+    padding-right: 1.875rem
+    &-title
+      font-size: 1.125em
+      font-family: $med
+      text-align: center
+    .form__group
+      &.filled
+        &.focused
+          .form__group-label
+            color: rgba($additional, .5)
+    &-content
+      margin-top: 2.25rem
+    &-img
+      margin-top: 2rem
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 13.75rem
+      width: 100%
+      img
+        max-width: 100%
+        width: auto
+        height: auto
+        max-height: 100%

@@ -36,11 +36,19 @@
   p.modal__title Обратный звонок
   .modal__content
     form
-      .form__group
-        label.form__group-label(for="cm-n") Имя
-        .form__group-input
-          input(type="text" class="only-text-input" id="cm-n")
-        span.form__group-message Ошибка
+      .form__group-inputs
+        .form__group
+          label.form__group-label(for="cm-n") Имя
+          .form__group-input
+            input(type="text" class="only-text-input" id="cm-n")
+          span.form__group-message Ошибка
+        .form__group
+          label.form__group-label(for="cm-p") Телефон
+          .form__group-input
+            input(type="tel" class="only-numbers-input" id="cm-p")
+          span.form__group-message Ошибка
+      button.btn.modal__btn(data-text="Заказать звонок")
+        span(data-text="Заказать звонок") Заказать звонок
 
 
 nav#mobile-menu.mobile-menu

@@ -184,17 +184,60 @@ jQuery(document).ready(function ($) {
 
     $inputs.each(function() {
       var $self = $(this);
-      var $field = $self.find('input');
+      var $field = $self.find('input, select, textarea');
 
-      $field.focusin(function() {
-        $self.addClass('focused');
-      });
+      if ($field.prop('tagName') === 'INPUT' || $field.prop('tagName') === 'TEXTAREA') {
+        $field.focusin(function(e) {
+          $self.addClass('focused');
+        });
 
-      $field.focusout(function() {
-        $self.removeClass('focused');
-      });
+        $field.focusout(function(e) {
+          $self.removeClass('focused');
+
+          if (e.target.value !== '') {
+            $self.addClass('filled');
+          } else {
+            $self.removeClass('filled');
+          }
+        });
+      } else if ($field.prop('tagName') === 'SELECT') {
+        var $content = $self.closest('.constructor__col-content');
+        var $img = $content.find('.constructor__col-img');
+        $self.addClass('filled');
+
+        $field.on('select2:open', function (e) {
+          $self.addClass('focused');
+        });
+
+        $field.on('select2:close', function (e) {
+          $self.removeClass('focused');
+
+          $img.fadeOut(200, function() {
+            $img.find('img').attr('src', $field.select2('data')[0].element.dataset.img);
+            $img.fadeIn(100);
+          });
+
+        });
+      }
     });
   }
 
   initInputs();
+
+  function initSelect() {
+    var $select = $('.form__group--select');
+
+    $select.each(function() {
+      var $self = $(this);
+
+      $self.find('select').select2({
+        containerCssClass: 'select-wrap',
+        dropdownCssClass: 'select-dropdown',
+        dropdownParent: $self,
+        minimumResultsForSearch: -1,
+      });
+    });
+  }
+
+  initSelect();
 });
