@@ -257,56 +257,228 @@ jQuery(document).ready(function ($) {
 
   initSelect();
 
-  (function initConstructorLines() {
-    var TITLE_GUTTER = 30;
-    var COL_GUTTER = 45;
-    var $items = $('.constructor__col');
-    var w = $('.constructor__col').width();
+  function calculateLines(container, items, item, TITLE_GUTTER, COL_GUTTER) {
+    w = $(container).find(item).width();
 
-    function calculateLines() {
-      w = $('.constructor__col').width();
+    $(items).each(function(idx) {
+      var $self = $(this);
+      var $wrap = $self.find('.line-parent');
+      var $title = $wrap.find('p');
+      var left = $title.position().left;
 
-      $items.each(function(idx) {
-        var $self = $(this);
-        var $wrap = $self.find('.constructor__col-title');
-        var $title = $wrap.find('p');
-        var left = $title.position().left;
+      if (idx === 0) {
+        $wrap.find('.line-item').css({
+          'width': left - TITLE_GUTTER + 'px'
+        });
+      } else if (idx === items.length - 1) {
+        var $prevP = $(items[idx - 1]).find('.line-parent p');
+        var prevRight = $prevP.position().left;
 
-        if (idx === 0) {
-          $wrap.find('.constructor__line').css({
-            'width': left - TITLE_GUTTER + 'px'
-          });
-        } else if (idx === $items.length - 1) {
-          var $prevP = $($items[idx - 1]).find('.constructor__col-title p');
-          var prevRight = $prevP.position().left;
+        $wrap.find('.line-item:first-of-type').css({
+          'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
+          'left': - (prevRight + COL_GUTTER) + 'px',
+        });
 
-          $wrap.find('.constructor__line:first-of-type').css({
-            'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
-            'left': - (prevRight + COL_GUTTER) + 'px',
-          });
+        $wrap.find('.line-item:last-of-type').css({
+          'width': left - TITLE_GUTTER + 'px',
+          'left': 'auto',
+          'right': '0',
+        });
+      }
+      else {
+        var $prevP = $(items[idx - 1]).find('.line-parent p');
+        var prevRight = $prevP.position().left
 
-          $wrap.find('.constructor__line:last-of-type').css({
-            'width': left - TITLE_GUTTER + 'px',
-            'left': 'auto',
-            'right': '0',
-          });
-        }
-        else {
-          var $prevP = $($items[idx - 1]).find('.constructor__col-title p');
-          var prevRight = $prevP.position().left
+        $wrap.find('.line-item').css({
+          'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
+          'left': - (prevRight + COL_GUTTER) + 'px',
+        });
+      }
+    });
+  }
 
-          $wrap.find('.constructor__line').css({
-            'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
-            'left': - (prevRight + COL_GUTTER) + 'px',
-          });
-        }
+  function initLines() {
+    var $sections = $('.line-section');
+
+    $sections.each(function() {
+      var $self = $(this);
+      var type = $self.attr('data-lines');
+      var TITLE_GUTTER, COL_GUTTER, w;
+
+      if (type === 'constructor') {
+        TITLE_GUTTER = 30;
+        COL_GUTTER = 45;
+      }
+
+      var $items = $self.find('.line-wrap');
+      w = $self.find('.line-wrap').width();
+
+      calculateLines($self, $items, '.line-wrap', TITLE_GUTTER, COL_GUTTER);
+
+      $(window).resize(function() {
+        calculateLines($self, $items, '.line-wrap', TITLE_GUTTER, COL_GUTTER);
       });
+    });
+  }
+
+  initLines();
+
+
+  function setProgressWidth(el, max) {
+    var w = $(el).width();
+    var res;
+
+    if (max === 1) {
+      res = w / 2;
+    } else {
+      res = w / max;
     }
 
-    calculateLines();
+    $(el).css({
+      'margin-left': res + 'px',
+    });
+
+    $(el).find('.ui-slider-handle').css({
+      'width': res + 'px',
+      'margin-left': -res + 'px',
+    });
+  }
+
+  function initRangeSlider(el, max, swiper) {
+    var range = $(el).slider({
+      max: max,
+      min: 0,
+      step: 1,
+      value: 0,
+      animate: '500',
+      change: function(e, ui) {
+        swiper.slideTo(ui.value)
+      }
+    });
+
+    swiper.on('transitionStart', function() {
+      range.slider('value', Math.floor(max * swiper.progress));
+    })
+
+    setProgressWidth($(el), max);
 
     $(window).resize(function() {
-      calculateLines();
+      setProgressWidth($(el), max);
+    });
+
+    return range;
+  }
+
+  (function initProductsSlider() {
+    var $products = $('.products');
+
+    $products.each(function() {
+      var $self = $(this);
+      var $slider = $self.find('.products__slider');
+      var $prev = $slider.find('.swiper-prev');
+      var $next = $slider.find('.swiper-next');
+      var $progress = $self.find('.slider__progress-range');
+      var slidesPerView = 4;
+      var max;
+      var range;
+
+      var mySwiper = new Swiper($slider, {
+        speed: 900,
+        spaceBetween: 56,
+        roundLengths: true,
+        watchOverflow: true,
+        slidesPerView: slidesPerView,
+        navigation: {
+          prevEl: $prev,
+          nextEl: $next,
+        },
+        on: {
+          init: function() {
+            max = $(this)[0].slides.length - slidesPerView;
+            range = initRangeSlider($progress, max, $(this)[0]);
+          }
+        }
+      });
+    });
+  })();
+
+  (function initReviewsSlider() {
+    var $self = $('#reviews-slider');
+    var $slider = $self.find('.reviews__slider');
+    var $prev = $slider.find('.swiper-prev');
+    var $next = $slider.find('.swiper-next');
+    var $progress = $self.find('.slider__progress-range');
+    var slidesPerView = 3;
+    var max;
+    var range;
+
+    var mySwiper = new Swiper($slider, {
+      speed: 900,
+      spaceBetween: 80,
+      roundLengths: true,
+      watchOverflow: true,
+      slidesPerView: slidesPerView,
+      navigation: {
+        prevEl: $prev,
+        nextEl: $next,
+      },
+      on: {
+        init: function() {
+          max = $(this)[0].slides.length - slidesPerView;
+          range = initRangeSlider($progress, max, $(this)[0]);
+        }
+      }
+    });
+  })();
+
+  (function initTextBlocks() {
+    var $blocks = $('.text-content');
+
+    $blocks.each(function() {
+      var $self = $(this);
+      var $text = $self.find('.text-wrap');
+      var link;
+
+      if ($self.hasClass('text-content--img')) {
+        var $img = $self.find('img');
+        var imgH = $img.height();
+        var imgW = $img.outerWidth(true);
+        var textH = $text.outerHeight(true);
+
+        if (textH > imgH) {
+          $text[0].style.maxHeight = imgH + 'px';
+
+          link = document.createElement('a');
+          link.textContent += 'Читать больше';
+          link.classList.add('text-link');
+          link.setAttribute('href', '#');
+
+          $(link).css({
+            'left': imgW + 'px'
+          });
+          $text.append(link);
+
+          $(link).click(function(e) {
+            e.preventDefault();
+
+            $self.toggleClass('active');
+            if ($self.hasClass('active')) {
+              $text[0].style.maxHeight = null;
+              $(link).text('Скрыть');
+              $(link).css({
+                'left': '0px'
+              });
+            } else {
+              $text[0].style.maxHeight = imgH + 'px';
+              $(link).text('Читать больше');
+              $(link).css({
+                'left': imgW + 'px'
+              });
+            }
+          });
+        }
+
+      }
     });
   })();
 });

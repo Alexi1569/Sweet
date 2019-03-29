@@ -80,9 +80,8 @@ input[type="submit"]
 
 .container
   width: 100%
-  max-width: 1640px
-  padding-left: 15px
-  padding-right: 15px
+  padding-left: 5vw
+  padding-right: 5vw
   margin: 0 auto
 
 .inline-flex
@@ -376,6 +375,8 @@ input[type="submit"]
   font-family: $bold
   text-transform: uppercase
   font-size: 1.75em
+  &.caption--left
+    text-align: left
 
 .checkbox
   position: relative
@@ -948,6 +949,19 @@ input[type="submit"]
     font-size: 1.75em
     margin-top: 1.3rem
 
+.line
+  &-parent
+    position: relative
+    p
+      display: inline-block
+  &-item
+    position: absolute
+    opacity: .2
+    left: 0
+    height: auto
+    top: 50%
+    transform: translateY(-50%)
+
 .constructor
   background-position: center
   background-size: cover
@@ -959,13 +973,6 @@ input[type="submit"]
     margin: 3.125rem auto 0
     &:before
       line-height: 3.625rem
-  &__line
-    position: absolute
-    opacity: .2
-    left: 0
-    height: auto
-    top: 50%
-    transform: translateY(-50%)
   &__content
     margin-left: -15px
     margin-right: -15px
@@ -982,9 +989,6 @@ input[type="submit"]
       font-size: 1.125em
       font-family: $med
       text-align: center
-      position: relative
-      p
-       display: inline-block
     .form__group
       &.filled
         &.focused
@@ -1018,8 +1022,11 @@ input[type="submit"]
     overflow-x: auto
     li
       line-height: 1
-      &:hover,
+      &:not(.active):hover
+        a
+          color: $accent
       &.active
+
         a
           border-color: $accent
     a
@@ -1038,3 +1045,413 @@ input[type="submit"]
   background-color: $bg
   &__content
     margin-top: 1.875rem
+
+.label
+  color: #ffffff
+  font-family: $med
+  font-size: 1.125em
+  height: 27px
+  line-height: 27px
+  min-width: 3.6875rem
+  padding: 0 5px
+  text-align: center
+  background-color: $text
+  display: inline-block
+  &:not(:last-of-type)
+    margin-right: 6px
+
+body.touch-device
+  .product
+    &:hover
+      .product__img img
+        transform: scale(1)
+  .product__actions
+    opacity: 1
+    transform: translateY(0)
+    visibility: visible
+  .product__btn-tooltip
+    display: none
+  .product__title
+    color: $text
+
+.swiper-prev,
+.swiper-next
+  width: 34px
+  cursor: pointer
+  height: 34px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  line-height: 1
+  border-radius: 50%
+  transition: $tr
+  border: 1px solid #ccd5eb
+  &.swiper-button-disabled
+    opacity: .4
+  svg
+    fill: #ccd5eb
+
+.swiper-next
+  svg
+    transform: rotate(180deg)
+
+.slider
+  &__progress
+    flex: 1
+    margin-right: 6.875rem
+    position: relative
+    display: flex
+    align-items: flex-end
+    justify-content: flex-start
+    &-range
+      height: 3px
+      background-color: #e1e6f1
+      position: relative
+      flex: 1
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        height: 100%
+        right: 0
+        width: 200%
+        background-color: #e1e6f1
+      .ui-slider-handle
+        background-color: $accent
+        height: 100%
+        width: 20px
+        cursor: pointer
+        top: 0
+        margin: 0
+  &__nav
+    display: flex
+    align-items: flex-end
+    position: relative
+    z-index: 999
+    align-items: stretch
+    margin-top: 6px
+    justify-content: space-between
+  &__arrows
+    display: flex
+    justify-content: flex-end
+    .swiper-prev
+      margin-right: 12px
+
+.product
+  max-width: 360px
+  text-align: center
+  &:hover
+    .product__actions
+      transform: translateY(0)
+      opacity: 1
+      visibility: visible
+    .product__title
+      color: $text
+    .product__img
+      img
+        transform: scale(1.02)
+  &__info
+    padding-top: 2.25rem
+    padding-bottom: 16px
+  &__labels
+    position: absolute
+    left: 25px
+    top: 25px
+    display: flex
+  &__img
+    display: block
+    text-decoration: none
+    color: inherit
+    position: relative
+    overflow: hidden
+    img
+      width: 100%
+      height: auto
+      transition: $tr
+      display: block
+  &__title
+    font-size: 1.125em
+    font-family: $med
+    color: rgba($text, .8)
+    width: 100%
+    transition: $tr
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+  &__actions
+    display: flex
+    justify-content: center
+    transform: translateY(10%)
+    opacity: 0
+    visibility: hidden
+    transition: .4s all ease-in
+    margin-top: 6px
+  &__btn
+    margin-left: 3.5px
+    margin-right: 3.5px
+    position: relative
+    padding-top: 10px
+    cursor: pointer
+    &:hover
+      .product__btn-tooltip
+        opacity: 1
+        visibility: visible
+    &-tooltip
+      position: absolute
+      font-size: 12px
+      color: #ffffff
+      height: 28px
+      line-height: 28px
+      padding: 0 10px
+      white-space: nowrap
+      background-color: rgba(#111111, .78)
+      border-radius: 2px
+      bottom: 100%
+      left: 50%
+      transform: translateX(-50%)
+      opacity: 0
+      visibility: hidden
+      transition: .1s all ease-in
+      &:after
+        content: ''
+        display: inline-block
+        width: 0
+        height: 0
+        position: absolute
+        top: 100%
+        left: 50%
+        transform: translateX(-50%)
+        border-style: solid
+        border-width: 5px 4.5px 0 4.5px
+        border-color: rgba(#111111, .78) transparent transparent transparent
+    &:hover
+      .product__btn-icon
+        border-color: $accent
+        background-color: $accent
+        svg
+          fill: #fff
+    &-icon
+      display: inline-flex
+      line-height: 1
+      align-items: center
+      justify-content: center
+      width: 29px
+      height: 29px
+      border: 1px solid $additional
+      transition: $tr
+      border-radius: 50%
+      svg
+        fill: $additional
+        transition: $tr
+        margin-top: -1px
+
+.instagram
+  background-color: $bg
+  &__content
+    display: flex
+    flex-wrap: wrap
+    width: 150%
+    margin-left: -25%
+  &__inner
+    margin-top: -1rem
+  &__caption
+    margin-top: 1rem
+  &__col
+    text-decoration: none
+    color: inherit
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    width: 16.66%
+    overflow: hidden
+    margin-left: -1px
+    margin-bottom: -1px
+    &:hover
+      .instagram__col-img
+        transform: scale(1.02)
+    &:not(.instagram__col--title)
+      padding-bottom: 16.66%
+      position: relative
+    &-img
+      left: 0
+      top: 0
+      transition: $tr
+      bottom: 0
+      right: 0
+      border: 1px solid #e1e6f1
+      position: absolute
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+
+    svg
+      fill: $accent
+  &__title
+    font-family: $med
+    font-size: 1.25em
+    color: $accent
+    margin-top: .8rem
+
+.advantages
+  background-color: $bg
+  svg
+    width: 100%
+    height: auto
+  &__line
+    margin: 0 8px
+    svg
+      opacity: .3
+  &__item
+    display: flex
+    align-items: center
+    margin: 0 8px
+    &-text
+      margin-left: 1.25rem
+      white-space: nowrap
+    &-icon
+      display: inline-block
+      svg
+        width: 3.1vw
+  &__content
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    margin: 0 -8px
+
+.request
+  background-color: #e1e6f1
+  &__content
+    display: flex
+    justify-content: space-between
+    padding: 0 8.5%
+    align-items: flex-end
+  &__btn
+    width: 243px
+    height: 3.625rem
+    margin-left: auto
+    &:before
+      line-height: 3.625rem
+  &__descr
+    font-size: 1.125em
+    font-family: $slight
+    line-height: 1.44444444
+    margin-top: 1.8rem
+  &__left
+    flex: 1
+    padding-right: 4.4%
+  &__img
+    position: relative
+    top: -1.8rem
+    width: 22.7rem
+    margin-right: 2.9%
+    max-width: 361px
+    img
+      width: 100%
+      height: auto
+      display: block
+
+.reviews
+  background-color: $bg
+  .slider__nav
+    margin-top: 3.75rem
+  &__top
+    display: flex
+    align-items: flex-start
+  &__info
+    padding-left: 2.8125rem
+  &__name
+    font-size: 1.125em
+    font-family: $med
+  &__date
+    color: rgba($text, .4)
+    margin-top: .5rem
+  &__icon
+    display: inline-block
+    width: 3.125rem
+    height: 2.25rem
+    svg
+      display: block
+      width: 100%
+      max-height: 100%
+  &__text
+    font-family: $slight
+    font-size: 1.125em
+    line-height: 1.44em
+    margin-top: 1.5625rem
+    max-height: 130px
+    overflow: hidden
+
+.text
+  &-link
+    position: absolute
+    bottom: 2.5rem
+    left: 0
+    z-index: 1
+    font-size: 16px
+    color: $text
+    text-decoration: none
+    line-height: 1
+    font-family: $smed
+    display: inline-block
+    transition: .25s color ease-in
+    &:hover
+      color: $accent
+      &:after
+        background-color: $accent
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      bottom: 0
+      top: 100%
+      width: 100vw
+      height: 2.5rem
+      background-color: $bg
+    &:after
+      content: ''
+      transition: $tr
+      display: block
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 1px
+      background-color: $text
+  &-wrap
+    transition: $tr
+    position: relative
+    z-index: 0
+    padding-bottom: 45px
+    overflow: hidden
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      left: 0
+      right: 0
+      height: 70px
+      background-image: linear-gradient( 0deg, rgb(244,246,253) 0%, rgb(244,246,253) 40%, rgba(244,246,253,0) 100%)
+      bottom: 2.5rem
+
+.about
+  background-color: $bg
+  &__title
+    font-family: $med
+    margin-bottom: 2.375rem
+    margin-top: 2rem
+    p
+      display: inline-block
+  &__content
+    overflow: hidden
+    font-size: 1.125em
+    line-height: 1.44
+    font-family: $slight
+    img
+      float: left
+      margin-right: 5.6%
+      margin-bottom: 2%
+      max-width: 50%
+      position: relative
+      z-index: 1
