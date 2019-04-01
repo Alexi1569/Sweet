@@ -46,10 +46,18 @@ jQuery(document).ready(function ($) {
     var $search = $('#header-search');
     var $icon = $search.find('.header__search-icon');
     var $inner = $search.find('.header__search-inner');
+    var containerW = $('.container').width();
+    var pageW = $('.page').width();
 
     function setSearchOffset() {
-      var right = windowWidth - $icon.offset().left;
       var top = $icon.offset().top;
+      var right;
+      if (windowWidth > 992) {
+        right = windowWidth - $icon.offset().left;
+      } else {
+        right = ((pageW - containerW) / 2) + $('.header__search-icon').outerWidth(true);
+      }
+
       $inner.css({
         'padding-right': right + 'px',
         'padding-top': top + 'px',
@@ -59,23 +67,44 @@ jQuery(document).ready(function ($) {
 
     setSearchOffset();
     $(window).resize(function() {
+      w = $('.container').width();
+      iconPos = $('.header__search-icon').offset();
+      containerRight = parseInt($('.container').css('padding-right'), 10)
       setSearchOffset();
     });
 
+    var iconPos = $('.header__search-icon').offset();
+    var containerRight = $('.container').css('padding-right')
+
     $icon.click(function() {
       $search.toggleClass('active');
+      if (windowWidth <= 991) {
+        var res = windowWidth - iconPos.left - $('.header__search-icon').outerWidth(true) - parseInt(containerRight, 10);
+
+        if ($search.hasClass('active')) {
+          $('.header__search-icon').css({
+            'transform': 'translateX(' + res + 'px)'
+          })
+        } else {
+          $('.header__search-icon').css({
+            'transform': 'translateX(0px)'
+          })
+        }
+      }
     });
   })();
 
   (function initBannerSlider() {
     var $slider = $('#banner-slider');
     var $wrap = $('#banner');
-    var allowChange = true;
     var $pagination = $slider.find('.swiper-pagination');
+    var pageWidth;
 
     function alignPagination() {
+      pageWidth = $('.page').width();
+
       $pagination.css({
-        'right': ((windowWidth - $('.container').width()) / 2) + 'px'
+        'right': parseInt($('.container').css('padding-right'), 10) + 'px'
       });
     }
 
@@ -135,29 +164,57 @@ jQuery(document).ready(function ($) {
     var $menu = $('#sidebar-menu');
     var $nav = $menu.find('.menu__nav');
     var $bottom = $menu.find('.menu__bottom');
-    var $toggler = $('#menu-toggler');
+    var $toggler = $('.menu-toggler');
     var $bg = $menu.find('.menu__bg');
 
     $toggler.click(function() {
       var tl = new TimelineLite();
+      var beginPath = [];
+      var liItems;
+
+      var innerLi = $('li.menu__nav-mobile');
+
+      innerLi.each(function() {
+        var $self = $(this);
+
+        $self.click(function() {
+          $self.toggleClass('active');
+
+          if ($self.hasClass('active')) {
+            $self.children('ul').slideDown(500);
+          } else {
+            $self.children('ul').slideUp(500);
+          }
+        });
+      });
+
+      if (windowWidth > 767) {
+        beginPath = ['0.5%', '0%', '0%'];
+        liItems = $nav.children('ul').children('li:not(.menu__nav-mobile)');
+      } else {
+        beginPath = ['0.5%', '150%', '0%'];
+        liItems = $nav.children('ul').children('li');
+      }
 
       $toggler.toggleClass('active');
 
       if ($toggler.hasClass('active')) {
         tl.to($menu, 0, {autoAlpha: 1})
-          .fromTo($bg, 1, {autoAlpha: 0, webkitClipPath: 'circle(0.5% at 0 0)'}, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)', onStart: function() {
+          .fromTo($bg, 1, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'}, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0% 0%)', onStart: function() {
+              $('.header').addClass('menu-opened');
               $toggler.addClass('disabled');
             }}, 0)
-          .staggerFromTo($nav.find('li'), .7, {autoAlpha: 0, y: 20}, {autoAlpha: 1, y: 0}, 0.15)
+          .staggerFromTo(liItems, .7, {autoAlpha: 0, y: 20}, {autoAlpha: 1, y: 0}, 0.15)
           .fromTo($bottom, .8, {autoAlpha: 0, y: 50}, {autoAlpha: 1, y: 0, onComplete: function() {
               $toggler.removeClass('disabled');
             }}, '-=.5');
       } else {
         tl.fromTo($bottom, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 50, onStart: function() {
+            $('.header').removeClass('menu-opened');
             $toggler.addClass('disabled');
           }})
-          .staggerFromTo($nav.find('li'), .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.5')
-          .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(0.5% at 0 0)', onComplete: function() {
+          .staggerFromTo(liItems, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.5')
+          .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')', onComplete: function() {
               $toggler.removeClass('disabled');
             }}, '-=.35')
           .to($menu, 0, {autoAlpha: 0});
@@ -166,11 +223,16 @@ jQuery(document).ready(function ($) {
     });
 
     function alignNav() {
-      var res = ($menu.height() - $nav.outerHeight() - $bottom.outerHeight(true)) / 2;
+      var res = ($menu.height() - $nav.outerHeight() - $bottom.height()) / 2;
 
-      $nav.css({
-        'margin-bottom': res + 'px'
-      });
+      if (res > 40) {
+        $nav.css({
+          'margin-bottom': res + 'px',
+          'margin-top': res + 'px'
+        });
+      } else {
+        $nav[0].style.marginBottom = null;
+      }
     }
 
     alignNav();
@@ -352,12 +414,13 @@ jQuery(document).ready(function ($) {
       value: 0,
       animate: '500',
       change: function(e, ui) {
-        swiper.slideTo(ui.value)
+        // swiper.slideTo(ui.value)
       }
     });
 
     swiper.on('transitionStart', function() {
-      range.slider('value', Math.floor(max * swiper.progress));
+      console.log(max, ' ', swiper.progress, ' ', max * swiper.progress)
+      range.slider('value', max * swiper.progress);
     })
 
     setProgressWidth($(el), max);
@@ -397,6 +460,24 @@ jQuery(document).ready(function ($) {
             max = $(this)[0].slides.length - slidesPerView;
             range = initRangeSlider($progress, max, $(this)[0]);
           }
+        },
+        breakpoints: {
+          850: {
+            slidesPerView: 2,
+            spaceBetween: 55,
+          },
+          991: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1199: {
+            slidesPerView: 3,
+            spaceBetween: 45,
+          },
+          1350: {
+            spaceBetween: 30,
+            slidesPerView: 4,
+          },
         }
       });
     });

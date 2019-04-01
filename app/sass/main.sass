@@ -4,6 +4,7 @@ $text: #232323
 $accent: #33cccc
 $additional: #5c6b88
 $bg: #f4f6fd
+$darker: #e1e6f1
 
 $light: 'Museo Cyrillic 300'
 $bold: 'Museo Cyrillic 700'
@@ -37,7 +38,6 @@ body
   font-family: $light, sans-serif
   font-feature-settings: 'kern'
   -webkit-font-smoothing: antialiased
-  padding-bottom: 1000px
 
 a
   color: $accent
@@ -195,11 +195,33 @@ input[type="submit"]
     z-index: 1
     color: $accent
 
-
-
 .mobile-menu
   transition: $tr
   display: none
+
+input,
+textarea
+  font-family: $slight, sans-serif
+  font-size: 16px
+  color: $text
+  border: 0
+  background-color: transparent
+  &::-webkit-input-placeholder
+    font-size: 16px
+    color: rgba($text, .5)
+    font-family: $light, sans-serif
+  &::-moz-placeholder
+    font-size: 16px
+    color: rgba($text, .5)
+    font-family: $light, sans-serif
+  &:-ms-input-placeholder
+    font-size: 16px
+    color: rgba($text, .5)
+    font-family: $light, sans-serif
+  &:-moz-placeholder
+    font-size: 16px
+    color: rgba($text, .5)
+    font-family: $light, sans-serif
 
 .form
   &__group
@@ -291,29 +313,6 @@ input[type="submit"]
         font-family: $med
     textarea
       height: 55px
-    input,
-    textarea
-      font-family: $slight, sans-serif
-      font-size: 16px
-      color: $text
-      border: 0
-      background-color: transparent
-      &::-webkit-input-placeholder
-        font-size: 16px
-        color: rgba($text, .5)
-        font-family: $light, sans-serif
-      &::-moz-placeholder
-        font-size: 16px
-        color: rgba($text, .5)
-        font-family: $light, sans-serif
-      &:-ms-input-placeholder
-        font-size: 16px
-        color: rgba($text, .5)
-        font-family: $light, sans-serif
-      &:-moz-placeholder
-        font-size: 16px
-        color: rgba($text, .5)
-        font-family: $light, sans-serif
     &.has--error
       .form__group-message
         display: inline-block
@@ -427,6 +426,87 @@ input[type="submit"]
       position: absolute
       transition: $tr
 
+body.touch-device
+  .sidebar
+    &__nav
+      a:hover
+        .sidebar__nav-title
+          display: none
+        svg
+          fill: $accent
+
+.menu-toggler
+  font-size: 14px
+  font-family: $med
+  background-color: transparent
+  border: 0
+  &.disabled
+    pointer-events: none
+  &.active
+    .menu-toggler__line
+      &:nth-of-type(2)
+        width: 0
+      &:nth-of-type(1)
+        transform: rotate(-45deg)
+        top: 9px
+      &:nth-of-type(3)
+        top: 9px
+        transform: rotate(45deg)
+        width: 100%
+  &__btn
+    margin-top: 8px
+    position: relative
+    width: 30px
+    height: 20px
+  &__line
+    position: absolute
+    background-color: $text
+    border-radius: 4px
+    height: 2px
+    left: 0
+    &:nth-of-type(1)
+      top: 0
+      width: 100%
+      transition: .4s all ease-in .15s
+    &:nth-of-type(2)
+      top: 9px
+      width: 23px
+      transition: .25s all ease-in
+    &:nth-of-type(3)
+      top: 18px
+      width: 16px
+      transition: .4s all ease-in .15s
+
+.action-link
+  display: flex
+  justify-content: center
+  align-items: center
+  &-inner
+    position: relative
+  &-amount
+    position: absolute
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    background-color: $accent
+    border-radius: 50%
+    min-width: 17px
+    padding: 0 2px
+    height: 17px
+    font-size: 10px
+    font-family: $med
+    text-align: center
+    left: calc(100% - 9px)
+    line-height: .7
+    top: calc(100% - 12px)
+    color: #ffffff
+  svg
+    transition: $tr
+    fill: $text
+  &:hover
+    svg
+      fill: $accent
+
 
 .sidebar
   position: fixed
@@ -496,34 +576,7 @@ input[type="submit"]
             background-color: #ffffff
   &__link
     height: 46px
-    display: flex
-    justify-content: center
-    align-items: center
-    &-inner
-      position: relative
-    &-amount
-      position: absolute
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      background-color: $accent
-      border-radius: 50%
-      min-width: 17px
-      padding: 0 2px
-      height: 17px
-      font-size: 10px
-      font-family: $med
-      text-align: center
-      left: calc(100% - 9px)
-      line-height: .7
-      top: calc(100% - 12px)
-      color: #ffffff
-    svg
-      transition: $tr
-      fill: $text
-    &:hover
-      svg
-        fill: $accent
+
   &__bottom
     display: flex
     flex-direction: column
@@ -577,50 +630,10 @@ input[type="submit"]
     ul
       padding-left: 0
       list-style-type: none
-  &__toggler
-    font-size: 14px
-    font-family: $med
-    background-color: transparent
-    border: 0
-    &.disabled
-      pointer-events: none
-    &.active
-      .sidebar__toggler-line
-        &:nth-of-type(2)
-          width: 0
-        &:nth-of-type(1)
-          transform: rotate(-45deg)
-          top: 9px
-        &:nth-of-type(3)
-          top: 9px
-          transform: rotate(45deg)
-          width: 100%
-    &-btn
-      margin-top: 8px
-      position: relative
-      width: 30px
-      height: 20px
-    &-line
-      position: absolute
-      background-color: $text
-      border-radius: 4px
-      height: 2px
-      left: 0
-      &:nth-of-type(1)
-        top: 0
-        width: 100%
-        transition: .4s all ease-in .15s
-      &:nth-of-type(2)
-        top: 9px
-        width: 23px
-        transition: .25s all ease-in
-      &:nth-of-type(3)
-        top: 18px
-        width: 16px
-        transition: .4s all ease-in .15s
 
 .logo
   width: 5.4375rem
+  display: inline-block
   img
     width: 100%
     height: auto
@@ -631,6 +644,14 @@ input[type="submit"]
   text-decoration: none
   border-bottom-width: 1px
   border-bottom-style: dashed
+  font-size: 12px
+
+.cta-link
+  border-bottom-color: rgba(#fff, .7)
+  color: rgba(#fff, .7) !important
+  &:hover
+    color: #fff !important
+    border-bottom-color: #fff
 
 .socials-list
   list-style-type: none
@@ -645,19 +666,20 @@ input[type="submit"]
     display: block
 
 .header
+  &.menu-opened
+    .header__logo,
+    .header__search,
+    .header__call,
+    .header__socials
+      opacity: 0
+      visibility: hidden
   &__socials
     svg
       fill: #fff
   a
     text-decoration: none
     color: inherit
-  &__cta
-    font-size: 12px
-    border-bottom-color: rgba(#fff, .7)
-    color: rgba(#fff, .7) !important
-    &:hover
-      color: #fff !important
-      border-bottom-color: #fff
+
   &.header--main
     position: relative
     color: #ffffff
@@ -717,6 +739,14 @@ input[type="submit"]
     display: inline-flex
     align-items: flex-start
     justify-content: flex-end
+    &-toggler
+      display: none
+      margin-left: 32px
+      color: #ffffff
+      .menu-toggler__btn
+        margin-top: 0
+      .menu-toggler__line
+        background-color: #ffffff
   &__call
     margin-right: 1.875rem
   &__search
@@ -792,6 +822,11 @@ input[type="submit"]
       align-items: flex-start
       justify-content: space-between
 
+body.touch-device
+  .menu
+    & > .container
+      overflow-y: auto
+
 .menu
   position: fixed
   height: 100%
@@ -800,21 +835,46 @@ input[type="submit"]
   width: 100%
   z-index: 2
   display: flex
-  align-items: center
+  align-items: flex-end
   padding: 4.1vh 0 5.5vh
   justify-content: center
   color: $text
   padding-left: 89px
   opacity: 0
   visibility: hidden
+  &__actions
+    display: none
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 14px
+    & > *
+      &:not(:last-child)
+        margin-right: 18px
+  &__languages
+    padding-left: 0
+    list-style-type: none
+    font-family: $slight
+    margin-bottom: 14px
+    display: none
+    justify-content: center
+    li:not(:last-of-type)
+      margin-right: 18px
+      &.current
+        color: $accent
+  &__cta
+    margin-top: 8px
+    &.cta-link
+      display: none
+      color: $text !important
+      border-bottom-color: rgba($text, .7) !important
   &__bg
-    position: absolute
+    position: fixed
     background-color: #ffffff
     left: 0
     top: 0
     z-index: -1
-    bottom: 0
     right: 0
+    bottom: 0
   &__info
     display: inline-flex
     align-items: flex-end
@@ -832,25 +892,26 @@ input[type="submit"]
     a
       text-decoration: none
       display: block
+      white-space: nowrap
       &:not(:last-of-type)
         margin-bottom: 3px
       &:hover
         color: $accent
   &__bottom
     width: 100%
-    display: flex
+    display: inline-flex
     justify-content: space-between
     align-items: flex-end
+  &__left
+    margin-right: 25px
   & > .container
-    display: flex
-    flex-direction: column
-    justify-content: flex-end
-    align-items: flex-start
     height: 100%
+    display: block
   &__nav
     text-align: center
     font-family: $med
     width: 100%
+    margin-bottom: 40px
     font-size: 1.75em
     a
       text-decoration: none
@@ -859,8 +920,15 @@ input[type="submit"]
     ul
       padding-left: 0
       list-style-type: none
+      overflow: hidden
       li
         position: relative
+        &.menu__nav-mobile
+          display: none
+          & > ul
+            display: none
+            font-size: .75em
+            margin-top: 1rem
         &:not(:last-of-type)
           margin-bottom: 1.375rem
 
@@ -1321,7 +1389,7 @@ body.touch-device
     margin: 0 -8px
 
 .request
-  background-color: #e1e6f1
+  background-color: $darker
   &__content
     display: flex
     justify-content: space-between
@@ -1455,3 +1523,271 @@ body.touch-device
       max-width: 50%
       position: relative
       z-index: 1
+
+.footer
+  &__socials
+    a
+      svg
+        transition: $tr
+      &:hover
+        svg
+          fill: $accent
+    &-title
+      margin-bottom: 10px
+  &__logo
+    margin-right: 5.2vw
+  &__right
+    display: flex
+    justify-content: flex-end
+    padding-right: 4.5vw
+  &__left
+    display: flex
+  a
+    text-decoration: none
+    color: inherit
+    &:hover
+      color: $accent
+  &__nav
+    flex: 1
+    margin-left: 10px
+    ul
+      list-style-type: none
+      padding-left: 0
+      display: flex
+      justify-content: center
+    li
+      &:not(:last-of-type)
+        margin-right: 1.25rem
+  &__top
+    background-color: $darker
+    padding: 2.25rem 0 1.75rem
+    & > .container
+      display: flex
+      justify-content: space-between
+  &__develop
+    display: inline-flex
+    justify-content: space-between
+    align-items: center
+    p
+      white-space: nowrap
+      margin-right: 15px
+    a
+      width: 68px
+      display: inline-block
+      height: 14px
+      &:hover
+        svg
+          fill: $text
+      svg
+        width: 100%
+        height: 100%
+        fill: #a9b5d1
+        transition: $tr
+  &__copy
+    white-space: nowrap
+  &__bottom
+    background-color: $bg
+    padding: 11px 0
+    font-size: 12px
+    overflow: hidden
+    color: #a9b5d1
+    & > .container
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-left: -10px
+      margin-right: -10px
+      flex-wrap: wrap
+      margin-bottom: -14px
+      & > *
+        margin-left: 10px
+        margin-right: 10px
+        margin-bottom: 14px
+  &__phones
+    margin-right: 3.1vw
+    a
+      display: block
+      &:not(:last-of-type)
+        margin-bottom: 3px
+
+@media screen and (max-height: 700px)
+  .sidebar
+    padding-bottom: 4.1vh
+  .sidebar__nav a
+    height: 44px
+  .sidebar__link,
+  .sidebar__language
+    height: 40px
+
+@media screen and (max-height: 600px)
+  .sidebar__toggler
+    & > span
+      display: none
+    .menu-toggler__btn
+      margin-top: 0
+  .sidebar__link,
+  .sidebar__language
+    height: 38px
+
+@media screen and (max-width: 1350px)
+  html
+    font-size: 15px
+  .constructor__col
+    padding-left: 16px
+    padding-right: 16px
+  .constructor__col-content
+    margin-top: 3.2rem
+  body
+    font-size: 15px
+  .banner__title
+    font-size: 3em
+  .banner__descr
+    font-size: 1.6em
+  .header__search-inner
+    padding-left: 23%
+
+@media screen and (max-width: 1199px)
+  html
+    font-size: 14px
+  .header.header--main .header__line
+    padding-top: 3.4rem
+  .header__search-inner
+    padding-left: 20%
+  .constructor__col
+    padding-left: 0px
+    padding-right: 0px
+  .constructor__col-content
+    margin-top: 2.8rem
+  body
+    font-size: 14px
+  .banner__title
+    font-size: 2.7em
+  .banner__descr
+    font-size: 1.45em
+  .banner__inner
+    margin-right: 2%
+    width: 44.21%
+
+@media screen and (max-width: 991px)
+  html
+    font-size: 13px
+  .constructor__col
+    width: calc(50% - 60px)
+    margin-bottom: 30px
+    margin-left: 30px
+    margin-right: 30px
+    .line-item
+      display: none
+  .constructor__content
+    flex-wrap: wrap
+    margin-left: -30px
+    margin-right: -30px
+    margin-bottom: -30px
+  .header__search-inner
+    padding-left: 17.5%
+    padding-right: 17.5%
+    opacity: .5
+  .header.header--main .header__line
+    padding-top: 2.9rem
+  .banner__title
+    font-size: 2.25em
+  .banner__descr
+    font-size: 1.3em
+  .banner__inner
+    margin-right: 0%
+    width: 46.21%
+  .header__search
+    .header__search-icon
+      transition: .5s all ease-in
+
+@media screen and (max-width: 767px)
+  html
+    font-size: 12px
+  .menu__languages
+    display: inline-flex
+  .menu__actions
+    display: flex
+  .menu__nav ul li.menu__nav-mobile
+    display: block
+  .header__right-toggler.active
+    .menu-toggler__line
+      background-color: $text
+  .header__search-inner
+    padding-left: 5vw
+    padding-right: calc(5vw + 20px) !important
+    left: 0
+    width: 100%
+  .header.header--main .header__line
+    padding-top: 2.5rem
+  .sidebar
+    display: none
+  .menu
+    padding-left: 0
+  .page
+    padding-left: 0
+  .header__right-toggler
+    display: inline-block
+
+@media screen and (max-width: 650px)
+  .banner__title
+    font-size: 2em
+  .banner__descr
+    font-size: 1.25em
+  .banner__inner
+    width: 52%
+  .constructor__col
+    width: calc(50% - 30px)
+    margin-left: 15px
+    margin-right: 15px
+  .constructor__content
+    flex-wrap: wrap
+    margin-left: -15px
+    margin-right: -15px
+
+@media screen and (max-width: 540px)
+  .header__socials
+    display: none
+  .header__right-toggler
+    margin-left: 10px
+
+@media screen and (max-width: 500px)
+  .banner__inner
+    width: 63%
+  .banner__title,
+  .banner__descr
+    text-shadow: 5px 3px 14px rgba($text, 0.5)
+
+@media screen and (max-width: 450px)
+  .menu__bottom
+    flex-wrap: wrap
+  .constructor__col
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+  .constructor__content
+    margin-left: 0
+    margin-right: 0
+  .menu__left
+    margin-right: 0
+    margin-bottom: 16px
+  .menu__actions
+    justify-content: center
+  .menu__info
+    width: 100%
+    justify-content: center
+  .menu__languages
+    width: 100%
+  .menu__address
+    text-align: center
+  .menu__left,
+  .menu__right
+    width: 100%
+
+@media screen and (max-width: 420px)
+  .header__call
+    display: none
+  .header__right-toggler
+    margin-left: 0px
+  .menu__cta
+    &.cta-link
+      display: inline-block

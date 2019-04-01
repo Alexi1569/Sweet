@@ -1,0 +1,69 @@
+.sidebar
+  button.sidebar__toggler.menu-toggler
+    span Меню
+    .menu-toggler__btn
+      span.menu-toggler__line
+      span.menu-toggler__line
+      span.menu-toggler__line
+  nav.sidebar__nav
+    ul
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="32" height="32"><use xlink:href="#gingerbread-cookies-icon" /></svg>
+          span.sidebar__nav-title Пряники
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="26" height="27"><use xlink:href="#cake-icon" /></svg>
+          span.sidebar__nav-title Торты
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="24" height="31"><use xlink:href="#dessert-icon" /></svg>
+          span.sidebar__nav-title Десерты
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="26" height="26"><use xlink:href="#pop-cake-icon" /></svg>
+          span.sidebar__nav-title Кейк-попсы
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="27" height="29"><use xlink:href="#cupcake-icon" /></svg>
+          span.sidebar__nav-title Капкейки
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="30" height="30"><use xlink:href="#cookies-icon" /></svg>
+          span.sidebar__nav-title Печенье
+      li
+        a(href="#")
+          i.sidebar__nav-icon
+            <svg width="28" height="28"><use xlink:href="#corporate-icon" /></svg>
+          span.sidebar__nav-title Корпоративы
+
+  .sidebar__bottom
+    a(href="#").action-link.sidebar__link
+      .action-link-inner
+        <svg width="17" height="18"><use xlink:href="#account-icon" /></svg>
+    a(href="#").action-link.sidebar__link
+      .action-link-inner
+        <svg width="17" height="20"><use xlink:href="#cart-icon" /></svg>
+        .action-link-amount
+          span 10
+    a(href="#").action-link.sidebar__link
+      .action-link-inner
+        <svg width="19" height="18"><use xlink:href="#favourite-icon" /></svg>
+        // show circle if amount > 0
+        .action-link-amount(style="display: none")
+          span 0
+    .sidebar__language
+      p.sidebar__language-current RU
+      ul.sidebar__language-choose
+        li
+          a(href="#") RU
+        li
+          a(href="#") EN
+        li
+          a(href="#") UA
