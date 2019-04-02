@@ -91,8 +91,10 @@
           i.header__search-icon
             <svg><use xlink:href="#search-icon" /></svg>
             <svg><use xlink:href="#close-icon" /></svg>
-          .header__search-inner
-            input(type="text" placeholder="Поиск..")
+          .header__search-wrapper
+            .header__search-inner
+              .header__search-input
+                input(type="text" placeholder="Поиск..")
         .header__call
           .header__phones
             .header__phones-top

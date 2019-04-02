@@ -29,15 +29,124 @@ $smed: 'Museo Sans Cyrillic 500'
 select
   display: none
 
+.scroll-wrapper
+  overflow: hidden !important
+  padding: 0 !important
+  position: relative
+  > .scroll-content
+    border: none !important
+    box-sizing: content-box !important
+    height: auto
+    left: 0
+    margin: 0
+    max-height: none
+    max-width: none !important
+    overflow: scroll !important
+    padding: 0
+    position: relative !important
+    top: 0
+    width: auto !important
+    &::-webkit-scrollbar
+      height: 0
+      width: 0
+
+.scroll-element
+  display: none
+  box-sizing: content-box
+  div
+    box-sizing: content-box
+  &.scroll-x.scroll-scrollx_visible, &.scroll-y.scroll-scrolly_visible
+    display: block
+  .scroll-bar, .scroll-arrow
+    cursor: default
+
+.scroll-textarea
+  border: 1px solid #cccccc
+  border-top-color: #999999
+  > .scroll-content
+    overflow: hidden !important
+    > textarea
+      border: none !important
+      box-sizing: border-box
+      height: 100% !important
+      margin: 0
+      max-height: none !important
+      max-width: none !important
+      overflow: scroll !important
+      outline: none
+      padding: 2px
+      position: relative !important
+      top: 0
+      width: 100% !important
+      &::-webkit-scrollbar
+        height: 0
+        width: 0
+
+.scrollbar-inner > .scroll-element
+  border: none
+  margin: 0
+  padding: 0
+  position: absolute
+  z-index: 10
+  div
+    border: none
+    margin: 0
+    padding: 0
+    position: absolute
+    z-index: 10
+    display: block
+    height: 100%
+    left: 0
+    top: 0
+    width: 100%
+  &.scroll-x
+    bottom: 0px
+    height: 2px
+    left: 0
+    width: 100%
+  &.scroll-y
+    height: 100%
+    right: 2px
+    top: 0
+    width: 8px
+  .scroll-element_outer
+    overflow: hidden
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+  .scroll-element_track, .scroll-bar
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+
+  .scroll-element_track
+    background-color: lighten($accent, 32%)
+  .scroll-bar
+    background-color: $accent
+  &:hover .scroll-bar, &.scroll-draggable .scroll-bar
+    background-color: lighten($accent, 32%)
+  &.scroll-x.scroll-scrolly_visible .scroll-element_track
+    left: -12px
+  &.scroll-y.scroll-scrollx_visible .scroll-element_track
+    top: -12px
+  &.scroll-x.scroll-scrolly_visible .scroll-element_size
+    left: -12px
+  &.scroll-y.scroll-scrollx_visible .scroll-element_size
+    top: -12px
+
 ul
   padding-left: 20px
 
 body
   font-size: 16px
   color: $text
+  width: 100%
   font-family: $light, sans-serif
   font-feature-settings: 'kern'
   -webkit-font-smoothing: antialiased
+  &.no-scroll
+    overflow: hidden
+    position: fixed
 
 a
   color: $accent
@@ -367,7 +476,7 @@ textarea
       fill: rgba(#000, .5)
 
 .callback-modal
-  min-width: 442px
+    width: 442px
 
 .caption
   text-align: center
@@ -760,17 +869,21 @@ body.touch-device
           &:nth-of-type(2)
             transform: scale(1)
             opacity: 1
-      .header__search-inner
+      .header__search-wrapper
         transform: translate3d(0, 0, 0) translateY(0%)
         opacity: 1
         visibility: visible
     &-inner
+      width: 1010px
+      margin-left: auto
+      margin-right: auto
+      max-width: 100%
+    &-wrapper
       position: absolute
       top: 0
-      left: -89px
+      right: 0
       background-color: #ffffff
-      width: calc(100% + 89px)
-      padding-left: 26.04%
+      width: 100%
       transform: translate3d(0, 0, 0) translateY(-50%)
       opacity: 0
       visibility: hidden
@@ -798,6 +911,7 @@ body.touch-device
       z-index: 5
       width: 16px
       height: 16px
+      transition: .5s all ease-in
       svg
         width: 100%
         height: 100%
@@ -1051,8 +1165,8 @@ body.touch-device
     width: calc(25% - 30px)
     margin-left: 15px
     margin-right: 15px
-    padding-left: 1.875rem
-    padding-right: 1.875rem
+    padding-left: 30px
+    padding-right: 30px
     &-title
       font-size: 1.125em
       font-family: $med
@@ -1078,14 +1192,27 @@ body.touch-device
         max-height: 100%
 
 .tabs
+  text-align: center
+  &__item
+    transition: .4s all ease-in
+    &:not(.active)
+      opacity: 0
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      visibility: hidden
   &__content
     margin-top: 3.125rem
     position: relative
+    text-align: left
   &__list
     list-style-type: none
     padding-left: 0
-    display: flex
-    justify-content: center
+    display: inline-flex
+    max-width: 100%
+    margin: 0 auto
+    justify-content: flex-start
     align-items: center
     overflow-x: auto
     li
@@ -1118,9 +1245,8 @@ body.touch-device
   color: #ffffff
   font-family: $med
   font-size: 1.125em
-  height: 27px
-  line-height: 27px
-  min-width: 3.6875rem
+  height: 1.6875rem
+  line-height: 1.6875rem
   padding: 0 5px
   text-align: center
   background-color: $text
@@ -1188,7 +1314,7 @@ body.touch-device
       .ui-slider-handle
         background-color: $accent
         height: 100%
-        width: 20px
+        width: auto
         cursor: pointer
         top: 0
         margin: 0
@@ -1209,6 +1335,7 @@ body.touch-device
 .product
   max-width: 360px
   text-align: center
+
   &:hover
     .product__actions
       transform: translateY(0)
@@ -1224,8 +1351,8 @@ body.touch-device
     padding-bottom: 16px
   &__labels
     position: absolute
-    left: 25px
-    top: 25px
+    left: 1.5625rem
+    top: 1.5625rem
     display: flex
   &__img
     display: block
@@ -1323,6 +1450,7 @@ body.touch-device
     margin-left: -25%
   &__inner
     margin-top: -1rem
+    padding: 12px
   &__caption
     margin-top: 1rem
   &__col
@@ -1364,17 +1492,26 @@ body.touch-device
 
 .advantages
   background-color: $bg
-  svg
-    width: 100%
-    height: auto
   &__line
-    margin: 0 8px
+    flex: 1
+    position: relative
+    z-index: 0
     svg
       opacity: .3
   &__item
     display: flex
     align-items: center
-    margin: 0 8px
+    justify-content: space-between
+    min-width: 13.48vw
+    margin-bottom: 30px
+    &-left
+      display: flex
+      align-items: center
+      background-color: $bg
+      position: relative
+      z-index: 1
+      padding-left: 12px
+      padding-right: 12px
     &-text
       margin-left: 1.25rem
       white-space: nowrap
@@ -1385,8 +1522,8 @@ body.touch-device
   &__content
     display: flex
     align-items: center
-    justify-content: flex-start
-    margin: 0 -8px
+    justify-content: center
+    margin-bottom: -30px
 
 .request
   background-color: $darker
@@ -1396,7 +1533,7 @@ body.touch-device
     padding: 0 8.5%
     align-items: flex-end
   &__btn
-    width: 243px
+    width: 15.1875rem
     height: 3.625rem
     margin-left: auto
     &:before
@@ -1429,6 +1566,7 @@ body.touch-device
     align-items: flex-start
   &__info
     padding-left: 2.8125rem
+    flex: 1
   &__name
     font-size: 1.125em
     font-family: $med
@@ -1452,6 +1590,14 @@ body.touch-device
     overflow: hidden
 
 .text
+  &-content
+    &.active
+      .text-wrap:after
+        display: none
+      .text-link
+        bottom: 0
+        &:before
+          display: none
   &-link
     position: absolute
     bottom: 2.5rem
@@ -1526,6 +1672,7 @@ body.touch-device
 
 .footer
   &__socials
+    margin-left: 8px
     a
       svg
         transition: $tr
@@ -1535,21 +1682,15 @@ body.touch-device
     &-title
       margin-bottom: 10px
   &__logo
-    margin-right: 5.2vw
-  &__right
-    display: flex
-    justify-content: flex-end
-    padding-right: 4.5vw
-  &__left
-    display: flex
+    margin-right: 8px
   a
     text-decoration: none
     color: inherit
     &:hover
       color: $accent
   &__nav
-    flex: 1
-    margin-left: 10px
+    padding: 0 1rem 0 1.625rem
+    text-align: center
     ul
       list-style-type: none
       padding-left: 0
@@ -1558,21 +1699,36 @@ body.touch-device
     li
       &:not(:last-of-type)
         margin-right: 1.25rem
+    a
+      white-space: nowrap
+  &__right
+    display: flex
+    align-items: flex-start
+    justify-content: flex-end
+    margin-right: 4.5vw
   &__top
     background-color: $darker
     padding: 2.25rem 0 1.75rem
     & > .container
       display: flex
       justify-content: space-between
+  &__copy
+    margin-right: 10px
   &__develop
     display: inline-flex
-    justify-content: space-between
+    justify-content: flex-end
     align-items: center
+    flex-wrap: wrap
+    margin-bottom: -6px
+    margin-left: 10px
+    & > *
+      margin-bottom: 6px
     p
       white-space: nowrap
-      margin-right: 15px
+
     a
       width: 68px
+      margin-left: 12px
       display: inline-block
       height: 14px
       &:hover
@@ -1583,8 +1739,6 @@ body.touch-device
         height: 100%
         fill: #a9b5d1
         transition: $tr
-  &__copy
-    white-space: nowrap
   &__bottom
     background-color: $bg
     padding: 11px 0
@@ -1595,18 +1749,11 @@ body.touch-device
       display: flex
       justify-content: space-between
       align-items: center
-      margin-left: -10px
-      margin-right: -10px
-      flex-wrap: wrap
-      margin-bottom: -14px
-      & > *
-        margin-left: 10px
-        margin-right: 10px
-        margin-bottom: 14px
   &__phones
     margin-right: 3.1vw
     a
       display: block
+      white-space: nowrap
       &:not(:last-of-type)
         margin-bottom: 3px
 
@@ -1629,12 +1776,48 @@ body.touch-device
   .sidebar__language
     height: 38px
 
+@media screen and (max-width: 1650px)
+  .footer__right
+    margin-right: 0
+  .footer__top
+    font-size: 15px
+  .footer__logo
+    width: 5.2rem
+
+@media screen and (max-width: 1450px)
+  .footer__top
+    font-size: 14px
+  .footer__logo
+    width: 4.5rem
+
 @media screen and (max-width: 1350px)
   html
     font-size: 15px
+  .footer__nav ul
+    flex-wrap: wrap
+    margin-bottom: -10px
+    li
+      width: calc(33.33% - 30px)
+      text-align: left
+      margin-right: 15px
+      margin-right: 15px
+      margin-bottom: 10px
+    a
+      white-space: normal
+  .pt
+    padding-top: 6.2rem !important
+  .pb
+    padding-bottom: 6.2rem !important
+  .request__content
+    padding: 0 5%
+  .advantages__item-text
+    font-size: 14px
+    margin-left: 1rem
+  .advantages__item-icon svg
+    width: 2.9vw
   .constructor__col
-    padding-left: 16px
-    padding-right: 16px
+    padding-left: 15px
+    padding-right: 15px
   .constructor__col-content
     margin-top: 3.2rem
   body
@@ -1643,16 +1826,68 @@ body.touch-device
     font-size: 3em
   .banner__descr
     font-size: 1.6em
-  .header__search-inner
-    padding-left: 23%
 
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .slider__progress
+    margin-right: 6.2rem
+  .footer__right
+    flex-wrap: wrap
+    justify-content: center
+  .reviews__info
+    padding-left: 2.1rem
+  .reviews__icon
+    width: 2.7rem
+  .footer__nav
+    display: none
+  .footer__top > .container
+    justify-content: center
+    flex-wrap: wrap
+    margin-bottom: -18px
+  .footer__socials,
+  .footer__phones,
+  .footer__address
+    margin: 0 20px 18px
+  .footer__logo
+    margin-right: 0
+    width: 100%
+    margin-bottom: 22px
+    img
+      width: 85px
+      margin-left: auto
+      margin-right: auto
+  .pt
+    padding-top: 5.6rem !important
+  .pb
+    padding-bottom: 5.6rem !important
+  .request__content
+    padding: 0
+  .request__img
+    width: 18rem
+  .advantages__item-icon svg
+    width: 42px
+  .advantages__line
+    display: none
+  .advantages__item
+    width: 33.33%
+    justify-content: center
+    text-align: center
+    .advantages__item-left
+      padding-left: 15px
+      padding-right: 15px
+  .advantages__content
+    flex-wrap: wrap
+    justify-content: center
+  .advantages__item-text
+    font-size: 16px
+    margin-left: 1.25rem
+  .caption.instagram__caption
+    font-size: 1.5em
+  .instagram__title
+    font-size: 1.1em
   .header.header--main .header__line
     padding-top: 3.4rem
-  .header__search-inner
-    padding-left: 20%
   .constructor__col
     padding-left: 0px
     padding-right: 0px
@@ -1671,6 +1906,32 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .constructor_col .line__item
+    display: none
+  .slider__progress
+    margin-right: 5.5rem
+  .reviews__text
+    font-size: 14px
+    max-height: 135px
+  .pt
+    padding-top: 4.8rem !important
+  .pb
+    padding-bottom: 4.8rem !important
+  .request__content
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    padding-bottom: 24px
+  .request__right
+    padding-bottom: 0 !important
+  .request__left
+    width: 100%
+    flex-basis: 100%
+    padding-bottom: 0 !important
+  .request__img
+    top: 0
+    margin-right: 3rem
+    margin-top: 25px
   .constructor__col
     width: calc(50% - 60px)
     margin-bottom: 30px
@@ -1683,10 +1944,6 @@ body.touch-device
     margin-left: -30px
     margin-right: -30px
     margin-bottom: -30px
-  .header__search-inner
-    padding-left: 17.5%
-    padding-right: 17.5%
-    opacity: .5
   .header.header--main .header__line
     padding-top: 2.9rem
   .banner__title
@@ -1696,13 +1953,30 @@ body.touch-device
   .banner__inner
     margin-right: 0%
     width: 46.21%
-  .header__search
-    .header__search-icon
-      transition: .5s all ease-in
+
+
+@media screen and (max-width: 900px)
+  .caption.instagram__caption
+    font-size: 1.35em
+  .instagram__title
+    font-size: 1em
+  .instagram__col
+    width: 20%
+    &:not(.instagram__col--title)
+      padding-bottom: 20%
+    &:nth-last-child(1),
+    &:nth-last-child(2)
+      display: none
 
 @media screen and (max-width: 767px)
   html
     font-size: 12px
+  .slider__progress
+    margin-right: 4.5rem
+  .pt
+    padding-top: 3.9rem !important
+  .pb
+    padding-bottom: 3.9rem !important
   .menu__languages
     display: inline-flex
   .menu__actions
@@ -1712,11 +1986,6 @@ body.touch-device
   .header__right-toggler.active
     .menu-toggler__line
       background-color: $text
-  .header__search-inner
-    padding-left: 5vw
-    padding-right: calc(5vw + 20px) !important
-    left: 0
-    width: 100%
   .header.header--main .header__line
     padding-top: 2.5rem
   .sidebar
@@ -1731,6 +2000,21 @@ body.touch-device
 @media screen and (max-width: 650px)
   .banner__title
     font-size: 2em
+  .about__content img
+    max-width: 100%
+    margin-right: 0
+    float: none
+  .text-content--img .text-link
+    left: 0 !important
+  .caption.instagram__caption
+    font-size: 1.2em
+  .instagram__col
+    width: 25%
+    &:not(.instagram__col--title)
+      padding-bottom: 25%
+    &:nth-last-child(3),
+    &:nth-last-child(4)
+      display: none
   .banner__descr
     font-size: 1.25em
   .banner__inner
@@ -1744,6 +2028,17 @@ body.touch-device
     margin-left: -15px
     margin-right: -15px
 
+@media screen and (max-width: 600px)
+  .advantages__item-text
+    font-size: 14px
+    margin-left: 0
+  .advantages__item
+    width: 50%
+  .advantages__item-left
+    flex-direction: column
+    align-items: center
+
+
 @media screen and (max-width: 540px)
   .header__socials
     display: none
@@ -1753,6 +2048,22 @@ body.touch-device
 @media screen and (max-width: 500px)
   .banner__inner
     width: 63%
+  .footer__bottom > .container
+    text-align: center
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+  .footer__develop
+    margin-top: 8px
+    justify-content: center
+  .request__content
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    padding-bottom: 0
+  .request__img
+    margin-right: 0
+    margin-bottom: 14px
   .banner__title,
   .banner__descr
     text-shadow: 5px 3px 14px rgba($text, 0.5)
@@ -1760,6 +2071,22 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .slider__progress
+    margin-right: 3rem
+  .product__title
+    font-size: 14px
+  .instagram__col
+    width: 33.33%
+    &:not(.instagram__col--title)
+      padding-bottom: 33.33%
+    &:nth-last-child(5),
+    &:nth-last-child(6)
+      display: none
+  .label
+    font-size: .9em
+  .product__labels
+    left: 1.2rem
+    top: 1.2rem
   .constructor__col
     width: 100%
     margin-left: 0
@@ -1791,3 +2118,10 @@ body.touch-device
   .menu__cta
     &.cta-link
       display: inline-block
+
+@media screen and (max-width: 360px)
+  .product__labels
+    top: 12px
+    left: 12px
+    .label
+      font-size: 11px

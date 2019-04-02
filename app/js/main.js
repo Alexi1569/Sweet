@@ -46,20 +46,14 @@ jQuery(document).ready(function ($) {
     var $search = $('#header-search');
     var $icon = $search.find('.header__search-icon');
     var $inner = $search.find('.header__search-inner');
+    var $input = $search.find('.header__search-input');
     var containerW = $('.container').width();
     var pageW = $('.page').width();
 
     function setSearchOffset() {
       var top = $icon.offset().top;
-      var right;
-      if (windowWidth > 992) {
-        right = windowWidth - $icon.offset().left;
-      } else {
-        right = ((pageW - containerW) / 2) + $('.header__search-icon').outerWidth(true);
-      }
 
-      $inner.css({
-        'padding-right': right + 'px',
+      $input.css({
         'padding-top': top + 'px',
         'padding-bottom': top + 'px',
       });
@@ -78,18 +72,25 @@ jQuery(document).ready(function ($) {
 
     $icon.click(function() {
       $search.toggleClass('active');
-      if (windowWidth <= 991) {
-        var res = windowWidth - iconPos.left - $('.header__search-icon').outerWidth(true) - parseInt(containerRight, 10);
+      var res = $input.offset().left + $input.width();
+      var total;
 
-        if ($search.hasClass('active')) {
-          $('.header__search-icon').css({
-            'transform': 'translateX(' + res + 'px)'
-          })
-        } else {
-          $('.header__search-icon').css({
-            'transform': 'translateX(0px)'
-          })
-        }
+      if (res > iconPos.left) {
+        total = res - iconPos.left;
+      } else if (res < iconPos.left) {
+        total = iconPos.left - res;
+      } else {
+        total = 0;
+      }
+
+      if ($search.hasClass('active')) {
+        $('.header__search-icon').css({
+          'transform': 'translateX(' + total + 'px)'
+        })
+      } else {
+        $('.header__search-icon').css({
+          'transform': 'translateX(0px)'
+        })
       }
     });
   })();
@@ -166,6 +167,7 @@ jQuery(document).ready(function ($) {
     var $bottom = $menu.find('.menu__bottom');
     var $toggler = $('.menu-toggler');
     var $bg = $menu.find('.menu__bg');
+    var topOffset = 0;
 
     $toggler.click(function() {
       var tl = new TimelineLite();
@@ -206,12 +208,18 @@ jQuery(document).ready(function ($) {
             }}, 0)
           .staggerFromTo(liItems, .7, {autoAlpha: 0, y: 20}, {autoAlpha: 1, y: 0}, 0.15)
           .fromTo($bottom, .8, {autoAlpha: 0, y: 50}, {autoAlpha: 1, y: 0, onComplete: function() {
+              topOffset = window.scrollY;
               $toggler.removeClass('disabled');
+              $menu.css('padding-right', getScrollbarWidth() + 'px');
+              $('body').addClass('no-scroll');
             }}, '-=.5');
       } else {
         tl.fromTo($bottom, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 50, onStart: function() {
             $('.header').removeClass('menu-opened');
             $toggler.addClass('disabled');
+            $menu.css('padding-right', '0px');
+            $('body').removeClass('no-scroll');
+            window.scrollTo(0, topOffset);
           }})
           .staggerFromTo(liItems, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.5')
           .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')', onComplete: function() {
@@ -221,6 +229,10 @@ jQuery(document).ready(function ($) {
       }
 
     });
+
+    function getScrollbarWidth() {
+      return window.innerWidth - document.documentElement.clientWidth;
+    }
 
     function alignNav() {
       var res = ($menu.height() - $nav.outerHeight() - $bottom.height()) / 2;
@@ -320,43 +332,45 @@ jQuery(document).ready(function ($) {
   initSelect();
 
   function calculateLines(container, items, item, TITLE_GUTTER, COL_GUTTER) {
-    w = $(container).find(item).width();
+    if (windowWidth > 991) {
+      w = $(container).find(item).width();
 
-    $(items).each(function(idx) {
-      var $self = $(this);
-      var $wrap = $self.find('.line-parent');
-      var $title = $wrap.find('p');
-      var left = $title.position().left;
+      $(items).each(function(idx) {
+        var $self = $(this);
+        var $wrap = $self.find('.line-parent');
+        var $title = $wrap.find('p');
+        var left = $title.position().left;
 
-      if (idx === 0) {
-        $wrap.find('.line-item').css({
-          'width': left - TITLE_GUTTER + 'px'
-        });
-      } else if (idx === items.length - 1) {
-        var $prevP = $(items[idx - 1]).find('.line-parent p');
-        var prevRight = $prevP.position().left;
+        if (idx === 0) {
+          $wrap.find('.line-item').css({
+            'width': left - TITLE_GUTTER + 'px'
+          });
+        } else if (idx === items.length - 1) {
+          var $prevP = $(items[idx - 1]).find('.line-parent p');
+          var prevRight = $prevP.position().left;
 
-        $wrap.find('.line-item:first-of-type').css({
-          'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
-          'left': - (prevRight + COL_GUTTER) + 'px',
-        });
+          $wrap.find('.line-item:first-of-type').css({
+            'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
+            'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
+          });
 
-        $wrap.find('.line-item:last-of-type').css({
-          'width': left - TITLE_GUTTER + 'px',
-          'left': 'auto',
-          'right': '0',
-        });
-      }
-      else {
-        var $prevP = $(items[idx - 1]).find('.line-parent p');
-        var prevRight = $prevP.position().left
+          $wrap.find('.line-item:last-of-type').css({
+            'width': left - TITLE_GUTTER + 'px',
+            'left': 'auto',
+            'right': '0',
+          });
+        }
+        else {
+          var $prevP = $(items[idx - 1]).find('.line-parent p');
+          var prevRight = $prevP.position().left;
 
-        $wrap.find('.line-item').css({
-          'width': prevRight + left - TITLE_GUTTER + COL_GUTTER + 'px',
-          'left': - (prevRight + COL_GUTTER) + 'px',
-        });
-      }
-    });
+          $wrap.find('.line-item').css({
+            'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
+            'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
+          });
+        }
+      });
+    }
   }
 
   function initLines() {
@@ -368,8 +382,16 @@ jQuery(document).ready(function ($) {
       var TITLE_GUTTER, COL_GUTTER, w;
 
       if (type === 'constructor') {
-        TITLE_GUTTER = 30;
-        COL_GUTTER = 45;
+        if (windowWidth > 1350) {
+          COL_GUTTER = 45;
+          TITLE_GUTTER = 30;
+        } else if (windowWidth <= 1350 && windowWidth > 1199) {
+          COL_GUTTER = 30;
+          TITLE_GUTTER = 15;
+        } else if (windowWidth <= 1199 && windowWidth > 767) {
+          COL_GUTTER = 15;
+          TITLE_GUTTER = 10;
+        }
       }
 
       var $items = $self.find('.line-wrap');
@@ -386,47 +408,50 @@ jQuery(document).ready(function ($) {
   initLines();
 
 
-  function setProgressWidth(el, max) {
+  function setProgressWidth(el, step, swiper) {
     var w = $(el).width();
     var res;
 
-    if (max === 1) {
-      res = w / 2;
-    } else {
-      res = w / max;
+    if (step !== Infinity) {
+      if (step === 1) {
+        res = w / 2;
+      } else {
+        res = w  / (swiper.slides.length - swiper.passedParams.slidesPerView + 1);
+      }
+
+      $(el).css({
+        'margin-left': res + 'px',
+      });
+
+      $(el).find('.ui-slider-handle').css({
+        'width': res + 'px',
+        'margin-left': -res + 'px',
+      });
     }
-
-    $(el).css({
-      'margin-left': res + 'px',
-    });
-
-    $(el).find('.ui-slider-handle').css({
-      'width': res + 'px',
-      'margin-left': -res + 'px',
-    });
   }
 
-  function initRangeSlider(el, max, swiper) {
+
+  function initRangeSlider(el, max, step, swiper) {
     var range = $(el).slider({
-      max: max,
+      max: 1,
       min: 0,
-      step: 1,
+      step: step,
       value: 0,
       animate: '500',
-      change: function(e, ui) {
-        // swiper.slideTo(ui.value)
-      }
     });
 
     swiper.on('transitionStart', function() {
-      console.log(max, ' ', swiper.progress, ' ', max * swiper.progress)
-      range.slider('value', max * swiper.progress);
+      range.slider('value', swiper.progress);
     })
 
-    setProgressWidth($(el), max);
+    range.on('slide', function(e, ui) {
+      swiper.slideTo((swiper.slides.length - swiper.passedParams.slidesPerView) * ui.value);
+    });
+
+    setProgressWidth($(el), step, swiper);
 
     $(window).resize(function() {
-      setProgressWidth($(el), max);
+      setProgressWidth($(el), step, swiper);
     });
 
     return range;
@@ -441,9 +466,18 @@ jQuery(document).ready(function ($) {
       var $prev = $slider.find('.swiper-prev');
       var $next = $slider.find('.swiper-next');
       var $progress = $self.find('.slider__progress-range');
-      var slidesPerView = 4;
+      var slidesPerView = 0;
       var max;
       var range;
+      var step;
+
+      if (windowWidth > 1199) {
+        slidesPerView = 4;
+      } else if (windowWidth <= 1199 && windowWidth > 850) {
+        slidesPerView = 3;
+      } else if (windowWidth <= 850) {
+        slidesPerView = 2;
+      }
 
       var mySwiper = new Swiper($slider, {
         speed: 900,
@@ -458,10 +492,23 @@ jQuery(document).ready(function ($) {
         on: {
           init: function() {
             max = $(this)[0].slides.length - slidesPerView;
-            range = initRangeSlider($progress, max, $(this)[0]);
+            step = 100 / max / 100;
+            range = initRangeSlider($progress, max, step, $(this)[0]);
           }
         },
         breakpoints: {
+          360: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          400: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          650: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
           850: {
             slidesPerView: 2,
             spaceBetween: 55,
@@ -506,8 +553,27 @@ jQuery(document).ready(function ($) {
       on: {
         init: function() {
           max = $(this)[0].slides.length - slidesPerView;
-          range = initRangeSlider($progress, max, $(this)[0]);
+          step = 100 / max / 100;
+
+          range = initRangeSlider($progress, max, step, $(this)[0]);
         }
+      },
+      breakpoints: {
+        500: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        600: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        950: {
+          slidesPerView: 2,
+          spaceBetween: 80,
+        },
+        1350: {
+          spaceBetween: 40,
+        },
       }
     });
   })();
@@ -527,7 +593,11 @@ jQuery(document).ready(function ($) {
         var textH = $text.outerHeight(true);
 
         if (textH > imgH) {
-          $text[0].style.maxHeight = imgH + 'px';
+          if (windowWidth > 650) {
+            $text[0].style.maxHeight = imgH + 'px';
+          } else {
+            $text[0].style.maxHeight = imgH * 2 + 'px';
+          }
 
           link = document.createElement('a');
           link.textContent += 'Читать больше';
@@ -550,7 +620,12 @@ jQuery(document).ready(function ($) {
                 'left': '0px'
               });
             } else {
-              $text[0].style.maxHeight = imgH + 'px';
+              if (windowWidth > 650) {
+                $text[0].style.maxHeight = imgH + 'px';
+              } else {
+                $text[0].style.maxHeight = imgH * 2 + 'px';
+              }
+
               $(link).text('Читать больше');
               $(link).css({
                 'left': imgW + 'px'
@@ -558,8 +633,43 @@ jQuery(document).ready(function ($) {
             }
           });
         }
-
       }
+    });
+  })();
+
+  function initScrollbar() {
+    var $scroll = $('.scrollbar-inner');
+
+    $scroll.each(function() {
+      $(this).scrollbar();
+    });
+  }
+
+  initScrollbar();
+
+  (function initTabs() {
+    var $tabs = $('.tabs');
+
+    $tabs.each(function() {
+      var $self = $(this);
+      var $links = $self.find('.tabs__list a');
+
+      $links.click(function(e) {
+        e.preventDefault();
+
+        var $link = $(this);
+        var goal = $(this).attr('href');
+        $('.tabs__list li.active').removeClass('active');
+        $link.closest('li').addClass('active');
+
+        $('.tabs__item.active').fadeOut(0, function() {
+          $(this).removeClass('active');
+
+          $(goal).fadeIn(0, function() {
+            $(goal).addClass('active');
+          });
+        });
+      });
     });
   })();
 });
