@@ -1,0 +1,11 @@
+.breadcrumbs
+  .container
+    ul
+      li
+        a(href="/") Главная
+      each item, i in breadcrumbs
+        if i == breadcrumbs.length - 1
+          li= item
+        else
+          li
+            a(href="#")= item

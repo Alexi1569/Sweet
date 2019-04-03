@@ -1,0 +1,106 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pcatalog
+      - var breadcrumbs = ['Каталог'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .container
+          p.caption Каталог
+          .pcatalog__content
+            .pcatalog__top
+              .pcatalog__top-left
+                .pcatalog__view.dropdown.pcatalog__dropdown
+                  .dropdown__top
+                    p.dropdown__current Вид продукции
+                      span  - выбрано 2
+                    i.dropdown__arrow
+                      <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
+                    i.dropdown__clear
+                      <svg width="8" height="8"><use xlink:href="#close-icon" /></svg>
+                  .dropdown__list
+                    .dropdown__values
+                      label.checkbox
+                        input(type="checkbox")
+                        span Пряники
+                      label.checkbox
+                        input(type="checkbox")
+                        span Печенье
+                      label.checkbox
+                        input(type="checkbox")
+                        span Десерты
+                      label.checkbox
+                        input(type="checkbox")
+                        span Торты
+                      label.checkbox
+                        input(type="checkbox")
+                        span Корпоративы
+                    button(data-text="Применить").btn.dropdown__btn
+                      span Применить
+                .pcatalog__type.dropdown.pcatalog__dropdown
+                  .dropdown__top
+                    p.dropdown__current Тематические
+                      span  - выбрано 1
+                    i.dropdown__arrow
+                      <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
+                    i.dropdown__clear
+                      <svg width="8" height="8"><use xlink:href="#close-icon" /></svg>
+                  .dropdown__list
+                    .dropdown__values
+                      label.checkbox
+                        input(type="checkbox")
+                        span Тематические1
+                      label.checkbox
+                        input(type="checkbox")
+                        span Тематические2
+                    button(data-text="Применить").btn.dropdown__btn
+                      span Применить
+                .pcatalog__price.dropdown.pcatalog__dropdown
+                  .dropdown__top
+                    p.dropdown__current Цена
+                      span  - от 25 до 150 грн
+                    i.dropdown__arrow
+                      <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
+                    i.dropdown__clear
+                      <svg width="8" height="8"><use xlink:href="#close-icon" /></svg>
+                  .dropdown__list
+                    .dropdown__price
+                      .dropdown__price-inputs
+                        input(type="text" class="only-numbers-input" value="50")
+                        span.dropdown__price-inputs-divider
+                        input(type="text" class="only-numbers-input" value="500")
+                      .dropdown__price-slider
+                    button(data-text="Применить").btn.dropdown__btn
+                      span Применить
+                button.pcatalog__clear
+                  <svg width="8" height="8"><use xlink:href="#close-icon"/></svg>
+                  span Сбросить все фильтры
+
+              .pcatalog__top-right
+                .pcatalog__sort.dropdown.pcatalog__dropdown
+                  .dropdown__top
+                    p.dropdown__current Сортировка
+                      span  - по популярности
+                    i.dropdown__arrow
+                      <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
+                    i.dropdown__clear
+                      <svg width="8" height="8"><use xlink:href="#close-icon" /></svg>
+                  .dropdown__list
+                    .dropdown__values
+                      label.radio
+                        input(type="radio" name="sort")
+                        span по популярности
+                      label.radio
+                        input(type="radio" name="sort")
+                        span по названию
+                      label.radio
+                        input(type="radio" name="sort")
+                        span по стоимости
+                    button(data-text="Применить").btn.dropdown__btn
+                      span Применить

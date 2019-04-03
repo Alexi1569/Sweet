@@ -1,4 +1,4 @@
-﻿header(class={'header': true, 'header--main': isMainPage})
+﻿header(class={'header': true, 'header--main': isMainPage, 'header--inner': !isMainPage})
   .menu#sidebar-menu
     .menu__bg
     .container
@@ -171,7 +171,10 @@
   .header__line
     .container
       a(href="#").logo.header__logo
-        img(src="./img/logo--white.png" alt="alt")
+        if isMainPage
+          img(src="./img/logo--white.png" alt="alt")
+        else
+          img(src="./img/logo.png" alt="alt")
       .header__right
         .header__search#header-search
           i.header__search-icon
@@ -318,12 +321,12 @@
 
 
         .header__call
-          .header__phones
-            .header__phones-top
-              a(href="tel:+38 (097) 816-46-86").header__phones-current +38 (097) 816-46-86
-              i.header__phones-arrow
+          .header__phones.dropdown
+            .dropdown__top
+              a(href="tel:+38 (097) 816-46-86").dropdown__current +38 (097) 816-46-86
+              i.dropdown__arrow
                 <svg width="8" height="5"><use xlink:href="#arrow-icon" /></svg>
-            .header__phones-dropdown
+            .dropdown__list.header__phones-dropdown
               a(href="tel:+38 (097) 816-46-86") +38 (033) 333-33-33
               a(href="tel:+38 (097) 816-46-86") +38 (044) 444-44-44
           a(href="#" data-fancybox data-src="#callback-modal").header__cta.cta-link.dashed-link Перезвонить

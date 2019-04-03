@@ -683,7 +683,6 @@ jQuery(document).ready(function ($) {
     var $close = $wrap.find('.header__auth-close');
     var $bg = $wrap.find('.header__auth-bg');
     var $toggler = $('.auth-toggler');
-    var $parts = $wrap.find('.header__auth-item.active > div');
     var topOffset = 0;
     var wrapPadding = parseFloat($wrap.css('padding-right'));
     var closeRight = parseFloat($close.css('right'));
@@ -696,18 +695,19 @@ jQuery(document).ready(function ($) {
       $bg.css('height', $wrap[0].scrollHeight);
     });
 
-    function closeAuth(tl) {
+    function closeAuth(tl, self, parts) {
       tl.fromTo($close, .5, {autoAlpha: 1, scaleX: 1, scaleY: 1}, {autoAlpha: 0, scaleX: .5, scaleY: .5, onStart: function() {
           $('body').addClass('disable-auth-opening');
         }, onComplete: function() {
           $wrap.css('padding-right', wrapPadding + 'px');
           $close.css('right', closeRight + 'px');
-          if ($self.hasClass('.sidebar__link')) {
+
+          if ($(self).hasClass('sidebar__link') || $(self).hasClass('header__auth-close')) {
             $('body').removeClass('no-scroll');
           }
           window.scrollTo(0, topOffset);
         }})
-        .staggerFromTo($parts, .7, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, 0.15, '-=.2')
+        .staggerFromTo(parts, .7, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, 0.15, '-=.2')
         .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0% 0%)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'})
         .to($wrap, 0, {autoAlpha: 0, onComplete: function() {
             $('.header').removeClass('auth-opened');
@@ -722,10 +722,11 @@ jQuery(document).ready(function ($) {
       var $self = $(this);
 
       var tl = new TimelineLite();
+      var $parts = $wrap.find('.header__auth-item.active > div');
 
       if (!$('body').hasClass('disable-auth-opening')) {
         if ($('.header').hasClass('auth-opened')) {
-          closeAuth(tl);
+          closeAuth(tl, $self, $parts);
         } else {
           tl.to($wrap, 0, {autoAlpha: 1})
             .fromTo($bg, 1, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'}, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0% 0%)', onStart: function() {
@@ -734,7 +735,7 @@ jQuery(document).ready(function ($) {
               }}, 0)
             .staggerFromTo($parts, .7, {autoAlpha: 0, y: 20}, {autoAlpha: 1, y: 0}, 0.15, '-=.01')
             .fromTo($close, .5, {autoAlpha: 0, scaleX: .5, scaleY: .5}, {autoAlpha: 1, scaleX: 1, scaleY: 1, onComplete: function() {
-              if ($self.hasClass('.sidebar__link')) {
+              if ($(self).hasClass('sidebar__link') || $(self).hasClass('header__auth-close')) {
                 topOffset = window.scrollY;
               }
               $wrap.css('padding-right', (wrapPadding + scrollWidth) + 'px');
@@ -767,4 +768,42 @@ jQuery(document).ready(function ($) {
       });
     });
   })();
+
+  function initDropDowns() {
+    var $dropdowns = $('.dropdown');
+
+    $dropdowns.each(function() {
+      var $self = $(this);
+
+      if ($self.hasClass('pcatalog__price')) {
+        var $slider = $self.find('.dropdown__price-slider');
+
+        $slider.slider({
+          range: true,
+          min: 0,
+          max: 500,
+          values: [50, 500],
+        });
+      }
+
+      $self.hover(function() {
+        $(this).addClass('hovered');
+      }, function() {
+        $(this).removeClass('hovered');
+      });
+    });
+  };
+
+  initDropDowns();
+
+  // remove fake functional
+  $('.dropdown__btn').click(function() {
+    $(this).closest('.dropdown').addClass('active');
+    $(this).closest('.dropdown').removeClass('hovered');
+  });
+
+  $('.dropdown__top').click(function() {
+    $(this).closest('.dropdown').removeClass('active');
+    $(this).closest('.dropdown').removeClass('hovered');
+  });
 });
