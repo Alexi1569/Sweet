@@ -2,6 +2,16 @@
 jQuery(document).ready(function ($) {
   var windowWidth = $(window).width();
 
+  function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
+
+  var scrollWidth = getScrollbarWidth();
+
+  $(window).resize(function() {
+    scrollWidth = getScrollbarWidth();
+  });
+
   $.fancybox.defaults.hideScrollbar = false;
   $.fancybox.defaults.touch = false;
 
@@ -75,10 +85,8 @@ jQuery(document).ready(function ($) {
       var res = $input.offset().left + $input.width();
       var total;
 
-      if (res > iconPos.left) {
-        total = res - iconPos.left;
-      } else if (res < iconPos.left) {
-        total = iconPos.left - res;
+      if (res !==  iconPos.left) {
+        total = res - iconPos.left - $('.header__search-icon').width();
       } else {
         total = 0;
       }
@@ -210,7 +218,7 @@ jQuery(document).ready(function ($) {
           .fromTo($bottom, .8, {autoAlpha: 0, y: 50}, {autoAlpha: 1, y: 0, onComplete: function() {
               topOffset = window.scrollY;
               $toggler.removeClass('disabled');
-              $menu.css('padding-right', getScrollbarWidth() + 'px');
+              $menu.css('padding-right', scrollWidth + 'px');
               $('body').addClass('no-scroll');
             }}, '-=.5');
       } else {
@@ -229,10 +237,6 @@ jQuery(document).ready(function ($) {
       }
 
     });
-
-    function getScrollbarWidth() {
-      return window.innerWidth - document.documentElement.clientWidth;
-    }
 
     function alignNav() {
       var res = ($menu.height() - $nav.outerHeight() - $bottom.height()) / 2;
@@ -669,6 +673,97 @@ jQuery(document).ready(function ($) {
             $(goal).addClass('active');
           });
         });
+      });
+    });
+  })();
+
+  (function initAuthModal() {
+    var $targets = $('.header__auth-target');
+    var $wrap = $('.header__auth');
+    var $close = $wrap.find('.header__auth-close');
+    var $bg = $wrap.find('.header__auth-bg');
+    var $toggler = $('.auth-toggler');
+    var $parts = $wrap.find('.header__auth-item.active > div');
+    var topOffset = 0;
+    var wrapPadding = parseFloat($wrap.css('padding-right'));
+    var closeRight = parseFloat($close.css('right'));
+
+    $bg.css('height', $wrap[0].scrollHeight);
+
+    $(window).resize(function() {
+      wrapPadding = parseFloat($wrap.css('padding-right'));
+      closeRight = parseFloat($close.css('right'));
+      $bg.css('height', $wrap[0].scrollHeight);
+    });
+
+    function closeAuth(tl) {
+      tl.fromTo($close, .5, {autoAlpha: 1, scaleX: 1, scaleY: 1}, {autoAlpha: 0, scaleX: .5, scaleY: .5, onStart: function() {
+          $('body').addClass('disable-auth-opening');
+        }, onComplete: function() {
+          $wrap.css('padding-right', wrapPadding + 'px');
+          $close.css('right', closeRight + 'px');
+          if ($self.hasClass('.sidebar__link')) {
+            $('body').removeClass('no-scroll');
+          }
+          window.scrollTo(0, topOffset);
+        }})
+        .staggerFromTo($parts, .7, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, 0.15, '-=.2')
+        .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0% 0%)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'})
+        .to($wrap, 0, {autoAlpha: 0, onComplete: function() {
+            $('.header').removeClass('auth-opened');
+            $('body').removeClass('disable-auth-opening');
+          }});
+    }
+
+    var beginPath = ['0.5%', '0%', '100%'];
+
+    $('.auth-toggler, .header__auth-close').click(function(e) {
+      e.preventDefault();
+      var $self = $(this);
+
+      var tl = new TimelineLite();
+
+      if (!$('body').hasClass('disable-auth-opening')) {
+        if ($('.header').hasClass('auth-opened')) {
+          closeAuth(tl);
+        } else {
+          tl.to($wrap, 0, {autoAlpha: 1})
+            .fromTo($bg, 1, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'}, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0% 0%)', onStart: function() {
+                $('.header').addClass('auth-opened');
+                $('body').addClass('disable-auth-opening');
+              }}, 0)
+            .staggerFromTo($parts, .7, {autoAlpha: 0, y: 20}, {autoAlpha: 1, y: 0}, 0.15, '-=.01')
+            .fromTo($close, .5, {autoAlpha: 0, scaleX: .5, scaleY: .5}, {autoAlpha: 1, scaleX: 1, scaleY: 1, onComplete: function() {
+              if ($self.hasClass('.sidebar__link')) {
+                topOffset = window.scrollY;
+              }
+              $wrap.css('padding-right', (wrapPadding + scrollWidth) + 'px');
+              $close.css('right', (closeRight + scrollWidth) + 'px');
+              $('body').addClass('no-scroll');
+              $('body').removeClass('disable-auth-opening');
+            }}, '-=.3');
+        }
+      }
+    });
+
+    $targets.each(function() {
+      var $self = $(this);
+
+      $self.click(function(e) {
+        e.preventDefault();
+
+        var target = '#' + $self.attr('data-target');
+
+        $('.header__auth-item.active').fadeOut(200, function() {
+          $('.header__auth-item.active').removeClass('active');
+
+          $(target).css('display', 'flex');
+          $(target).hide();
+          $(target).fadeIn(140, function() {
+            $(target).addClass('active');
+          });
+        });
+
       });
     });
   })();

@@ -39,7 +39,7 @@
                     </nav>
                     <div class="menu__bottom">
                         <div class="menu__left">
-                            <div class="menu__actions"><a class="action-link" href="#">
+                            <div class="menu__actions"><a class="action-link auth-toggler" href="#">
                                     <div class="action-link-inner"><svg width="17" height="18">
                                             <use xlink:href="#account-icon" /></svg></div>
                                 </a><a class="action-link" href="#">
@@ -101,7 +101,7 @@
                                         <use xlink:href="#corporate-icon" /></svg></i><span class="sidebar__nav-title">Корпоративы</span></a></li>
                     </ul>
                 </nav>
-                <div class="sidebar__bottom"><a class="action-link sidebar__link" href="#">
+                <div class="sidebar__bottom"><a class="action-link sidebar__link auth-toggler" href="#">
                         <div class="action-link-inner"><svg width="17" height="18">
                                 <use xlink:href="#account-icon" /></svg></div>
                     </a><a class="action-link sidebar__link" href="#">
@@ -125,6 +125,77 @@
                     </div>
                 </div>
             </div>
+            <div class="header__auth"><i class="header__auth-close"><svg>
+                        <use xlink:href="#close-icon" /></svg></i>
+                <div class="header__auth-bg"></div>
+                <div class="header__auth-inner">
+                    <div class="header__auth-item active" id="auth">
+                        <div class="header__auth-form">
+                            <p class="caption">вход</p>
+                            <form class="header__auth--margin" action="#">
+                                <div class="form__group-inputs">
+                                    <div class="form__group"><label class="form__group-label" for="lf-n">Email или Телефон</label>
+                                        <div class="form__group-input"><input class="only-text-input" type="text" id="lf-n"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                    <div class="form__group"><label class="form__group-label" for="lf-p">Пароль</label>
+                                        <div class="form__group-input"><input type="password" id="lf-p"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                </div>
+                                <div class="header__auth-form-bottom"><label class="checkbox checkbox--small"><input type="checkbox"><span>Запомнить меня</span></label><a class="dashed-link header__auth-form-remind header__auth-target" href="#" data-target="remind">Восстановить пароль</a></div><button class="btn header__auth-form-btn" data-text="Войти"><span>Войти</span></button>
+                            </form>
+                        </div>
+                        <div class="header__auth-right">
+                            <p class="caption">Присоединяйся!</p>
+                            <div class="header__auth-right-content header__auth--margin">
+                                <p class="header__auth-descr">Регистрируйтесь, чтобы иметь доступ<br>к нашим скидкам и бонусам</p><a class="btn btn--linear header__auth-right-btn header__auth-target" href="#" data-text="Регистрация" data-target="register"><span>Регистрация</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__auth-item" id="remind">
+                        <div class="header__auth-form">
+                            <p class="caption">забыли пароль?</p>
+                            <form class="header__auth--margin" action="#">
+                                <p class="header__auth-additional">Введите e-mail от вашего личного кабинета и мы вышлем вам временный пароль</p>
+                                <div class="form__group-inputs">
+                                    <div class="form__group"><label class="form__group-label" for="rm-p">Пароль</label>
+                                        <div class="form__group-input"><input type="password" id="rm-p"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                </div><button class="btn header__auth-form-btn" data-text="Восстановить пароль"><span>Восстановить пароль</span></button>
+                            </form>
+                        </div>
+                        <div class="header__auth-right">
+                            <p class="caption">Вспомнили пароль?!</p>
+                            <div class="header__auth-right-content header__auth--margin"><button class="btn btn--linear header__auth-right-btn header__auth-target" data-text="Авторизация" data-target="auth"><span>Авторизация</span></button></div>
+                        </div>
+                    </div>
+                    <div class="header__auth-item" id="register">
+                        <div class="header__auth-form">
+                            <p class="caption">Регистрация</p>
+                            <form class="header__auth--margin" action="#">
+                                <p class="header__auth-additional">Введите e-mail от вашего личного кабинета и мы вышлем вам временный пароль</p>
+                                <div class="form__group-inputs">
+                                    <div class="form__group"><label class="form__group-label" for="reg-e">Email*</label>
+                                        <div class="form__group-input"><input type="email" id="reg-e"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                    <div class="form__group"><label class="form__group-label" for="reg-p">Пароль*</label>
+                                        <div class="form__group-input"><input type="email" id="reg-p"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                    <div class="form__group"><label class="form__group-label" for="reg-pp">Повторите пароль*</label>
+                                        <div class="form__group-input"><input type="email" id="reg-pp"></div><span class="form__group-message">Ошибка</span>
+                                    </div>
+                                </div>
+                                <div class="header__auth-form-bottom"><label class="checkbox checkbox--small"><input type="checkbox"><span>Предоставляя свои персональные данные, даю согласие на их обработку</span></label></div><button class="btn header__auth-form-btn" data-text="Регистрация"><span>Регистрация</span></button>
+                            </form>
+                        </div>
+                        <div class="header__auth-right">
+                            <p class="caption">Уже зарегистрированы?</p>
+                            <div class="header__auth-right-content header__auth--margin">
+                                <p class="header__auth-descr">Войдите в свою учетную запись</p><button class="btn btn--linear header__auth-right-btn" data-text="Войти"><span>Войти</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="header__line">
                 <div class="container"><a class="logo header__logo" href="#"><img src="./img/logo--white.png" alt="alt"></a>
                     <div class="header__right">
@@ -135,6 +206,100 @@
                             <div class="header__search-wrapper">
                                 <div class="header__search-inner">
                                     <div class="header__search-input"><input type="text" placeholder="Поиск.."></div>
+                                    <div class="header__search-results">
+                                        <div class="header__search-results-inner scrollbar-inner">
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                                </a>
+                                                <div class="product__info">
+                                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                                    <div class="product__actions">
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

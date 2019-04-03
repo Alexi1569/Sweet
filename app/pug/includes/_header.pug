@@ -38,7 +38,7 @@
       .menu__bottom
         .menu__left
           .menu__actions
-            a(href="#").action-link
+            a(href="#").action-link.auth-toggler
               .action-link-inner
                 <svg width="17" height="18"><use xlink:href="#account-icon" /></svg>
             a(href="#").action-link
@@ -82,6 +82,92 @@
 
   include ./_sidebar
 
+  .header__auth
+    i.header__auth-close
+      <svg><use xlink:href="#close-icon"/></svg>
+    .header__auth-bg
+    .header__auth-inner
+      .header__auth-item.active#auth
+        .header__auth-form
+          p.caption вход
+          form(action="#").header__auth--margin
+            .form__group-inputs
+              .form__group
+                label.form__group-label(for="lf-n") Email или Телефон
+                .form__group-input
+                  input(type="text" class="only-text-input" id="lf-n")
+                span.form__group-message Ошибка
+              .form__group
+                label.form__group-label(for="lf-p") Пароль
+                .form__group-input
+                  input(type="password" id="lf-p")
+                span.form__group-message Ошибка
+            .header__auth-form-bottom
+              label.checkbox.checkbox--small
+                input(type="checkbox")
+                span Запомнить меня
+              a(href="#" data-target="remind").dashed-link.header__auth-form-remind.header__auth-target Восстановить пароль
+            button(data-text="Войти").btn.header__auth-form-btn
+              span Войти
+        .header__auth-right
+          p.caption Присоединяйся!
+          .header__auth-right-content.header__auth--margin
+            p.header__auth-descr Регистрируйтесь, чтобы иметь доступ<br>к нашим скидкам и бонусам
+            a(href="#" data-text="Регистрация" data-target="register").btn.btn--linear.header__auth-right-btn.header__auth-target
+              span Регистрация
+      .header__auth-item#remind
+        .header__auth-form
+          p.caption забыли пароль?
+          form(action="#").header__auth--margin
+            p.header__auth-additional Введите e-mail от вашего личного кабинета и мы вышлем вам временный пароль
+            .form__group-inputs
+              .form__group
+                label.form__group-label(for="rm-p") Пароль
+                .form__group-input
+                  input(type="password" id="rm-p")
+                span.form__group-message Ошибка
+            button(data-text="Восстановить пароль").btn.header__auth-form-btn
+              span Восстановить пароль
+        .header__auth-right
+          p.caption Вспомнили пароль?!
+          .header__auth-right-content.header__auth--margin
+            button(data-text="Авторизация" data-target="auth").btn.btn--linear.header__auth-right-btn.header__auth-target
+              span Авторизация
+
+      .header__auth-item#register
+        .header__auth-form
+          p.caption Регистрация
+          form(action="#").header__auth--margin
+            p.header__auth-additional Введите e-mail от вашего личного кабинета и мы вышлем вам временный пароль
+            .form__group-inputs
+              .form__group
+                label.form__group-label(for="reg-e") Email*
+                .form__group-input
+                  input(type="email" id="reg-e")
+                span.form__group-message Ошибка
+              .form__group
+                label.form__group-label(for="reg-p") Пароль*
+                .form__group-input
+                  input(type="email" id="reg-p")
+                span.form__group-message Ошибка
+              .form__group
+                label.form__group-label(for="reg-pp") Повторите пароль*
+                .form__group-input
+                  input(type="email" id="reg-pp")
+                span.form__group-message Ошибка
+            .header__auth-form-bottom
+              label.checkbox.checkbox--small
+                input(type="checkbox")
+                span Предоставляя свои персональные данные, даю согласие на их обработку
+            button(data-text="Регистрация").btn.header__auth-form-btn
+              span Регистрация
+        .header__auth-right
+          p.caption Уже зарегистрированы?
+          .header__auth-right-content.header__auth--margin
+            p.header__auth-descr Войдите в свою учетную запись
+            button(data-text="Войти").btn.btn--linear.header__auth-right-btn
+              span Войти
+
   .header__line
     .container
       a(href="#").logo.header__logo
@@ -95,6 +181,142 @@
             .header__search-inner
               .header__search-input
                 input(type="text" placeholder="Поиск..")
+              .header__search-results
+                .header__search-results-inner.scrollbar-inner
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+
+
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+
+
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+
+
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      p.product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+
+
         .header__call
           .header__phones
             .header__phones-top

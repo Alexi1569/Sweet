@@ -44,7 +44,7 @@
           span.sidebar__nav-title Корпоративы
 
   .sidebar__bottom
-    a(href="#").action-link.sidebar__link
+    a(href="#").action-link.sidebar__link.auth-toggler
       .action-link-inner
         <svg width="17" height="18"><use xlink:href="#account-icon" /></svg>
     a(href="#").action-link.sidebar__link
@@ -58,6 +58,7 @@
         // show circle if amount > 0
         .action-link-amount(style="display: none")
           span 0
+
     .sidebar__language
       p.sidebar__language-current RU
       ul.sidebar__language-choose
