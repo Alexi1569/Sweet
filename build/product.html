@@ -325,192 +325,298 @@
             </div>
         </header>
         <main class="main">
-            <section class="pcatalog">
+            <section class="pproduct">
                 <div class="breadcrumbs">
                     <div class="container">
                         <ul>
                             <li><a href="/">Главная</a></li>
-                            <li>Каталог</li>
+                            <li><a href="#">Каталог</a></li>
+                            <li>Торт “Sweet 16”</li>
                         </ul>
                     </div>
                 </div>
                 <div class="inner__content">
                     <div class="container">
-                        <p class="caption">Каталог</p>
-                        <div class="pcatalog__content">
-                            <div class="pcatalog__filter"><button class="pcatalog__filter-open burger"><span>Фильтр</span>
-                                    <div class="burger__btn"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></div>
-                                </button>
-                                <div class="pcatalog__top">
-                                    <div class="pcatalog__top-bg"></div><button class="pcatalog__filter-close burger active">
-                                        <div class="burger__btn"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></div>
-                                    </button>
-                                    <div class="pcatalog__top-left">
-                                        <div class="pcatalog__view dropdown pcatalog__dropdown active">
-                                            <div class="dropdown__top">
-                                                <p class="dropdown__current">Вид продукции<span> - выбрано 2</span></p><i class="dropdown__arrow"><svg width="8" height="5">
-                                                        <use xlink:href="#arrow-icon" /></svg></i><i class="dropdown__clear"><svg width="8" height="8">
-                                                        <use xlink:href="#close-icon" /></svg></i>
-                                            </div>
-                                            <div class="dropdown__list">
-                                                <div class="dropdown__values"><label class="checkbox"><input type="checkbox"><span>Пряники</span></label><label class="checkbox"><input type="checkbox"><span>Печенье</span></label><label class="checkbox"><input type="checkbox"><span>Десерты</span></label><label class="checkbox"><input type="checkbox"><span>Торты</span></label><label class="checkbox"><input type="checkbox"><span>Корпоративы</span></label></div><button class="btn dropdown__btn" data-text="Применить"><span>Применить</span></button>
-                                            </div>
-                                        </div>
-                                        <div class="pcatalog__type dropdown pcatalog__dropdown">
-                                            <div class="dropdown__top">
-                                                <p class="dropdown__current">Тематические<span> - выбрано 1</span></p><i class="dropdown__arrow"><svg width="8" height="5">
-                                                        <use xlink:href="#arrow-icon" /></svg></i><i class="dropdown__clear"><svg width="8" height="8">
-                                                        <use xlink:href="#close-icon" /></svg></i>
-                                            </div>
-                                            <div class="dropdown__list">
-                                                <div class="dropdown__values"><label class="checkbox"><input type="checkbox"><span>Тематические1</span></label><label class="checkbox"><input type="checkbox"><span>Тематические2</span></label></div><button class="btn dropdown__btn" data-text="Применить"><span>Применить</span></button>
-                                            </div>
-                                        </div>
-                                        <div class="pcatalog__price dropdown pcatalog__dropdown active">
-                                            <div class="dropdown__top">
-                                                <p class="dropdown__current">Цена<span> - от 25 до 150 грн</span></p><i class="dropdown__arrow"><svg width="8" height="5">
-                                                        <use xlink:href="#arrow-icon" /></svg></i><i class="dropdown__clear"><svg width="8" height="8">
-                                                        <use xlink:href="#close-icon" /></svg></i>
-                                            </div>
-                                            <div class="dropdown__list">
-                                                <div class="dropdown__price">
-                                                    <div class="dropdown__price-inputs"><input class="only-numbers-input" type="text" value="50"><span class="dropdown__price-inputs-divider"></span><input class="only-numbers-input" type="text" value="500"></div>
-                                                    <div class="dropdown__price-slider"></div>
-                                                </div><button class="btn dropdown__btn" data-text="Применить"><span>Применить</span></button>
-                                            </div>
-                                        </div><button class="pcatalog__clear visible"><svg width="8" height="8">
-                                                <use xlink:href="#close-icon" /></svg><span>Сбросить все фильтры</span></button>
+                        <div class="pproduct__content pb">
+                            <div class="pproduct__left">
+                                <div class="pproduct__gallery">
+                                    <div class="pproduct__gallery-slider swiper-container" id="product-gallery">
+                                        <div class="swiper-wrapper"><a class="swiper-slide pproduct__gallery-item" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                            </a><a class="swiper-slide pproduct__gallery-item" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                <div class="product__labels"><span class="label">New</span></div>
+                                            </a><a class="swiper-slide pproduct__gallery-item" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                <div class="product__labels"><span class="label">New</span></div>
+                                            </a><a class="swiper-slide pproduct__gallery-item" href="#"><img src="./img/product-img.jpg" alt="product">
+                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                            </a></div><i class="swiper-prev pproduct__gallery-arrow"><svg width="12" height="12">
+                                                <use xlink:href="#arrow-icon" /></svg></i><i class="swiper-next pproduct__gallery-arrow"><svg width="12" height="12">
+                                                <use xlink:href="#arrow-icon" /></svg></i>
                                     </div>
-                                    <div class="pcatalog__top-right">
-                                        <div class="pcatalog__sort dropdown pcatalog__dropdown">
-                                            <div class="dropdown__top">
-                                                <p class="dropdown__current">Сортировка<span> - по популярности</span></p><i class="dropdown__arrow"><svg width="8" height="5">
-                                                        <use xlink:href="#arrow-icon" /></svg></i>
-                                            </div>
-                                            <div class="dropdown__list">
-                                                <div class="dropdown__values"><label class="radio"><input type="radio" name="sort"><span>по популярности</span></label><label class="radio"><input type="radio" name="sort"><span>по названию</span></label><label class="radio"><input type="radio" name="sort"><span>по стоимости</span></label></div><button class="btn dropdown__btn" data-text="Применить"><span>Применить</span></button>
-                                            </div>
+                                </div>
+                                <div class="pproduct__previews">
+                                    <div class="pproduct__previews-slider swiper-container" id="product-previews">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
+                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
+                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
+                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="products__list">
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                            <div class="pproduct__right">
+                                <div class="pproduct__right-top">
+                                    <p class="caption caption--left">Торт “Sweet 16”</p>
+                                    <div class="pproduct__top">
+                                        <div class="pproduct__top-prices"><span class="pproduct__top-sale">185 грн</span><span class="pproduct__top-price">160 грн</span></div><span class="pproduct__top-additional">цена за 1 кг (мин. 1,5 кг)</span>
+                                    </div>
+                                    <div class="pproduct__descr">
+                                        <p>Бисквитный торт с начинкой “красный бархат” украшенный пряником и сусальным серебром</p>
+                                    </div>
+                                    <div class="pproduct__options">
+                                        <div class="pproduct__options-item pproduct__options-item--checkbox">
+                                            <div class="pproduct__options-key"><span>Вес</span></div>
+                                            <div class="pproduct__options-values"><label class="radio radio--product"><input type="radio" checked name="weight"><span>1,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>2 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>2,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>3 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>3,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>4 кг</span></label></div>
+                                        </div>
+                                        <div class="pproduct__options-item pproduct__options-item--checkbox">
+                                            <div class="pproduct__options-key"><span>Оформление</span></div>
+                                            <div class="pproduct__options-values"><label class="radio radio--product"><input type="radio" checked name="view"><span>Зеркальная глазурь</span></label><label class="radio radio--product"><input type="radio" name="view"><span>Шоколадный велюр</span></label></div>
+                                        </div>
+                                        <div class="pproduct__options-item">
+                                            <div class="pproduct__options-key"><span>Цвет</span></div>
+                                            <div class="pproduct__options-values">
+                                                <div class="form__group form__group--product">
+                                                    <div class="form__group-input"><input class="only-text-input" type="text" placeholder="Цвет оформления"></div><span class="form__group-message">Ошибка</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pproduct__options-item">
+                                            <div class="pproduct__options-key"><span>Декор</span></div>
+                                            <div class="pproduct__options-values"><a class="pproduct__options-link" href="#" data-fancybox data-src="#decor-modal" id="decor-option">Меренга</a></div>
+                                        </div>
+                                        <div class="pproduct__options-item">
+                                            <div class="pproduct__options-key"><span>Начинка</span></div>
+                                            <div class="pproduct__options-values"><a class="pproduct__options-link" href="#" data-fancybox data-src="#filling-modal" id="filling-option">Красный бархат</a></div>
+                                        </div>
+                                        <div class="pproduct__options-item">
+                                            <div class="pproduct__options-key"></div>
+                                            <div class="pproduct__options-values">
+                                                <div class="form__group form__group--file"><label class="form__group-input"><span>Прикрепить фото или логотип</span><svg>
+                                                            <use xlink:href="#file-icon" /></svg><input type="file"></label></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                <div class="pproduct__right-bottom">
+                                    <div class="pproduct__actions">
+                                        <div class="pproduct__amount amount"><button class="amount__minus"><span class="amount__icon"><svg>
+                                                        <use xlink:href="#minus-icon" /></svg></span></button>
+                                            <div class="amount__input"><input type="number" value="1" min="0" max="10"></div><button class="amount__plus"><span class="amount__icon"><svg>
+                                                        <use xlink:href="#plus-icon" /></svg></span></button>
+                                        </div><a class="btn pproduct__add" href="#" data-fancybox data-src="#buy-modal" data-text="В корзину"><span>В корзину</span></a><button class="pproduct__favourite"><svg width="23" height="22">
+                                                <use xlink:href="#favourite-icon" /></svg><span>В избранное</span></button>
+                                    </div>
+                                    <div class="pproduct__attributes">
+                                        <div class="pproduct__attributes-inner scrollbar-inner">
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Категория</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>Торты</p>
+                                                </div>
+                                            </div>
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Вес</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>1 кг, 2 кг, 3 кг</p>
+                                                </div>
+                                            </div>
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Начинка</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>Красный бархат</p>
+                                                </div>
+                                            </div>
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Срок хранения</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>7 дней при t от +4 до +6 °С</p>
+                                                </div>
+                                            </div>
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Праздники</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>День рождения</p>
+                                                </div>
+                                            </div>
+                                            <div class="pproduct__options-item">
+                                                <div class="pproduct__options-key"><span>Рекомендации</span></div>
+                                                <div class="pproduct__options-values">
+                                                    <p>Хранить следует при t от +4 до +6 °С, при относительной влажности не более 65%. Запрещается хранить пряники в местах попадания солнечных лучей, возле батареи и других мест с интенсивной теплоотдачей.</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                        <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                    </a>
-                                    <div class="product__info"><a class="product__title" href="#">Пряники “Медвежонок”</a>
-                                        <div class="product__actions">
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                        <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                        <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                            <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                        <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><button class="more-btn">Показать еще</button>
-                            <div class="pagination mt--small mb--small">
-                                <ul>
-                                    <li class="pagination-prev"><a href="#"><svg width="8" height="8">
-                                                <use xlink:href="#arrow-icon" /></svg></a></li>
-                                    <li><a href="#">01</a></li>
-                                    <li><a href="#">02</a></li>
-                                    <li class="pagination--current"><a href="#">03</a></li>
-                                    <li><a href="#">04</a></li>
-                                    <li><a href="#">05</a></li>
-                                    <li class="pagination-next"><a href="#"><svg width="8" height="8">
-                                                <use xlink:href="#arrow-icon" /></svg></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <section class="sreviews pt pb">
+                <div class="container">
+                    <p class="caption">Отзывы</p>
+                    <div class="sreviews__content mt">
+                        <div class="sreviews__left">
+                            <div class="sreviews__items">
+                                <div class="reviews__item">
+                                    <div class="reviews__top"><i class="reviews__icon"><svg>
+                                                <use xlink:href="#quote-icon" /></svg></i>
+                                        <div class="reviews__info">
+                                            <p class="reviews__name">Катерина Польченко</p>
+                                            <p class="reviews__date">11.03.2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="reviews__text">
+                                        <p>Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!!</p>
+                                    </div>
+                                </div>
+                                <div class="reviews__item">
+                                    <div class="reviews__top"><i class="reviews__icon"><svg>
+                                                <use xlink:href="#quote-icon" /></svg></i>
+                                        <div class="reviews__info">
+                                            <p class="reviews__name">Виктория Малышева</p>
+                                            <p class="reviews__date">05.03.2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="reviews__text">
+                                        <p>Заказала тортик своему молодому человеку на День рождения и осталась бесконечно довольна! Спасибо что делаете такие маленькие чудеса, которые делают людей счастливее!</p>
+                                    </div>
+                                </div>
+                                <div class="reviews__item">
+                                    <div class="reviews__top"><i class="reviews__icon"><svg>
+                                                <use xlink:href="#quote-icon" /></svg></i>
+                                        <div class="reviews__info">
+                                            <p class="reviews__name">Надежда Николаевна</p>
+                                            <p class="reviews__date">19.02.2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="reviews__text">
+                                        <p>Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!! Ему он предназначался на наш праздник!!!! Обязательно буду заказывать торт себе на свадьбу и на другие торжества, ведь заморачиваться с подарком теперь не надо!!!! Спасибо огромное за вашу волшебную работу!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><a class="btn btn--linear sreviews__btn btn--transparent" href="#" data-fancybox data-src="#reviews-modal" data-text="Оставить отзыв"><span>Оставить отзыв</span></a>
+                    </div>
+                </div>
+            </section>
+            <div class="products pt pb">
+                <div class="container">
+                    <p class="caption">Похожие товары</p>
+                    <div class="products__slider swiper-container mt">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
+                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
+                                </a>
+                                <div class="product__info">
+                                    <p class="product__title">Пряники “Медвежонок”</p>
+                                    <div class="product__actions">
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
+                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
+                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
+                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
+                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider__nav">
+                            <div class="slider__progress swiper-no-swiping" id="range">
+                                <div class="slider__progress-range"></div>
+                            </div>
+                            <div class="slider__arrows"><i class="swiper-prev"><svg width="15" height="12">
+                                        <use xlink:href="#long-arrow-icon" /></svg></i><i class="swiper-next"><svg width="15" height="12">
+                                        <use xlink:href="#long-arrow-icon" /></svg></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer class="footer">
             <div class="footer__top">

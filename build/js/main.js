@@ -223,7 +223,6 @@ jQuery(document).ready(function ($) {
             }}, '-=.5');
       } else {
         tl.fromTo($bottom, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 50, onStart: function() {
-            $('.header').removeClass('menu-opened');
             $toggler.addClass('disabled');
             $menu.css('padding-right', '0px');
             $('body').removeClass('no-scroll');
@@ -232,6 +231,7 @@ jQuery(document).ready(function ($) {
           .staggerFromTo(liItems, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.5')
           .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')', onComplete: function() {
               $toggler.removeClass('disabled');
+              $('.header').removeClass('menu-opened');
             }}, '-=.35')
           .to($menu, 0, {autoAlpha: 0});
       }
@@ -485,7 +485,7 @@ jQuery(document).ready(function ($) {
 
       var mySwiper = new Swiper($slider, {
         speed: 900,
-        spaceBetween: 56,
+        spaceBetween: 58,
         roundLengths: true,
         watchOverflow: true,
         slidesPerView: slidesPerView,
@@ -507,7 +507,7 @@ jQuery(document).ready(function ($) {
           },
           400: {
             slidesPerView: 2,
-            spaceBetween: 15,
+            spaceBetween: 4,
           },
           650: {
             slidesPerView: 2,
@@ -515,7 +515,7 @@ jQuery(document).ready(function ($) {
           },
           850: {
             slidesPerView: 2,
-            spaceBetween: 55,
+            spaceBetween: 54,
           },
           991: {
             slidesPerView: 3,
@@ -523,7 +523,7 @@ jQuery(document).ready(function ($) {
           },
           1199: {
             slidesPerView: 3,
-            spaceBetween: 45,
+            spaceBetween: 44,
           },
           1350: {
             spaceBetween: 30,
@@ -645,7 +645,13 @@ jQuery(document).ready(function ($) {
     var $scroll = $('.scrollbar-inner');
 
     $scroll.each(function() {
-      $(this).scrollbar();
+      if ($(this).hasClass('.options-modal__list')) {
+        if (windowWidth > 550) {
+          $(this).scrollbar();
+        }
+      } else {
+        $(this).scrollbar();
+      }
     });
   }
 
@@ -687,12 +693,9 @@ jQuery(document).ready(function ($) {
     var wrapPadding = parseFloat($wrap.css('padding-right'));
     var closeRight = parseFloat($close.css('right'));
 
-    $bg.css('height', $wrap[0].scrollHeight);
-
     $(window).resize(function() {
       wrapPadding = parseFloat($wrap.css('padding-right'));
       closeRight = parseFloat($close.css('right'));
-      $bg.css('height', $wrap[0].scrollHeight);
     });
 
     function closeAuth(tl, self, parts) {
@@ -774,6 +777,8 @@ jQuery(document).ready(function ($) {
 
     $dropdowns.each(function() {
       var $self = $(this);
+      var $top = $self.find('.dropdown__top');
+      var $arrow = $self.find('.dropdown__arrow');
 
       if ($self.hasClass('pcatalog__price')) {
         var $slider = $self.find('.dropdown__price-slider');
@@ -786,24 +791,196 @@ jQuery(document).ready(function ($) {
         });
       }
 
-      $self.hover(function() {
-        $(this).addClass('hovered');
-      }, function() {
-        $(this).removeClass('hovered');
-      });
+      if (($self.hasClass('pcatalog__dropdown')) && (windowWidth < 767)) {
+        $arrow.click(function() {
+          if ($self.hasClass('hovered')) {
+            $self.find('.dropdown__list').slideUp(450);
+          } else {
+            $self.find('.dropdown__list').slideDown(450);
+          }
+        });
+      }
+
+      if (!$('body').hasClass('touch-device')) {
+        $self.hover(function() {
+          $self.addClass('hovered');
+        }, function() {
+          $self.removeClass('hovered');
+        });
+      } else {
+        $arrow.click(function() {
+          $self.toggleClass('hovered');
+        });
+      }
     });
   };
 
   initDropDowns();
 
-  // remove fake functional
-  $('.dropdown__btn').click(function() {
-    $(this).closest('.dropdown').addClass('active');
-    $(this).closest('.dropdown').removeClass('hovered');
-  });
+  function initFilter() {
+    var $open = $('.pcatalog__filter-open');
+    var $close = $('.pcatalog__filter-close');
+    var $filter = $('.pcatalog__filter');
+    var $top = $('.pcatalog__top');
+    var $bg = $top.find('.pcatalog__top-bg');
+    var $left = $top.find('.pcatalog__top-left');
+    var $right = $top.find('.pcatalog__top-right');
+    var topOffset;
 
-  $('.dropdown__top').click(function() {
-    $(this).closest('.dropdown').removeClass('active');
-    $(this).closest('.dropdown').removeClass('hovered');
-  });
+    $toggler = $('.pcatalog__filter-open, .pcatalog__filter-close');
+
+    var tl = new TimelineLite();
+    var beginPath = ['0.5%', '0%', '25%'];
+
+    $toggler.click(function() {
+      if ($filter.hasClass('active')) {
+        tl.fromTo($close, .3, {autoAlpha: 1, scaleX: 1, scaleY: 1}, {autoAlpha: 0, scaleX: .5, scaleY: .5, onStart: function() {
+            $toggler.addClass('disabled');
+            $('body').removeClass('no-scroll');
+            window.scrollTo(0, topOffset);
+          }})
+          .fromTo($right, .6, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: -12})
+          .fromTo($left, .6, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: -12}, '-=.3')
+          .fromTo($bg, .8, {authAlpha: 1, webkitClipPath: 'circle(150% at 0 50%)'}, {authAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'}, '-=.3')
+          .fromTo($top, 0, {authAlpha: 1}, {autoAlpha: 0, onComplete: function() {
+              $toggler.removeClass('disabled');
+              $filter.removeClass('active');
+          }});
+      } else {
+        tl.fromTo($top, 0, {authAlpha: 0}, {autoAlpha: 1})
+          .fromTo($bg, 1, {authAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')'}, {authAlpha: 1, webkitClipPath: 'circle(150% at 0 50%)', onStart: function() {
+              $toggler.addClass('disabled');
+              topOffset = window.scrollY;
+            }})
+          .fromTo($right, .8, {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0})
+          .fromTo($left, .8, {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0}, '-=.4')
+          .fromTo($close, .5, {autoAlpha: 0, scaleX: .5, scaleY: .5}, {autoAlpha: 1, scaleX: 1, scaleY: 1, onComplete: function() {
+              $filter.addClass('active');
+              $('body').addClass('no-scroll');
+              $toggler.removeClass('disabled');
+            }}, '-=.25');
+      }
+    });
+
+  };
+
+  initFilter();
+
+  function initProductPage() {
+    var $gallery = $('#product-gallery');
+    var $previews = $('#product-previews');
+
+    var previewsSwiper = new Swiper($previews, {
+      spaceBetween: 15,
+      slidesPerView: 'auto',
+      speed: 650,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      watchOverflow: true,
+    });
+
+    var gallerySwiper = new Swiper($gallery, {
+      spaceBetween: 15,
+      speed: 650,
+      watchOverflow: true,
+      on: {
+        init: function() {
+          if ($(this.$el).find('.swiper-slide:not(.swiper-slide-duplicate)').length === 1) {
+            $('.pproduct__gallery').addClass('no-translate');
+          }
+        }
+      },
+      thumbs: {
+        swiper: previewsSwiper
+      },
+      navigation: {
+        prevEl: $gallery.find('.swiper-prev'),
+        nextEl: $gallery.find('.swiper-next'),
+      }
+    });
+  }
+
+  initProductPage();
+
+  function initOptionsModal() {
+    var $modals = $('.options-modal');
+
+    $modals.each(function() {
+      var $self = $(this);
+      var $links = $self.find('.options-modal__nav a');
+      var $btn = $self.find('.options-modal__btn');
+
+      $btn.click(function() {
+        var goal = '#' + $btn.attr('data-option');
+        var $active = $self.find('.options-modal__nav li.active');
+        var val = $active.attr('data-val');
+
+        $(goal).text(val);
+        $.fancybox.close();
+      });
+
+      $links.click(function(e) {
+        e.preventDefault();
+        var $link = $(this);
+
+        if (!$link.closest('li').hasClass('active')) {
+          var goal = $(this).attr('href');
+          $self.find('.options-modal__nav li.active').removeClass('active');
+          $link.closest('li').addClass('active');
+
+          $self.find('.options-modal__item.active').fadeOut(250, function() {
+            $self.find('.options-modal__item.active').removeClass('active');
+
+            $(goal).fadeIn(160, function() {
+              $(goal).addClass('active');
+            });
+          });
+        }
+      });
+    });
+  }
+
+  initOptionsModal();
+
+  function initAmount() {
+    $('.amount').each(function() {
+      var $minus = $(this).find('.amount__minus');
+      var $plus = $(this).find('.amount__plus');
+      var $input = $(this).find('input[type="number"]');
+      var max = parseInt($input.attr('max'), 10);
+      var min = parseInt($input.attr('min'), 10);
+
+      $plus.click(function() {
+        var val = parseInt($input.val(), 10);
+        $input.val(++val);
+
+        if (val !== min) {
+          $minus.removeClass('disabled');
+        }
+
+        if (val === max) {
+          $plus.addClass('disabled');
+        } else {
+          $plus.removeClass('disabled');
+        }
+      });
+
+      $minus.click(function() {
+        var val = parseInt($input.val(), 10);
+        $input.val(--val);
+
+        if (val !== max) {
+          $plus.removeClass('disabled');
+        }
+
+        if (val === min) {
+          $minus.addClass('disabled');
+        } else {
+          $minus.removeClass('disabled');
+        }
+      });
+    });
+  };
+
+  initAmount();
 });

@@ -39,10 +39,15 @@
   <symbol viewBox="0 0 12 8.44" id="long-arrow-icon"><path d="M3.92,8.31a.42.42,0,0,0,.6-.6L1.46,4.65H11.58A.42.42,0,0,0,12,4.22a.43.43,0,0,0-.42-.43H1.46L4.52.73a.42.42,0,0,0,0-.6.42.42,0,0,0-.6,0L.13,3.92a.42.42,0,0,0,0,.6Z"/></symbol>
 
   <symbol viewBox="0 0 47.25 35.75" id="quote-icon"><path d="M22 8.5q0 10.5-8.12 18.88T2 35.75c-1.34 0-2-.25-2-.75.66-.83 1.54-1.83 2.63-3s2.12-2.33 3.12-3.5Q11 22.76 11 18.88A9 9 0 0 0 7.63 12Q4.26 9 4.25 7.5 4.25 0 11.5 0a11.84 11.84 0 0 1 7.13 2.5 7.32 7.32 0 0 1 3.37 6zm25.25 0q0 10.5-8 18.88t-10.87 8.37c-1.92 0-2.88-.21-2.88-.62s1.79-2.67 5.38-6.75 5.37-7.34 5.37-9.75A8.78 8.78 0 0 0 32.88 12Q29.5 9 29.5 7.5 29.5 0 37 0a11.31 11.31 0 0 1 7 2.5 7.41 7.41 0 0 1 3.25 6z" fill="#3cc"/></symbol>
+
+  <symbol viewBox="0 0 62.7 71" id="delete-icon"><g class="delete-icon__top"><path d="M60.2,8.9H43.3V6.5c0-3.6-2.9-6.5-6.5-6.5c0,0,0,0,0,0H26.6c-3.6,0-6.5,2.9-6.5,6.5c0,0,0,0,0,0v2.4H2.5 C1.1,8.9,0,10,0,11.4s1.1,2.5,2.5,2.5h57.7c1.4,0,2.5-1.1,2.5-2.5S61.6,8.9,60.2,8.9z M25.1,8.9V6.5c0-0.8,0.7-1.5,1.5-1.5h10.3 c0.8,0,1.5,0.7,1.5,1.5v2.4H25.1z"/></g><g class="detele-icon__bottom"><path d="M21,21.2c-1.4,0-2.5,1.1-2.5,2.5v32.4c0,1.4,1.1,2.5,2.5,2.5c0,0,0,0,0,0c1.4,0,2.5-1.1,2.5-2.5c0,0,0,0,0,0V23.7 C23.5,22.3,22.4,21.2,21,21.2z"/><path d="M42.6,21.2c-1.4,0-2.5,1.1-2.5,2.5v32.4c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5c0,0,0,0,0,0V23.7 C45.1,22.3,44,21.2,42.6,21.2z"/><path d="M31.7,21.2c-1.4,0-2.5,1.1-2.5,2.5v32.4c0,1.4,1.1,2.5,2.5,2.5c0,0,0,0,0,0c1.4,0,2.5-1.1,2.5-2.5c0,0,0,0,0,0V23.7 C34.2,22.3,33.1,21.2,31.7,21.2z"/><path d="M60.1,8.9H43.3h-4.9H25.1h-5H2.5C1.1,8.9,0,10,0,11.4c0,1.4,1.1,2.5,2.5,2.5h5.1v48.6c0,4.7,3.8,8.5,8.5,8.5c0,0,0,0,0,0 h31.3c4.7,0,8.5-3.8,8.5-8.5c0,0,0,0,0,0V13.9h4.3c1.4,0,2.5-1.1,2.5-2.5C62.7,10,61.5,8.9,60.1,8.9z M50.9,62.5 c0,1.9-1.6,3.5-3.5,3.5H16c-1.9,0-3.5-1.6-3.5-3.5V13.9h38.3v48.6H50.9z"/></g></symbol>
+
+  <symbol viewBox="0 0 14.97 1" id="minus-icon"><path d="M0 0h14.97v1H0z"/></symbol>
+  <symbol viewBox="0 0 14.97 15" id="plus-icon"><path d="M14.97 7.01h-7V0h-1v7.01H0v1h6.97V15h1V8.01h7v-1z"/></symbol>
 </svg>
 
 #callback-modal.modal.callback-modal(style="display: none")
-  p.modal__title Обратный звонок
+  p.caption Обратный звонок
   .modal__content
     form
       .form__group-inputs
@@ -58,6 +63,145 @@
           span.form__group-message Ошибка
       button.btn.modal__btn(data-text="Заказать звонок")
         span Заказать звонок
+
+#reviews-modal.modal.reviews-modal(style="display: none")
+  p.caption оставить отзыв
+  .modal__content
+    form
+      .form__group-inputs
+        .form__group
+          label.form__group-label(for="cm-n") Имя
+          .form__group-input
+            input(type="text" class="only-text-input" id="rm-n")
+          span.form__group-message Ошибка
+        .form__group
+          label.form__group-label(for="cm-p") Email*
+          .form__group-input
+            input(type="email" id="rm-e")
+          span.form__group-message Ошибка
+        .form__group.form__group--textarea
+          label.form__group-label(for="rm-t") Отзыв*
+          .form__group-input
+            textarea(id="rm-t")
+          span.form__group-message Ошибка
+      button.btn.modal__btn(data-text="Отправить")
+        span Отправить
+
+#buy-modal.modal.buy-modal(style="display: none")
+  p.caption товар добавлен в корзину
+  .modal__content
+    .buy-modal__top
+      .product-row
+        .product-row__left
+          a(href="#").product-row__img
+            img(src="./img/product-img.jpg" alt="alt")
+          .product-row__info
+            a(href="#").product-row__title Торт “Sweet 16”
+            .product-row__attributes
+              .product-row__attribute
+                p.product-row__attribute-key Вес
+                p.product-row__attribute-val 2 кг
+              .product-row__attribute
+                p.product-row__attribute-key Оформление
+                p.product-row__attribute-val Фрукты
+        .product-row__right
+          .product-row__amount.amount
+            button.amount__minus
+              span.amount__icon
+                <svg><use xlink:href="#minus-icon"/></svg>
+            .amount__input
+              input(type="number" value="1" min="0" max="10")
+            button.amount__plus
+              span.amount__icon
+                <svg><use xlink:href="#plus-icon"/></svg>
+          .product-row__prices
+            span.product-row__prices-sale 185 грн
+            span.product-row__prices-price 160 грн
+          i.delete-icon.product-row__delete
+            <svg width="18" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 62.7 71" style="enable-background:new 0 0 62.7 71;" xml:space="preserve"><g class="delete-icon__top"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M22.3,11.1V6.6c0-2.3,1.9-4.2,4.2-4.2h9.7c2.3,0,4.2,1.9,4.2,4.2v4.6"/></g><g class="detele-icon__bottom"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="21.2" y1="56.2" x2="21.2" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="31.9" y1="56.2" x2="31.9" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="42.8" y1="56.2" x2="42.8" y2="23.7"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M53.7,11.1v51.1c0,3.4-2.7,6.1-6.1,6.1H16.3c-3.4,0-6.1-2.7-6.1-6.1V11.1"/></g></svg>
+    .buy-modal__bottom
+      .buy-modal__total
+        p.buy-modal__total-key К оплате
+        p.buy-modal__total-val 320 грн
+      .buy-modal__actions
+        button(data-text="Продолжить покупки").btn.btn--linear.buy-modal__continue
+          span Продолжить покупки
+        button(data-text="Оформить заказ").btn.buy-modal__checkout
+          span Оформить заказ
+
+
+#decor-modal.modal.options-modal(style="display: none")
+  .options-modal__content
+    nav.options-modal__nav
+      ul.scrollbar-inner.options-modal__list
+        li(data-val="Сусальное серебро")
+          a(href="#d-option-1") Сусальное серебро
+        li(data-val="Сусальное золото")
+          a(href="#d-option-2") Сусальное золото
+        li(data-val="Меренга").active
+          a(href="#d-option-3") Меренга
+        li(data-val="Пряники")
+          a(href="#d-option-4") Пряники
+        li(data-val="Крошка и пряники")
+          a(href="#d-option-5") Крошка и пряники
+        li(data-val="Кейк-попсы")
+          a(href="#d-option-6") Кейк-попсы
+        li(data-val="Крошка и бусины")
+          a(href="#d-option-7") Крошка и бусины
+    .options-modal__right
+      .options-modal__items
+        .options-modal__item#d-option-1
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p Меренга, или как мы чаще называем её безе может послужить не только как полноценный десерт, а и украшением для торта.
+        .options-modal__item#d-option-2
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 2
+        .options-modal__item#d-option-3.active
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 3
+        .options-modal__item#d-option-4
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 4
+        .options-modal__item#d-option-5
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 5
+        .options-modal__item#d-option-6
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 6
+        .options-modal__item#d-option-7
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p 7
+      button(data-text="Выбрать оформление" data-option="decor-option").btn.btn--linear.options-modal__btn
+        span Выбрать оформление
+
+#filling-modal.modal.options-modal(style="display: none")
+  .options-modal__content
+    nav.options-modal__nav
+      ul.scrollbar-inner.options-modal__list
+        li(data-val="Красный бархат").active
+          a(href="#f-option-1") Красный бархат
+        li(data-val="Красный бархат2")
+          a(href="#f-option-2") Красный бархат2
+    .options-modal__right
+      .options-modal__items
+        .options-modal__item#f-option-1.active
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p Красный бархат
+        .options-modal__item#f-option-2
+          .options-modal__img(style="background-image: url('./img/option-img.jpg')")
+          .options-modal__text
+            p Красный бархат2
+
+      button(data-text="Выбрать оформление" data-option="filling-option").btn.btn--linear.options-modal__btn
+        span Выбрать оформление
 
 
 nav#mobile-menu.mobile-menu

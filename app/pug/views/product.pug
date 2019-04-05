@@ -1,0 +1,348 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pproduct
+      - var breadcrumbs = ['Каталог', 'Торт “Sweet 16”'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .container
+          .pproduct__content.pb
+            .pproduct__left
+              .pproduct__gallery
+                .pproduct__gallery-slider.swiper-container#product-gallery
+                  .swiper-wrapper
+                    a(href="#").swiper-slide.pproduct__gallery-item
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    a(href="#").swiper-slide.pproduct__gallery-item
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                    a(href="#").swiper-slide.pproduct__gallery-item
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                    a(href="#").swiper-slide.pproduct__gallery-item
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                  i.swiper-prev.pproduct__gallery-arrow
+                    <svg width="12" height="12"><use xlink:href="#arrow-icon"/></svg>
+                  i.swiper-next.pproduct__gallery-arrow
+                    <svg width="12" height="12"><use xlink:href="#arrow-icon"/></svg>
+              .pproduct__previews
+                .pproduct__previews-slider#product-previews.swiper-container
+                  .swiper-wrapper
+                    .swiper-slide.pproduct__previews-item
+                      img(src="./img/product-img.jpg" alt="product")
+                    .swiper-slide.pproduct__previews-item
+                      img(src="./img/product-img.jpg" alt="product")
+                    .swiper-slide.pproduct__previews-item
+                      img(src="./img/product-img.jpg" alt="product")
+                    .swiper-slide.pproduct__previews-item
+                      img(src="./img/product-img.jpg" alt="product")
+
+            .pproduct__right
+              .pproduct__right-top
+                p.caption.caption--left Торт “Sweet 16”
+                .pproduct__top
+                  .pproduct__top-prices
+                    span.pproduct__top-sale 185 грн
+                    span.pproduct__top-price 160 грн
+                  span.pproduct__top-additional цена за 1 кг (мин. 1,5 кг)
+                .pproduct__descr
+                  p Бисквитный торт с начинкой “красный бархат” украшенный пряником и сусальным серебром
+                .pproduct__options
+                  .pproduct__options-item.pproduct__options-item--checkbox
+                    .pproduct__options-key
+                      span Вес
+                    .pproduct__options-values
+                      label.radio.radio--product
+                        input(type="radio" checked name="weight")
+                        span 1,5 кг
+                      label.radio.radio--product
+                        input(type="radio" name="weight")
+                        span 2 кг
+                      label.radio.radio--product
+                        input(type="radio" name="weight")
+                        span 2,5 кг
+                      label.radio.radio--product
+                        input(type="radio" name="weight")
+                        span 3 кг
+                      label.radio.radio--product
+                        input(type="radio" name="weight")
+                        span 3,5 кг
+                      label.radio.radio--product
+                        input(type="radio" name="weight")
+                        span 4 кг
+                  .pproduct__options-item.pproduct__options-item--checkbox
+                    .pproduct__options-key
+                      span Оформление
+                    .pproduct__options-values
+                      label.radio.radio--product
+                        input(type="radio" checked name="view")
+                        span Зеркальная глазурь
+                      label.radio.radio--product
+                        input(type="radio" name="view")
+                        span Шоколадный велюр
+                  .pproduct__options-item
+                    .pproduct__options-key
+                      span Цвет
+                    .pproduct__options-values
+                      .form__group.form__group--product
+                        .form__group-input
+                          input(type="text" placeholder="Цвет оформления" class="only-text-input")
+                        span.form__group-message Ошибка
+                  .pproduct__options-item
+                    .pproduct__options-key
+                      span Декор
+                    .pproduct__options-values
+                      a(href="#" data-fancybox data-src="#decor-modal")#decor-option.pproduct__options-link Меренга
+                  .pproduct__options-item
+                    .pproduct__options-key
+                      span Начинка
+                    .pproduct__options-values
+                      a(href="#" data-fancybox data-src="#filling-modal")#filling-option.pproduct__options-link Красный бархат
+                  .pproduct__options-item
+                    .pproduct__options-key
+                    .pproduct__options-values
+                      .form__group.form__group--file
+                        label.form__group-input
+                          span Прикрепить фото или логотип
+                          <svg><use xlink:href="#file-icon" /></svg>
+                          input(type="file")
+
+              .pproduct__right-bottom
+                .pproduct__actions
+                  .pproduct__amount.amount
+                    button.amount__minus
+                      span.amount__icon
+                        <svg><use xlink:href="#minus-icon"/></svg>
+                    .amount__input
+                      input(type="number" value="1" min="0" max="10")
+                    button.amount__plus
+                      span.amount__icon
+                        <svg><use xlink:href="#plus-icon"/></svg>
+                  a(href="#" data-fancybox data-src="#buy-modal" data-text="В корзину").btn.pproduct__add
+                    span В корзину
+                  button.pproduct__favourite
+                    <svg width="23" height="22"><use xlink:href="#favourite-icon"/></svg>
+                    span В избранное
+
+                .pproduct__attributes
+                  .pproduct__attributes-inner.scrollbar-inner
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Категория
+                      .pproduct__options-values
+                        p Торты
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Вес
+                      .pproduct__options-values
+                        p 1 кг, 2 кг, 3 кг
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Начинка
+                      .pproduct__options-values
+                        p Красный бархат
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Срок хранения
+                      .pproduct__options-values
+                        p 7 дней при t от +4 до +6 °С
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Праздники
+                      .pproduct__options-values
+                        p День рождения
+                    .pproduct__options-item
+                      .pproduct__options-key
+                        span Рекомендации
+                      .pproduct__options-values
+                        p Хранить следует при t от +4 до +6 °С, при относительной влажности не более 65%. Запрещается хранить пряники в местах попадания солнечных лучей, возле батареи и других мест с интенсивной теплоотдачей.
+
+    section.sreviews.pt.pb
+      .container
+        p.caption Отзывы
+        .sreviews__content.mt
+          .sreviews__left
+            .sreviews__items
+              .reviews__item
+                .reviews__top
+                  i.reviews__icon
+                    <svg><use xlink:href="#quote-icon"/></svg>
+                  .reviews__info
+                    p.reviews__name Катерина Польченко
+                    p.reviews__date 11.03.2018
+                .reviews__text
+                  p Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!!
+              .reviews__item
+                .reviews__top
+                  i.reviews__icon
+                    <svg><use xlink:href="#quote-icon"/></svg>
+                  .reviews__info
+                    p.reviews__name Виктория Малышева
+                    p.reviews__date 05.03.2018
+                .reviews__text
+                  p Заказала тортик своему молодому человеку на День рождения и осталась бесконечно довольна! Спасибо что делаете такие маленькие чудеса, которые делают людей счастливее!
+              .reviews__item
+                .reviews__top
+                  i.reviews__icon
+                    <svg><use xlink:href="#quote-icon"/></svg>
+                  .reviews__info
+                    p.reviews__name Надежда Николаевна
+                    p.reviews__date 19.02.2018
+                .reviews__text
+                  p Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!! Ему он предназначался на наш праздник!!!! Обязательно буду заказывать торт себе на свадьбу и на другие торжества, ведь заморачиваться с подарком теперь не надо!!!! Спасибо огромное за вашу волшебную работу!
+          a(href="#" data-fancybox data-src="#reviews-modal" data-text="Оставить отзыв").btn.btn--linear.sreviews__btn.btn--transparent
+            span Оставить отзыв
+
+    .products.pt.pb
+      .container
+        p.caption Похожие товары
+        .products__slider.swiper-container.mt
+          .swiper-wrapper
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+            .swiper-slide.product
+              a(href="#").product__img
+                img(src="./img/product-img.jpg" alt="product")
+                .product__labels
+                  span.label New
+                  span.label Top
+              .product__info
+                p.product__title Пряники “Медвежонок”
+                .product__actions
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                    span.product__btn-tooltip В избранное
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                    span.product__btn-tooltip В корзину
+                  .product__btn
+                    i.product__btn-icon
+                      <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                    span.product__btn-tooltip Подробнее
+          .slider__nav
+            .slider__progress.swiper-no-swiping#range
+              .slider__progress-range
+            .slider__arrows
+              i.swiper-prev
+                <svg width="15" height="12"><use xlink:href="#long-arrow-icon"/></svg>
+              i.swiper-next
+                <svg width="15" height="12"><use xlink:href="#long-arrow-icon"/></svg>
