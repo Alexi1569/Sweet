@@ -134,7 +134,7 @@ jQuery(document).ready(function ($) {
       on: {
         init: function() {
           alignPagination();
-          var $active = $('.swiper-slide.swiper-slide-active');
+          var $active = $slider.find('.swiper-slide.swiper-slide-active');
           var tl = new TimelineLite();
 
           tl.fromTo($active, 0, {autoAlpha: 0}, {autoAlpha: 1})
@@ -148,7 +148,7 @@ jQuery(document).ready(function ($) {
     });
 
     mySwiper.on('slideChangeTransitionStart', function() {
-      var $active = $('.swiper-slide.swiper-slide-active');
+      var $active = $slider.find('.swiper-slide.swiper-slide-active');
       var $prev = $(mySwiper.slides[mySwiper.previousIndex]);
       var tl = new TimelineLite();
 
@@ -863,34 +863,86 @@ jQuery(document).ready(function ($) {
   function initProductPage() {
     var $gallery = $('#product-gallery');
     var $previews = $('#product-previews');
+    var $wrap = $('.pproduct__gallery');
 
     var previewsSwiper = new Swiper($previews, {
       spaceBetween: 15,
-      slidesPerView: 'auto',
-      speed: 650,
+      slidesPerView: 3,
+      speed: 250,
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
       watchOverflow: true,
+      initialSlide: 4,
     });
 
     var gallerySwiper = new Swiper($gallery, {
-      spaceBetween: 15,
-      speed: 650,
+      spaceBetween: 0,
+      speed: 250,
+      initialSlide: 4,
       watchOverflow: true,
+      virtualTranslate: true,
       on: {
         init: function() {
+          var imgH = $(this.$el).find('.pproduct__gallery-item img').outerHeight();
+          $(this.$el).css('height', imgH + 'px');
+
           if ($(this.$el).find('.swiper-slide:not(.swiper-slide-duplicate)').length === 1) {
             $('.pproduct__gallery').addClass('no-translate');
           }
+
+          $(this.$el).addClass('visible');
+
+          $(window).resize(function() {
+            imgH = $(this.$el).find('.pproduct__gallery-item img').outerHeight();
+            $(this.$el).css('height', imgH + 'px');
+          });
+
+          var tl = new TimelineLite();
+
+          var $active = $(this.$el).find('.swiper-slide-active');
+          var $img = $active.find('img');
+          var $labels = $active.find('.label');
+
+          tl.fromTo($active, 0, {autoAlpha: 0}, {autoAlpha: 1})
+            .fromTo($img, 1, {webkitClipPath:'circle(0.5% at 0% 0%)'}, {webkitClipPath:'circle(150% at 0 50%)', ease: Power1.easeIn, onStart: function() {
+            $wrap.addClass('disabled');
+          }}, 0)
+            .staggerFromTo($labels, .9, {y: 10, autoAlpha: 0}, {y: 0, autoAlpha: 1}, .1, '-=.25', function() {
+            $wrap.removeClass('disabled');
+          });
+
         }
       },
       thumbs: {
         swiper: previewsSwiper
       },
       navigation: {
-        prevEl: $gallery.find('.swiper-prev'),
-        nextEl: $gallery.find('.swiper-next'),
+        prevEl: $gallery.find('.swiper-next'),
+        nextEl: $gallery.find('.swiper-prev'),
       }
+    });
+
+    gallerySwiper.on('slideChangeTransitionStart', function() {
+      var tl = new TimelineLite();
+
+      var $active = $(this.$el).find('.swiper-slide-active');
+      var $imgActive = $active.find('img');
+      var $labelsActive = $active.find('.label');
+
+      var $prev = $(gallerySwiper.slides[gallerySwiper.previousIndex]);
+      var $imgPrev = $prev.find('img');
+      var $labelsPrev = $prev.find('.label');
+
+      tl.staggerFromTo($labelsPrev, .8, {y: 0, autoAlpha: 1}, {y: -10, autoAlpha: 0, onStart: function() {
+        $wrap.addClass('disabled');
+      }}, .1)
+        .fromTo($imgPrev, 1, {webkitClipPath:'circle(150% at 0% 50%)'}, {webkitClipPath:'circle(0.5% at 0% 0%)', ease: Power1.easeIn}, '-=.6')
+        .fromTo($prev, 0, {autoAlpha: 1}, {autoAlpha: 0})
+        .fromTo($active, 0, {autoAlpha: 0}, {autoAlpha: 1})
+        .fromTo($imgActive, 1, {webkitClipPath:'circle(0.5% at 0% 0%)'}, {webkitClipPath:'circle(150% at 0 50%)', ease: Power1.easeIn})
+        .staggerFromTo($labelsActive, .5, {y: -10, autoAlpha: 0}, {y: 0, autoAlpha: 1}, .1, '-=.1',  function() {
+      $wrap.removeClass('disabled');
+    })
     });
   }
 

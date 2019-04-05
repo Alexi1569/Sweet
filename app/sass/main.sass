@@ -723,6 +723,14 @@ input[type="number"]
       border-radius: 29px
   &__gallery
     position: relative
+    .label
+      opacity: 0
+      visibility: hidden
+    &-slider
+      opacity: 0
+      transition: .45s all ease-in
+      &.visible
+        opacity: 1
     .swiper-prev,
     .swiper-next
       top: 50%
@@ -756,19 +764,28 @@ input[type="number"]
         right: 0
         z-index: 2
     &-item
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      padding-bottom: 100%
+      opacity: 0
+      visibility: hidden
       img
         width: 100%
         height: auto
+        position: absolute
+        left: 0
+        top: 0
   &__previews
     position: absolute
     bottom: 5.8%
     right: calc(5.8% - 15px)
-    max-width: calc(100% - 11.6%)
+    left: 5.8%
     &-slider
       width: 100%
     &-item
-      width: 4.1875rem
-      height: 4.1875rem
+      //width: 4.1875rem
       border: 2px solid rgba(#fff, .6)
       border-radius: 50%
       transition: .25s border-color ease-in
@@ -784,7 +801,7 @@ input[type="number"]
         img
           opacity: 1
       img
-        width: 3.4375rem
+        width: 100%
         height: auto
         border-radius: 50%
         transition: .25s opacity ease-in
@@ -2124,9 +2141,15 @@ body.touch-device
   padding: 0 5px
   text-align: center
   background-color: $text
+  position: relative
   display: inline-block
   &:not(:last-of-type)
     margin-right: 6px
+  &:nth-of-type(2)
+    order: 1
+  &:nth-of-type(1)
+    order: 2
+
 
 body.touch-device
   .product

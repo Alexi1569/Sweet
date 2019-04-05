@@ -15,7 +15,7 @@ block main
           .pproduct__content.pb
             .pproduct__left
               .pproduct__gallery
-                .pproduct__gallery-slider.swiper-container#product-gallery
+                .pproduct__gallery-slider.swiper-container#product-gallery(dir="rtl")
                   .swiper-wrapper
                     a(href="#").swiper-slide.pproduct__gallery-item
                       img(src="./img/product-img.jpg" alt="product")
@@ -40,7 +40,7 @@ block main
                   i.swiper-next.pproduct__gallery-arrow
                     <svg width="12" height="12"><use xlink:href="#arrow-icon"/></svg>
               .pproduct__previews
-                .pproduct__previews-slider#product-previews.swiper-container
+                .pproduct__previews-slider#product-previews.swiper-container(dir="rtl")
                   .swiper-wrapper
                     .swiper-slide.pproduct__previews-item
                       img(src="./img/product-img.jpg" alt="product")
