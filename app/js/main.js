@@ -642,16 +642,10 @@ jQuery(document).ready(function ($) {
   })();
 
   function initScrollbar() {
-    var $scroll = $('.scrollbar-inner');
+    var $scrollDefault = $('.scrollbar-inner');
 
-    $scroll.each(function() {
-      if ($(this).hasClass('.options-modal__list')) {
-        if (windowWidth > 550) {
-          $(this).scrollbar();
-        }
-      } else {
-        $(this).scrollbar();
-      }
+    $scrollDefault.each(function() {
+      $(this).scrollbar();
     });
   }
 
