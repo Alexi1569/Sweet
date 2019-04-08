@@ -7,8 +7,249 @@ block header
 block main
 
   main.main
-    section.paccount
+    section.paccount.pb
       - var breadcrumbs = ['Личный кабинет'];
       include ../includes/_breadcrumbs
       .inner__content
-        .paccount__content
+        .container
+          p.caption Личный кабинет
+          .paccount__content
+            nav.paccount__nav#account-nav
+              ul
+                li.active
+                  a(href="#") Мой профиль
+                li
+                  a(href="#") Мои заказы
+                li
+                  a(href="#") Бонусы
+                li
+                  a(href="#") Избранные товары
+                li
+                  a(href="#") Подписка
+                li
+                  a(href="#") Выход
+            .paccount__right
+              .paccount__item.paccount__profile
+                .paccount__profile-row.paccount__profile--personal
+                  p.paccount__item-title Персональные данные
+                  .paccount__profile-row-content
+                    .form__group-inputs
+                      .form__group
+                        label.form__group-label(for="ap-n") Имя
+                        .form__group-input
+                          input(type="text" class="only-text-input" id="ap-n")
+                        span.form__group-message Ошибка
+                      .form__group
+                        label.form__group-label(for="ap-s") Фамилия
+                        .form__group-input
+                          input(type="text" class="only-text-input" id="ap-s")
+                        span.form__group-message Ошибка
+                      .form__group
+                        label.form__group-label(for="ap-p") Телефон*
+                        .form__group-input
+                          input(type="tel" class="only-numbers-input" id="ap-p")
+                        span.form__group-message Ошибка
+                      .form__group
+                        label.form__group-label(for="ap-e") Email
+                        .form__group-input
+                          input(type="email" id="ap-e")
+                        span.form__group-message Ошибка
+                .paccount__profile-row.paccount__profile--address
+                  p.paccount__item-title Адрес доставки
+                  .paccount__profile-row-content
+                    .form__group-inputs
+                      .form__group
+                        label.form__group-label(for="ap-st") Улица
+                        .form__group-input
+                          input(type="text" id="ap-st")
+                        span.form__group-message Ошибка
+                      .form__group.form__group--double
+                        .form__group
+                          label.form__group-label(for="ap-h") Дом
+                          .form__group-input
+                            input(type="text" id="ap-h")
+                          span.form__group-message Ошибка
+                        .form__group
+                          label.form__group-label(for="ap-f") Квартира
+                          .form__group-input
+                            input(type="text" id="ap-f")
+                          span.form__group-message Ошибка
+                .paccount__profile-row.paccount__profile--password
+                  p.paccount__item-title Сменить пароль
+                  .paccount__profile-row-content
+                    .form__group-inputs
+                      .form__group
+                        label.form__group-label(for="ap-op") Старый пароль
+                        .form__group-input
+                          input(type="password" id="ap-op")
+                        span.form__group-message Ошибка
+                      .form__group
+                        label.form__group-label(for="ap-np") Новый пароль
+                        .form__group-input
+                          input(type="password" id="ap-np")
+                        span.form__group-message Ошибка
+                      .form__group
+                        label.form__group-label(for="ap-rnp") Подтвердите новый пароль
+                        .form__group-input
+                          input(type="password" id="ap-rnp")
+                        span.form__group-message Ошибка
+                button(data-text="Сохранить").btn.paccount__profile-btn
+                  span Сохранить
+
+              .paccount__item.active.paccount__orders
+                p.paccount__item-title Мои заказы
+                .paccount__orders-content
+                  .paccount__order.paccount__order--head
+                    .paccount__order-top
+                      .paccount__col-left.paccount__col-part
+                        .paccount__col-number
+                          span Номер заказа
+                        .paccount__col-date
+                          span Дата заказа
+                        .paccount__col-get
+                          span Дата выдачи заказа
+                      .paccount__col-right.paccount__col-part
+                        .paccount__col-amount
+                          span Количество единиц
+                        .paccount__col-total
+                          span Сумма заказа
+                        .paccount__col-status
+                          span Статус заказа
+                  .paccount__order
+                    .paccount__order-top
+                      .paccount__col-left.paccount__col-part
+                        .paccount__col-number
+                          span № 35692
+                          <svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>
+                        .paccount__col-date
+                          span 25.03.2019
+                        .paccount__col-get
+                          span 03.04.2019
+                      .paccount__col-right.paccount__col-part
+                        .paccount__col-amount
+                          span 2
+                        .paccount__col-total
+                          span 440 грн
+                        .paccount__col-status.in-process
+                          span В процессе
+                    .paccount__order-bottom
+                      .paccount__details
+                        .paccount__details-row.paccount__details-row--head
+                          .paccount__details-left
+                            .paccount__details-photo
+                              span Фото
+                            .paccount__details-title
+                              span Наименование заказа
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span Вес
+                            .paccount__details-view
+                              span Оформление
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span Количество
+                            .paccount__details-price
+                              span Цена
+                        .paccount__details-row
+                          .paccount__details-left
+                            .paccount__details-photo
+                              a(href="#")
+                                img(src="./img/product-img.jpg" alt="alt")
+                            .paccount__details-title
+                              a(href="#") Торт “Sweet 16”
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span 2 кг
+                            .paccount__details-view
+                              span Фрукты
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span 1
+                            .paccount__details-price
+                              span 320 грн
+                        .paccount__details-row
+                          .paccount__details-left
+                            .paccount__details-photo
+                              a(href="#")
+                                img(src="./img/product-img.jpg" alt="alt")
+                            .paccount__details-title
+                              a(href="#") Торт “Sweet 16”
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span 2 кг
+                            .paccount__details-view
+                              span Фрукты
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span 1
+                            .paccount__details-price
+                              span 320 грн
+                  .paccount__order
+                    .paccount__order-top
+                      .paccount__col-left.paccount__col-part
+                        .paccount__col-number
+                          span № 35692
+                          <svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>
+                        .paccount__col-date
+                          span 25.03.2019
+                        .paccount__col-get
+                          span 03.04.2019
+                      .paccount__col-right.paccount__col-part
+                        .paccount__col-amount
+                          span 2
+                        .paccount__col-total
+                          span 440 грн
+                        .paccount__col-status.in-process
+                          span В процессе
+                    .paccount__order-bottom
+                      .paccount__details
+                        .paccount__details-row.paccount__details-row--head
+                          .paccount__details-left
+                            .paccount__details-photo
+                              span Фото
+                            .paccount__details-title
+                              span Наименование заказа
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span Вес
+                            .paccount__details-view
+                              span Оформление
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span Количество
+                            .paccount__details-price
+                              span Цена
+                        .paccount__details-row
+                          .paccount__details-left
+                            .paccount__details-photo
+                              a(href="#")
+                                img(src="./img/product-img.jpg" alt="alt")
+                            .paccount__details-title
+                              a(href="#") Торт “Sweet 16”
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span 2 кг
+                            .paccount__details-view
+                              span Фрукты
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span 1
+                            .paccount__details-price
+                              span 320 грн
+                        .paccount__details-row
+                          .paccount__details-left
+                            .paccount__details-photo
+                              a(href="#")
+                                img(src="./img/product-img.jpg" alt="alt")
+                            .paccount__details-title
+                              a(href="#") Торт “Sweet 16”
+                          .paccount__details-center
+                            .paccount__details-weight
+                              span 2 кг
+                            .paccount__details-view
+                              span Фрукты
+                          .paccount__details-right
+                            .paccount__details-amount
+                              span 1
+                            .paccount__details-price
+                              span 320 грн

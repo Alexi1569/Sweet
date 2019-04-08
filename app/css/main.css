@@ -330,6 +330,8 @@ input[type="submit"] {
   position: relative;
   transition: 0.25s all ease-in;
   z-index: 0;
+  height: 3.625rem;
+  width: 243px;
 }
 
 .btn.btn--linear.btn--transparent {
@@ -365,6 +367,7 @@ input[type="submit"] {
   transition: .4s all ease-in;
   bottom: 0;
   width: 100%;
+  line-height: 3.625rem;
   border-radius: 1.8125rem;
   z-index: 2;
   clip-path: ellipse(100% 100% at 50% 50%);
@@ -847,7 +850,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .sreviews__btn {
   width: 16.5625rem;
-  height: 3.625rem;
 }
 
 .sreviews__btn:before {
@@ -874,6 +876,304 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 .sreviews .reviews__top {
   width: 36%;
   padding-right: 30px;
+}
+
+.paccount__details {
+  padding-left: 2.5rem;
+  margin-top: 1.125rem;
+  font-size: .875em;
+  display: none;
+}
+
+.paccount__details-photo {
+  width: 5.3125rem;
+  padding-right: 16px;
+}
+
+.paccount__details-photo a {
+  display: block;
+}
+
+.paccount__details-photo img {
+  width: 100%;
+  display: block;
+  max-width: 60px;
+  height: auto;
+}
+
+.paccount__details-title {
+  width: calc(100% - 5.3125rem);
+}
+
+.paccount__details-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.paccount__details-title a:hover {
+  color: #33cccc;
+}
+
+.paccount__details-weight {
+  width: 39.42%;
+  padding-right: 16px;
+}
+
+.paccount__details-view {
+  width: 60.58%;
+  padding-right: 16px;
+}
+
+.paccount__details-amount {
+  width: calc(100% - 100px);
+  padding-right: 16px;
+}
+
+.paccount__details-price {
+  width: 100px;
+}
+
+.paccount__details-left {
+  width: 37.5%;
+}
+
+.paccount__details-center {
+  width: 35%;
+}
+
+.paccount__details-right {
+  width: 27.5%;
+}
+
+.paccount__details-left, .paccount__details-center, .paccount__details-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.paccount__details-row {
+  padding: 0 1.8125rem;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.paccount__details-row:first-of-type {
+  margin-top: 20px;
+}
+
+.paccount__details-row:not(.paccount__details-row--head) .paccount__details-price {
+  font-size: 1.14285714em;
+}
+
+.paccount__details-row.paccount__details-row--head {
+  background-color: #ecf0f8;
+  color: #a0a2a6;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+.paccount__col-number {
+  width: 31.57%;
+  padding-right: 16px;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.paccount__col-number span {
+  padding-right: .875rem;
+  max-width: calc(100% - 8px);
+}
+
+.paccount__col-number svg {
+  fill: #232323;
+}
+
+.paccount__col-date {
+  width: 29.83%;
+  padding-right: 16px;
+}
+
+.paccount__col-get {
+  width: 38.6%;
+  padding-right: 16px;
+}
+
+.paccount__col-amount {
+  width: 41.5%;
+  padding-right: 16px;
+}
+
+.paccount__col-total {
+  width: 33.96%;
+  padding-right: 16px;
+}
+
+.paccount__col-status {
+  width: 24.54%;
+}
+
+.paccount__col-status.in-process {
+  color: #33cccc;
+}
+
+.paccount__col-status.finished {
+  color: #5c6b88;
+}
+
+.paccount__col-part {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.paccount__col-left {
+  width: 51.81%;
+}
+
+.paccount__col-right {
+  width: 48.19%;
+}
+
+.paccount__order {
+  padding: 1.125rem 0;
+  border-bottom: 1px solid #e1e6f1;
+}
+
+.paccount__order:not(.paccount__order--head) .paccount__order-top {
+  cursor: pointer;
+}
+
+.paccount__order:not(.paccount__order--head) .paccount__col-total {
+  font-family: "Museo Cyrillic 500";
+}
+
+.paccount__order.paccount__order--head .paccount__order-top {
+  font-size: .875em;
+  color: #5c6b88;
+}
+
+.paccount__order-top {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1em;
+}
+
+.paccount__orders-content {
+  margin-top: 2.8125rem;
+}
+
+.paccount__profile-btn {
+  margin-top: 3.125rem;
+}
+
+.paccount__profile-row .form__group-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: -35px;
+}
+
+.paccount__profile-row .form__group {
+  width: 44.61%;
+  margin-bottom: 35px !important;
+}
+
+.paccount__profile-row:not(:last-of-type) {
+  margin-bottom: 4.0625rem;
+}
+
+.paccount__profile-row.paccount__profile--password .form__group-inputs .form__group:first-child {
+  margin-right: 40%;
+}
+
+.paccount__profile-row.paccount__profile--address .form__group--double {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.paccount__profile-row.paccount__profile--address .form__group--double .form__group {
+  width: 45.14%;
+}
+
+.paccount__profile-row-content {
+  margin-top: 2.8125rem;
+}
+
+.paccount__item {
+  display: none;
+}
+
+.paccount__item-title {
+  font-size: 1.125em;
+  font-family: "Museo Cyrillic 500";
+  text-transform: uppercase;
+}
+
+.paccount__item.active {
+  display: block;
+}
+
+.paccount__content {
+  margin-top: 3.75rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.paccount__right {
+  flex: 1;
+  border-left: 1px solid #e1e6f1;
+  padding-left: 5.2vw;
+  padding-top: .9rem;
+  min-height: 602px;
+}
+
+.paccount__profile {
+  max-width: 820px;
+}
+
+.paccount__nav {
+  color: #232323;
+  font-size: 1.125em;
+  width: 25.46%;
+}
+
+.paccount__nav ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.paccount__nav a {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  color: inherit;
+  z-index: 0;
+  padding: .875rem 2.75rem;
+}
+
+.paccount__nav a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  height: 100%;
+  bottom: 0;
+  width: 500px;
+  background-color: transparent;
+  transition: 0.25s all ease-in;
+}
+
+.paccount__nav li.active a, .paccount__nav li:hover a {
+  background-color: #e1e6f1;
+}
+
+.paccount__nav li.active a:before, .paccount__nav li:hover a:before {
+  background-color: #e1e6f1;
 }
 
 .pinfo {
@@ -908,13 +1208,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 .pinfo__btn {
-  height: 3.625rem;
-  width: 243px;
   margin-top: 2.125rem;
-}
-
-.pinfo__btn:before {
-  line-height: 3.625rem;
 }
 
 .pinfo__img {
@@ -977,13 +1271,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 .pcart__checkout-btn {
-  height: 3.635rem;
-  width: 243px;
   margin: 2rem auto 0;
-}
-
-.pcart__checkout-btn:before {
-  line-height: 3.625rem;
 }
 
 .pcart__checkout-delivery {
@@ -1257,13 +1545,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .pproduct__add {
   width: 12.65vw;
-  height: 3.625rem;
   min-width: 160px;
   margin-right: 1.66vw;
-}
-
-.pproduct__add:before {
-  line-height: 3.625rem;
 }
 
 .pproduct__favourite {
@@ -1585,13 +1868,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 .modal__btn {
-  height: 3.625rem;
-  width: 243px;
   margin: 35px auto 0;
-}
-
-.modal__btn:before {
-  line-height: 3.625rem;
 }
 
 .modal__content {
@@ -1819,11 +2096,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .buy-modal__continue, .buy-modal__checkout {
   width: 16.75rem;
-  height: 3.625rem;
-}
-
-.buy-modal__continue:before, .buy-modal__checkout:before {
-  line-height: 3.625rem;
 }
 
 .buy-modal__total {
@@ -1892,12 +2164,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .options-modal__btn {
   width: 16.75rem;
-  height: 3.625rem;
   margin: 0 2.25rem 0 auto;
-}
-
-.options-modal__btn:before {
-  line-height: 3.625rem;
 }
 
 .options-modal__text {
@@ -2664,7 +2931,6 @@ body.touch-device .sidebar__nav a:hover svg {
 }
 
 .header__auth-right-btn {
-  height: 3.625rem;
   width: 15.1875rem;
 }
 
@@ -2690,13 +2956,8 @@ body.touch-device .sidebar__nav a:hover svg {
 }
 
 .header__auth-form-btn {
-  height: 3.625rem;
   width: 15.1875rem;
   margin-top: 3rem;
-}
-
-.header__auth-form-btn:before {
-  line-height: 3.625rem;
 }
 
 .header__auth-form-remind {
@@ -3276,14 +3537,8 @@ body.touch-device .menu > .container {
 }
 
 .constructor__btn {
-  height: 3.625rem;
-  width: 243px;
   display: block;
   margin: 3.125rem auto 0;
-}
-
-.constructor__btn:before {
-  line-height: 3.625rem;
 }
 
 .constructor__content {
@@ -3890,12 +4145,7 @@ body.touch-device .product__title {
 
 .request__btn {
   width: 15.1875rem;
-  height: 3.625rem;
   margin-left: auto;
-}
-
-.request__btn:before {
-  line-height: 3.625rem;
 }
 
 .request__descr {
@@ -4756,6 +5006,33 @@ body.touch-device .product__title {
   html {
     font-size: 13px;
   }
+  .paccount__nav li a:before {
+    display: none !important;
+  }
+  .paccount__content {
+    flex-wrap: wrap;
+  }
+  .paccount__nav {
+    width: 100%;
+  }
+  .paccount__nav ul {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .paccount__nav a {
+    white-space: nowrap;
+  }
+  .paccount__right {
+    padding-left: 0;
+    border-left: 0;
+    margin-top: 40px;
+    min-height: auto;
+    padding-top: 0;
+  }
+  .paccount__profile {
+    max-width: none;
+  }
   .pcart__left,
   .pcart__right {
     padding-left: 5.3vw;
@@ -5135,6 +5412,9 @@ body.touch-device .product__title {
 }
 
 @media screen and (max-width: 600px) {
+  .paccount__profile-row .form__group {
+    width: 47%;
+  }
   .advantages__item-text {
     font-size: 14px;
     margin-left: 0;
@@ -5257,6 +5537,12 @@ body.touch-device .product__title {
 @media screen and (max-width: 450px) {
   .menu__bottom {
     flex-wrap: wrap;
+  }
+  .paccount__profile-row.paccount__profile--password .form__group-inputs .form__group:first-child {
+    margin-right: 0;
+  }
+  .paccount__profile-row .form__group {
+    width: 100%;
   }
   .buy-modal .product-row__info {
     width: calc(100% - 4rem);

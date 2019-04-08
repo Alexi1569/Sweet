@@ -1094,4 +1094,25 @@ jQuery(document).ready(function ($) {
   }
 
   initCartPage();
+
+  function initAccountNav(list) {
+    if (windowWidth < 991) {
+      $(list).addClass('scrollbar-inner');
+      $(list).scrollbar();
+    } else {
+      $(list).removeClass('scrollbar-inner');
+      $(list).scrollbar('destroy');
+    }
+  }
+
+  (function initAccountPage() {
+    var $nav = $('#account-nav');
+    var $list = $nav.find('ul');
+
+    initAccountNav($list);
+
+    $(window).resize(function() {
+      initAccountNav($list);
+    });
+  })();
 });

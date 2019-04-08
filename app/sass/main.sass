@@ -266,6 +266,8 @@ input[type="submit"]
   position: relative
   transition: $tr
   z-index: 0
+  height: 3.625rem
+  width: 243px
   &.btn--linear
     &.btn--transparent
       background-color: transparent
@@ -291,6 +293,7 @@ input[type="submit"]
     transition: .4s all ease-in
     bottom: 0
     width: 100%
+    line-height: 3.625rem
     border-radius: 1.8125rem
     z-index: 2
     clip-path: ellipse(100% 100% at 50% 50%)
@@ -645,7 +648,6 @@ input[type="number"]
     padding-right: 9.2vw
   &__btn
     width: 16.5625rem
-    height: 3.625rem
     &:before
       line-height: 3.5rem
   .reviews__item
@@ -662,6 +664,207 @@ input[type="number"]
   .reviews__top
     width: 36%
     padding-right: 30px
+
+.paccount
+  &__details
+    padding-left: 2.5rem
+    margin-top: 1.125rem
+    font-size: .875em
+    display: none
+    &-photo
+      width: 5.3125rem
+      padding-right: 16px
+      a
+        display: block
+      img
+        width: 100%
+        display: block
+        max-width: 60px
+        height: auto
+    &-title
+      width: calc(100% - 5.3125rem)
+      a
+        text-decoration: none
+        color: inherit
+        &:hover
+          color: $accent
+    &-weight
+      width: 39.42%
+      padding-right: 16px
+    &-view
+      width: 60.58%
+      padding-right: 16px
+    &-amount
+      width: calc(100% - 100px)
+      padding-right: 16px
+    &-price
+      width: 100px
+    &-left
+      width: 37.5%
+    &-center
+      width: 35%
+    &-right
+      width: 27.5%
+    &-left,
+    &-center,
+    &-right
+      display: flex
+      align-items: center
+      justify-content: flex-start
+    &-row
+      padding: 0 1.8125rem
+      display: flex
+      justify-content: flex-start
+      margin-top: 15px
+      &:first-of-type
+        margin-top: 20px
+      &:not(.paccount__details-row--head)
+        .paccount__details-price
+          font-size: 1.14285714em
+      &.paccount__details-row--head
+        background-color: #ecf0f8
+        color: #a0a2a6
+        padding-top: .75rem
+        padding-bottom: .75rem
+  &__col
+    &-number
+      width: 31.57%
+      padding-right: 16px
+      display: inline-flex
+      align-items: baseline
+      justify-content: flex-start
+      span
+        padding-right: .875rem
+        max-width: calc(100% - 8px)
+      svg
+        fill: $text
+    &-date
+      width: 29.83%
+      padding-right: 16px
+    &-get
+      width: 38.6%
+      padding-right: 16px
+    &-amount
+      width: 41.5%
+      padding-right: 16px
+    &-total
+      width: 33.96%
+      padding-right: 16px
+    &-status
+      width: 24.54%
+      &.in-process
+        color: #33cccc
+      &.finished
+        color: $additional
+    &-part
+      display: inline-flex
+      justify-content: flex-start
+    &-left
+      width: 51.81%
+    &-right
+      width: 48.19%
+  &__order
+    padding: 1.125rem 0
+    border-bottom: 1px solid $darker
+    &:not(.paccount__order--head)
+      .paccount__order-top
+        cursor: pointer
+      .paccount__col-total
+        font-family: $med
+    &.paccount__order--head
+      .paccount__order-top
+        font-size: .875em
+        color: $additional
+    &-top
+      display: flex
+      justify-content: flex-start
+      font-size: 1em
+
+  &__orders
+    &-content
+      margin-top: 2.8125rem
+  &__profile
+    &-btn
+      margin-top: 3.125rem
+    &-row
+      .form__group-inputs
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        align-items: flex-start
+        margin-bottom: -35px
+      .form__group
+        width: 44.61%
+        margin-bottom: 35px !important
+      &:not(:last-of-type)
+        margin-bottom: 4.0625rem
+      &.paccount__profile--password
+        .form__group-inputs
+          .form__group
+            &:first-child
+              margin-right: 40%
+      &.paccount__profile--address
+        .form__group--double
+          display: flex
+          justify-content: space-between
+          align-items: flex-start
+          .form__group
+            width: 45.14%
+      &-content
+        margin-top: 2.8125rem
+  &__item
+    display: none
+    &-title
+      font-size: 1.125em
+      font-family: $med
+      text-transform: uppercase
+    &.active
+      display: block
+  &__content
+    margin-top: 3.75rem
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+  &__right
+    flex: 1
+    border-left: 1px solid $darker
+    padding-left: 5.2vw
+    padding-top: .9rem
+    min-height: 602px
+  &__profile
+    max-width: 820px
+  &__nav
+    color: $text
+    font-size: 1.125em
+    width: 25.46%
+    ul
+      padding-left: 0
+      list-style-type: none
+    a
+      text-decoration: none
+      display: block
+      position: relative
+      color: inherit
+      z-index: 0
+      padding: .875rem 2.75rem
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        right: 100%
+        top: 0
+        height: 100%
+        bottom: 0
+        width: 500px
+        background-color: transparent
+        transition: $tr
+    li
+      &.active,
+      &:hover
+        a
+          background-color: $darker
+          &:before
+            background-color: $darker
 
 .pinfo
   flex: 1
@@ -684,11 +887,7 @@ input[type="number"]
     line-height: 1.44444444
     margin-top: 1.875rem
   &__btn
-    height: 3.625rem
-    width: 243px
     margin-top: 2.125rem
-    &:before
-      line-height: 3.625rem
   &__img
     margin: 0 auto
     max-width: 100%
@@ -731,11 +930,7 @@ input[type="number"]
     .pcart__checkout-row--payment .radio
       width: 44.8%
     &-btn
-      height: 3.635rem
-      width: 243px
       margin: 2rem auto 0
-      &:before
-        line-height: 3.625rem
     &-delivery
       font-size: 1em
       color: #4d4d4f
@@ -919,11 +1114,8 @@ input[type="number"]
     min-width: 120px
   &__add
     width: 12.65vw
-    height: 3.625rem
     min-width: 160px
     margin-right: 1.66vw
-    &:before
-      line-height: 3.625rem
   &__favourite
     font-size: 14px
     color: $placeholder
@@ -1146,11 +1338,7 @@ input[type="number"]
   padding: 50px 3.75rem 2.5rem
   text-align: center
   &__btn
-    height: 3.625rem
-    width: 243px
     margin: 35px auto 0
-    &:before
-      line-height: 3.625rem
   &__content
     margin-top: 3.25rem
   &__title
@@ -1310,9 +1498,6 @@ input[type="number"]
   &__continue,
   &__checkout
     width: 16.75rem
-    height: 3.625rem
-    &:before
-      line-height: 3.625rem
   &__total
     display: flex
     align-items: baseline
@@ -1353,10 +1538,7 @@ input[type="number"]
       display: block
   &__btn
     width: 16.75rem
-    height: 3.625rem
     margin: 0 2.25rem 0 auto
-    &:before
-      line-height: 3.625rem
   &__text
     padding: 2.25rem
     line-height: 1.5
@@ -1938,7 +2120,6 @@ body.touch-device
       text-align: center
       position: relative
       &-btn
-        height: 3.625rem
         width: 15.1875rem
         &:before
           line-height: 3.45rem
@@ -1954,11 +2135,8 @@ body.touch-device
       text-align: center
       position: relative
       &-btn
-        height: 3.625rem
         width: 15.1875rem
         margin-top: 3rem
-        &:before
-          line-height: 3.625rem
       &-remind
         color: rgba($text, .5) !important
         border-bottom-color: rgba($text, .5)
@@ -2372,12 +2550,8 @@ body.touch-device
   background-size: cover
   background-repeat: no-repeat
   &__btn
-    height: 3.625rem
-    width: 243px
     display: block
     margin: 3.125rem auto 0
-    &:before
-      line-height: 3.625rem
   &__content
     margin-left: -15px
     margin-right: -15px
@@ -2848,10 +3022,7 @@ body.touch-device
     align-items: flex-end
   &__btn
     width: 15.1875rem
-    height: 3.625rem
     margin-left: auto
-    &:before
-      line-height: 3.625rem
   &__descr
     font-size: 1.125em
     font-family: $slight
@@ -3466,6 +3637,27 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .paccount__nav
+    li a:before
+      display: none !important
+  .paccount__content
+    flex-wrap: wrap
+  .paccount__nav
+    width: 100%
+    ul
+      display: flex
+      justify-content: flex-start
+      max-width: 100%
+    a
+      white-space: nowrap
+  .paccount__right
+    padding-left: 0
+    border-left: 0
+    margin-top: 40px
+    min-height: auto
+    padding-top: 0
+  .paccount__profile
+    max-width: none
   .pcart__left,
   .pcart__right
     padding-left: 5.3vw
@@ -3754,6 +3946,8 @@ body.touch-device
     margin-right: -15px
 
 @media screen and (max-width: 600px)
+  .paccount__profile-row .form__group
+    width: 47%
   .advantages__item-text
     font-size: 14px
     margin-left: 0
@@ -3843,6 +4037,11 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .paccount__profile-row.paccount__profile--password .form__group-inputs .form__group:first-child
+    margin-right: 0
+  .paccount__profile-row
+    .form__group
+      width: 100%
   .buy-modal
     .product-row__info
       width: calc(100% - 4rem)
