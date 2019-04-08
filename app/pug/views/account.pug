@@ -1,0 +1,14 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.paccount
+      - var breadcrumbs = ['Личный кабинет'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .paccount__content

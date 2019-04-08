@@ -1,0 +1,20 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main.main--info
+    .pinfo__bg
+    section.pinfo.pinfo--success
+      .container.pt.pb
+        .pinfo__content
+          .pinfo__img
+            img(src='./img/buy-success-img.png' alt="alt")
+          .pinfo__bottom
+            p.pinfo__title Спасибо за покупку!
+            p.pinfo__descr Ваш заказ успешно принят. В течении часа с вами свяжется<br>наш менеджер, чтобы уточнить детали заказа.
+            a(href="#" data-text="На главную").btn.pinfo__btn
+              span На главную

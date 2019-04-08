@@ -162,6 +162,9 @@ a
 
 .main
   flex: 1
+  &.main--info
+    display: flex
+    flex-direction: column
 
 html
   font-size: 16px
@@ -660,6 +663,51 @@ input[type="number"]
     width: 36%
     padding-right: 30px
 
+.pinfo
+  flex: 1
+  width: 100%
+  display: flex
+  flex-direction: column
+  text-align: center
+  &__content
+    width: 100%
+  &.pinfo--success
+    .pinfo__img
+      width: 38.3125rem
+    .pinfo__bottom
+      margin-top: -3.5rem
+  &__title
+    font-size: 2.5em
+    font-family: $med
+  &__descr
+    font-size: 1.125em
+    line-height: 1.44444444
+    margin-top: 1.875rem
+  &__btn
+    height: 3.625rem
+    width: 243px
+    margin-top: 2.125rem
+    &:before
+      line-height: 3.625rem
+  &__img
+    margin: 0 auto
+    max-width: 100%
+    img
+      max-width: 100%
+      height: auto
+  .container
+    flex: 1
+    display: flex
+    align-items: center
+    justify-content: center
+  &__bg
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0
+    background-color: #f0f3f8
+    z-index: -1
 
 .pcart
   &__login
@@ -3296,6 +3344,8 @@ body.touch-device
     max-width: 100%
     margin-left: auto
     margin-right: auto
+  .pinfo.pinfo--success .pinfo__bottom
+    margin-top: 0
   .pproduct__right
     padding-left: 0
     margin-top: 36px
@@ -3729,7 +3779,7 @@ body.touch-device
     width: 100%
   .product-row__right
     margin-top: 22px
-    max-width: none
+    max-width: none !important
   .product-row__right
     margin-left: 0
 
