@@ -249,7 +249,7 @@ input[type="submit"]
 
 .btn
   border: 0
-  background-color: #fff
+  background-color: transparent
   border-radius: 1.8125rem
   font-size: 1.125em
   font-family: $med
@@ -344,6 +344,84 @@ textarea
   &__group
     text-align: left
     position: relative
+    &-btn
+      color: #ffffff
+      background-color: $accent
+      border-radius: 0 17.5px 17.5px 0
+      text-align: center
+      font-size: 16px
+      border: 0
+      font-family: $med
+      min-width: 140px
+      padding: 0 5px
+      height: 100%
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      transition: $tr
+      &:hover
+        background-color: darken($accent, 3%)
+
+    &.form__group--calendar
+      .form__group-label
+        bottom: 6px
+      .ui-datepicker-prev
+        svg
+          transform: rotate(90deg)
+      .ui-datepicker-next
+        svg
+          transform: rotate(-90deg)
+      .ui-datepicker-next-hover
+        right: 2px !important
+      .ui-datepicker-prev-hover
+        left: 2px !important
+      .ui-datepicker-prev,
+      .ui-datepicker-next
+        border: 1px solid $darker
+        border-radius: 4px
+        cursor: pointer
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        top: 2px !important
+        svg
+          fill: $accent
+        span
+          text-indent: 0
+          margin: 0
+          display: inline-block
+          position: initial
+      .ui-datepicker-title
+        font-family: $bold
+      .ui-datepicker
+        font-size: 14px
+        width: 100%
+        top: 100% !important
+        left: 0 !important
+        padding: 20px 19px
+        box-shadow: 0px 0px 18px 0px rgba(42, 42, 42, 0.11)
+        background-color: #ffffff
+        th
+          font-weight: normal
+          font-family: $med
+        td
+          a
+            text-align: center
+            color: lighten($text, 25%)
+    &.form__group--promocode
+      width: 300px
+      .form__group-input
+        display: flex
+        height: 35px
+        justify-content: space-between
+        padding-bottom: 0
+        border-bottom: 0
+        input
+          height: 100%
+          border-radius: 17.5px 0 0 17.5px
+          border: 1px solid $darker
+          border-right: 0
+          padding: 0 14px
     &.form__group--product
       .form__group-input
         padding-bottom: 0
@@ -351,7 +429,7 @@ textarea
         width: 170px
         height: 29px
         input
-          border: 1px solid #e1e6f1
+          border: 1px solid $darker
           border-radius: 14.5px
           height: 100%
           padding-left: 14px
@@ -403,9 +481,13 @@ textarea
       margin-bottom: 35px
     .select2-container.select2-container--default.select2-container--open
       top: 100% !important
+    .select2-results__option
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
     .select-dropdown
       border-radius: 0 !important
-      background-color: $darker
+      background-color: #eaeff8
       border: 0
       padding: 16px 0
       font-size: 13px
@@ -517,7 +599,7 @@ input[type="number"]
   &__plus
     width: 50%
     position: relative
-    background-color: #e1e6f1
+    background-color: $darker
     border: 0
     height: 100%
     display: inline-flex
@@ -543,7 +625,7 @@ input[type="number"]
       right: 0
       background-color: #ffffff
       border-radius: 50%
-      border: 1px solid #e1e6f1
+      border: 1px solid $darker
       text-align: center
       font-size: 1.375em
       padding: 0 10px
@@ -577,6 +659,189 @@ input[type="number"]
   .reviews__top
     width: 36%
     padding-right: 30px
+
+
+.pcart
+  &__login
+    width: 320px
+    max-width: 100%
+    text-align: center
+    margin: 0 auto
+    &-title
+      font-family: $med
+      font-size: 18px
+      margin-bottom: 2.5rem
+  &__address
+    display: flex
+    justify-content: space-between
+    .form__group
+      width: 45.14%
+  &__checkout
+    text-align: center
+    .pcart__address,
+    .form__group,
+    .pcart__checkout-row--payment .radio
+      width: 44.8%
+    &-btn
+      height: 3.635rem
+      width: 243px
+      margin: 2rem auto 0
+      &:before
+        line-height: 3.625rem
+    &-delivery
+      font-size: 1em
+      color: #4d4d4f
+      display: inline-flex
+      align-items: center
+      justify-content: flex-start
+      transition: $tr
+      &.hide
+        opacity: 0
+        visibility: hidden
+      svg
+        fill: $additional
+        margin-right: 10px
+    &-title
+      font-size: 1.125em
+      font-family: $med
+      margin-bottom: 2.375rem
+    &-row
+      text-align: left
+      &:not(:last-of-type)
+        margin-bottom: 3.4375rem
+      &.pcart__checkout-row--additional
+        .checkbox--small
+          &:not(:last-of-type)
+            margin-bottom: 3px
+        .form__group-inputs
+          margin-bottom: 1.5rem
+        .form__group
+          width: 100%
+          margin-bottom: 0 !important
+      &.pcart__checkout-row--payment
+        .form__group-inputs
+          margin-bottom: 0
+          margin-bottom: -5px
+        .radio
+          margin-bottom: 5px
+          span
+            font-size: 16px
+      &.pcart__checkout-row--personal
+        .form__group-inputs
+          margin-bottom: -10px
+      .form__group-inputs
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        margin-bottom: -35px
+        .form__group
+          margin-bottom: 35px
+  .form__group--select
+    .select-dropdown
+      background-color: #f4f6fd
+  .checkbox--small.checkbox
+    span
+      color: #a0a2a6
+      &:before
+        border-color: $accent
+  &__tabs
+    margin-top: 1.5rem
+    .tabs__list
+      li
+        &:not(:last-of-type)
+          margin-right: 6px
+      a
+        padding-left: 16px
+        padding-right: 16px
+  &__total
+    line-height: 1.3
+    padding-top: 2.1rem
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: baseline
+    font-family: $med
+    *:first-child
+      margin-right: 16px
+  &__benefits
+    padding: 2.1rem 0
+    border-bottom: 1px solid $darker
+    &.active
+      .pcart__benefits-toggler
+        color: $accent
+        border-bottom-color: $accent
+      .form__group--promocode
+        opacity: 1
+        visibility: visible
+    &-promocode
+      margin-top: 18px
+      display: flex
+      min-height: 35px
+      justify-content: space-between
+      align-items: baseline
+      flex-wrap: wrap
+      margin-bottom: -14px
+    .form__group--promocode
+      margin-bottom: 14px
+      opacity: 0
+      visibility: hidden
+      transition: $tr
+    &-toggler
+      margin-right: 16px
+      margin-bottom: 14px
+      &.dashed-link
+        font-size: 1em
+        color: $text
+        &:hover
+          color: $accent
+    &-info
+      line-height: 1.3
+      display: flex
+      justify-content: flex-start
+      flex-wrap: wrap
+      align-items: baseline
+      *:first-child
+        margin-right: 1.875rem
+      *:last-child
+        color: $additional
+        font-family: $med
+  &__sale
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    align-items: baseline
+    padding: 2.1rem 0
+    line-height: 1.3
+    border-bottom: 1px solid $darker
+    *:last-child
+      font-family: $med
+    *:first-child
+      margin-right: 22px
+  &__info
+    font-size: 1.125em
+  &__content
+    display: flex
+    justify-content: space-between
+  &__part
+    width: 50%
+  &__left
+    padding-left: 5.3vw
+    padding-right: 4.6vw
+  &__right
+    padding-right: 5.3vw
+    padding-left: 4.6vw
+    position: relative
+    z-index: 0
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      z-index: -1
+      bottom: 0
+      left: 0
+      background-color: #ecf0f8
+      right: 0
+      height: calc(100% + 200px)
 
 
 .pproduct
@@ -866,21 +1131,27 @@ input[type="number"]
   display: flex
   justify-content: space-between
   align-items: center
+  border-bottom: 1px solid $darker
+  padding: 1.5625rem 0
+  &:first-of-type
+    border-top: 1px solid $darker
   &__delete
     position: absolute
     right: 0
     top: 50%
     margin-top: -18px
   .amount
-    margin-right: 3rem
+    margin-right: 1.5rem
+    margin-left: 1.5rem
     margin-bottom: 16px
   &__prices
     display: inline-flex
+    margin-right: 1.5rem
+    margin-left: 1.5rem
     flex-direction: column
     justify-content: flex-end
     align-items: flex-start
     margin-bottom: 16px
-    flex: 1
     &-sale
       font-size: 1em
       color: rgba($additional, .5)
@@ -923,26 +1194,28 @@ input[type="number"]
       width: 7.8125rem
       padding-right: 1.25rem
     &-val
-      flex: 1
+      width: calc(100% - 7.8125rem)
+      overflow: hidden
     &:not(:last-of-type)
       margin-bottom: 7px
   &__left
     display: inline-flex
     align-items: flex-start
-    width: 390px
+    width: 24.375rem
     padding-right: 1.875rem
   &__right
     display: inline-flex
     align-items: center
     justify-content: space-between
-    width: calc(100% - 24.375rem)
+    max-width: calc(100% - 24.375rem + 3rem)
     flex-wrap: wrap
     padding-right: 30px
     position: relative
+    margin-left: -1.5rem
     margin-bottom: -16px
   &__info
     padding-left: 1.625rem
-    flex: 1
+    width: calc(100% - 7.5rem)
   &__img
     width: 7.5rem
     display: inline-block
@@ -975,7 +1248,7 @@ input[type="number"]
       transform: rotate(-25deg) translateX(-5%) translateY(-10%)
 
 .buy-modal
-  width: 836px
+  width: 52.25rem
   text-align: left
   .modal__title
     text-align: center
@@ -1007,10 +1280,6 @@ input[type="number"]
       margin: 0 12px 16px
   &__bottom
     margin-top: 1.5625rem
-  &__top
-    border-top: 1px solid $darker
-    border-bottom: 1px solid $darker
-    padding: 1.5625rem 0
 
 .reviews-modal
   width: 790px
@@ -1095,6 +1364,7 @@ input[type="number"]
     span
       font-size: 12px
       line-height: 16px
+      text-align: left
       color: rgba($text, .5)
       &:before,
       &:after
@@ -1120,7 +1390,7 @@ input[type="number"]
       transition: $tr
       width: 13px
       height: 13px
-      background-color: #ffffff
+      background-color: transparent
       border: 1px solid #ebebeb
       left: 0
       top: 2px
@@ -1539,9 +1809,10 @@ body.touch-device
     border-radius: 4px
 
 .header
-  &.auth-opened
+  &.auth-finished
     .header__auth
       background-color: #ffffff
+  &.auth-opened
     .sidebar__nav
       opacity: 0
       visibility: hidden
@@ -1631,13 +1902,13 @@ body.touch-device
     &--margin
       margin-top: 4.375rem
     &-form
-      max-width: 320px
+      width: 20rem
       text-align: center
       position: relative
       &-btn
         height: 3.625rem
         width: 15.1875rem
-        margin-top: 3.125rem
+        margin-top: 3rem
         &:before
           line-height: 3.625rem
       &-remind
@@ -2911,6 +3182,13 @@ body.touch-device
   .footer__logo
     width: 5.2rem
 
+@media screen and (max-width: 1600px)
+  .pcart__left
+    padding-right: 3vw
+  .pcart__right
+    padding-left: 3vw
+
+
 @media screen and (max-width: 1450px)
   .footer__top
     font-size: 14px
@@ -2962,6 +3240,49 @@ body.touch-device
     font-size: 3em
   .banner__descr
     font-size: 1.6em
+
+@media screen and (max-width: 1350px) and (min-width: 992px)
+  .pcart__products
+    .product-row .amount
+      margin-left: 1rem
+      margin-right: 1rem
+    .product-row__prices
+      margin-left: 1rem
+      margin-right: 1rem
+    .product-row__img
+      width: 5rem
+    .product-row__info
+      width: calc(100% - 5rem)
+    .product-row__left
+      width: 23rem
+    .product-row__right
+      max-width: calc(100% - 23rem + 2rem)
+
+
+@media screen and (max-width: 1250px) and (min-width: 992px)
+  .pcart__checkout .pcart__address, .pcart__checkout .form__group, .pcart__checkout .pcart__checkout-row--payment .radio
+    width: 47%
+  .pcart__products
+    .product-row
+      flex-wrap: wrap
+      .amount
+        margin-left: 0
+    .product__row-price
+      margin-right: 0
+    .product-row__left,
+    .product-row__right
+      width: 100%
+    .product-row__left
+      padding-right: 0
+    .product-row__right
+      margin-left: 0
+      margin-top: 22px
+      max-width: none
+    .product-row__img
+      width: 7.5rem
+    .product-row__info
+      width: calc(100% - 7.5rem)
+
 
 @media screen and (max-width: 1199px)
   html
@@ -3016,6 +3337,9 @@ body.touch-device
     margin-right: 6.2rem
   .footer__right
     flex-wrap: wrap
+    justify-content: center
+    text-align: center
+  .footer__socials .socials-list
     justify-content: center
   .reviews__info
     padding-left: 2.1rem
@@ -3092,6 +3416,20 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .pcart__left,
+  .pcart__right
+    padding-left: 5.3vw
+    padding-right: 5.3vw
+  .pcart__part
+    width: 100%
+  .pcart__content
+    flex-wrap: wrap
+  .pcart__right
+    padding-top: 4.8rem
+    &:before
+      height: auto
+      top: 0
+
   .sreviews
     .reviews__item
       flex-direction: column
@@ -3211,14 +3549,26 @@ body.touch-device
 @media screen and (max-width: 767px)
   html
     font-size: 12px
+  .buy-modal
+    .product-row__left
+      width: 29rem
+    .product-row__info
+      width: calc(100% - 6.5rem)
+    .product-row__right
+      max-width: calc(100% - 29rem + 3rem)
+    .product-row__img
+      width: 6.5rem
+  .product-row__attribute-key
+    width: 9rem
+  .product-row__attribute-valc
+    width: calc(100% - 9rem)
   .options-modal__nav a
     padding-left: 1.5rem
     padding-right: 1.5rem
   .modal
     padding-left: 3rem
     padding-right: 3rem
-  .product-row__img
-    width: 6.5rem
+
   .menu
     padding-top: 6.5rem
   .amount__icon
@@ -3370,19 +3720,28 @@ body.touch-device
     margin-right: 15px
   .product-row
     flex-wrap: wrap
+  .product-row .amount
+    margin-left: 0
   .product-row__left
     padding-right: 0
   .product-row__left,
   .product-row__right
     width: 100%
   .product-row__right
-    margin-top: 16px
+    margin-top: 22px
+    max-width: none
+  .product-row__right
+    margin-left: 0
 
 @media screen and (max-width: 550px)
   .buy-modal__actions
     flex-direction: column
     justify-content: flex-start
     align-items: center
+  .pcart__checkout .pcart__address, .pcart__checkout .form__group, .pcart__checkout .pcart__checkout-row--payment .radio
+    width: 100%
+  .pcart__checkout .pcart__address
+    flex-wrap: wrap
   .buy-modal__checkout
     order: 1
   .buy-modal__continue
@@ -3434,6 +3793,11 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .buy-modal
+    .product-row__info
+      width: calc(100% - 4rem)
+    .product-row__img
+      width: 4rem
   .pproduct__add
     margin-right: 0
     width: calc(100% - 140px)
@@ -3442,8 +3806,7 @@ body.touch-device
     margin-top: 2.2rem
   .reviews-modal .form__group:not(.form__group--textarea)
     width: 100%
-  .product-row__img
-    width: 5rem
+
   .modal
     padding-left: 2.4rem
     padding-right: 2.4rem

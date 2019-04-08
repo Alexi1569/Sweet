@@ -1,0 +1,225 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pcart
+      - var breadcrumbs = ['Корзина'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .pcart__content
+          .pcart__left.pcart__part.pb
+            p.caption В корзине
+            .pcart__products.mt
+              .product-row
+                .product-row__left
+                  a(href="#").product-row__img
+                    img(src="./img/product-img.jpg" alt="alt")
+                  .product-row__info
+                    a(href="#").product-row__title Торт “Sweet 16”
+                    .product-row__attributes
+                      .product-row__attribute
+                        p.product-row__attribute-key Вес
+                        p.product-row__attribute-val 2 кг
+                      .product-row__attribute
+                        p.product-row__attribute-key Оформление
+                        p.product-row__attribute-val Фрукты
+                .product-row__right
+                  .product-row__amount.amount
+                    button.amount__minus
+                      span.amount__icon
+                        <svg><use xlink:href="#minus-icon"/></svg>
+                    .amount__input
+                      input(type="number" value="1" min="0" max="10")
+                    button.amount__plus
+                      span.amount__icon
+                        <svg><use xlink:href="#plus-icon"/></svg>
+                  .product-row__prices
+                    span.product-row__prices-price 160 грн
+                  i.delete-icon.product-row__delete
+                    <svg width="18" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 62.7 71" style="enable-background:new 0 0 62.7 71;" xml:space="preserve"><g class="delete-icon__top"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M22.3,11.1V6.6c0-2.3,1.9-4.2,4.2-4.2h9.7c2.3,0,4.2,1.9,4.2,4.2v4.6"/></g><g class="detele-icon__bottom"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="21.2" y1="56.2" x2="21.2" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="31.9" y1="56.2" x2="31.9" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="42.8" y1="56.2" x2="42.8" y2="23.7"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M53.7,11.1v51.1c0,3.4-2.7,6.1-6.1,6.1H16.3c-3.4,0-6.1-2.7-6.1-6.1V11.1"/></g></svg>
+              .product-row
+                .product-row__left
+                  a(href="#").product-row__img
+                    img(src="./img/product-img.jpg" alt="alt")
+                  .product-row__info
+                    a(href="#").product-row__title Торт “Sweet 16”
+                    .product-row__attributes
+                      .product-row__attribute
+                        p.product-row__attribute-key Вес
+                        p.product-row__attribute-val 2 кг
+                      .product-row__attribute
+                        p.product-row__attribute-key Оформление
+                        p.product-row__attribute-val Фрукты
+                .product-row__right
+                  .product-row__amount.amount
+                    button.amount__minus
+                      span.amount__icon
+                        <svg><use xlink:href="#minus-icon"/></svg>
+                    .amount__input
+                      input(type="number" value="1" min="0" max="10")
+                    button.amount__plus
+                      span.amount__icon
+                        <svg><use xlink:href="#plus-icon"/></svg>
+                  .product-row__prices
+                    span.product-row__prices-sale 185 грн
+                    span.product-row__prices-price 160 грн
+                  i.delete-icon.product-row__delete
+                    <svg width="18" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 62.7 71" style="enable-background:new 0 0 62.7 71;" xml:space="preserve"><g class="delete-icon__top"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M22.3,11.1V6.6c0-2.3,1.9-4.2,4.2-4.2h9.7c2.3,0,4.2,1.9,4.2,4.2v4.6"/></g><g class="detele-icon__bottom"><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="2.6" y1="11.1" x2="60.1" y2="11.1"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="21.2" y1="56.2" x2="21.2" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="31.9" y1="56.2" x2="31.9" y2="23.7"/><line fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="42.8" y1="56.2" x2="42.8" y2="23.7"/><path fill="none" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M53.7,11.1v51.1c0,3.4-2.7,6.1-6.1,6.1H16.3c-3.4,0-6.1-2.7-6.1-6.1V11.1"/></g></svg>
+            .pcart__info
+              .pcart__sale
+                p Скидка
+                p 20 грн
+              .pcart__benefits
+                .pcart__benefits-info
+                  p Доступно бонусов
+                  p 300 бонусов
+                .pcart__benefits-promocode
+                  a(href="#").pcart__benefits-toggler.dashed-link#promocode-toggler Применить бонусы
+                  .form__group.form__group--promocode
+                    .form__group-input
+                      input(type="text")
+                      button.form__group-btn
+                        span Применить
+                    span.form__group-message Ошибка
+              .pcart__total
+                p Итого к оплате
+                p 710 грн
+
+          .pcart__right.pcart__part.pb
+            p.caption Оформление заказа
+            .tabs.pcart__tabs
+              ul.tabs__list.scrollbar-inner
+                li.active
+                  a(href="#new") Я новый покупатель
+                li
+                  a(href="#exist") Я уже зарегистрирован
+              .tabs__content.mt
+                .tabs__item#new.active
+                  .pcart__checkout
+                    .pcart__checkout-row.pcart__checkout-row--personal
+                      p.pcart__checkout-title Персональные данные
+                      .pcart__checkout-inputs
+                        .form__group-inputs
+                          .form__group
+                            label.form__group-label(for="ch-n") Имя*
+                            .form__group-input
+                              input(type="text" class="only-text-input" id="ch-n")
+                            span.form__group-message Ошибка
+                          .form__group
+                            label.form__group-label(for="ch-s") Фамилия*
+                            .form__group-input
+                              input(type="text" class="only-text-input" id="ch-s")
+                            span.form__group-message Ошибка
+                          .form__group
+                            label.form__group-label(for="ch-p") Телефон*
+                            .form__group-input
+                              input(type="tel" class="only-numbers-input" id="ch-p")
+                            span.form__group-message Ошибка
+                          .form__group
+                            label.form__group-label(for="ch-e") Email
+                            .form__group-input
+                              input(type="email" id="ch-e")
+                            span.form__group-message Ошибка
+                        label.checkbox.checkbox--small
+                          input(type="checkbox")
+                          span Зарегистрироваться как постоянный пользователь
+                    .pcart__checkout-row.pcart__checkout-row--delivery
+                      p.pcart__checkout-title Способ доставки
+                      .pcart__checkout-inputs
+                        .form__group-inputs
+                          .form__group.form__group--select.form__group--delivery-key
+                            label.form__group-label Способ доставки
+                            .form__group-input
+                              select
+                                option(selected value="self") Самовывоз - бесплатно
+                                option(value="taxi") На такси
+                          .form__group.form__group--delivery-val
+                            .pcart__checkout-delivery
+                              <svg width="17" height="20"><use xlink:href="#address-icon"/></svg>
+                              p ул. Плехановская, 12
+                          .form__group.form__group--calendar
+                            label.form__group-label Дата
+                            .form__group-input
+                              input(type="text")
+                            span.form__group-message Ошибка
+                          .form__group.form__group--select
+                            label.form__group-label Время
+                            .form__group-input
+                              select
+                                option(selected disabled) Время
+                                option с 11:00 до 13:00
+                                option с 13:00 до 15:00
+                                option с 15:00 до 18:00
+                                option в любое время (не применимо к тортам)
+                          .form__group
+                            label.form__group-label(for="ch-st") Улица
+                            .form__group-input
+                              input(type="text" id="ch-st")
+                            span.form__group-message Ошибка
+                          .pcart__address
+                            .form__group
+                              label.form__group-label(for="ch-h") Дом
+                              .form__group-input
+                                input(type="text" id="ch-h")
+                              span.form__group-message Ошибка
+                            .form__group
+                              label.form__group-label(for="ch-r") Квартира
+                              .form__group-input
+                                input(type="text" id="ch-r")
+                              span.form__group-message Ошибка
+                    .pcart__checkout-row.pcart__checkout-row--payment
+                      p.pcart__checkout-title Способ оплаты
+                      .pcart__checkout-inputs
+                        .form__group-inputs
+                          label.radio
+                            input(type="radio" name="payment-method" checked)
+                            span Предоплата 50% + наличные
+                          label.radio
+                            input(type="radio" name="payment-method" checked)
+                            span Предоплата 100% (LiqPay)
+                    .pcart__checkout-row.pcart__checkout-row--additional
+                      p.pcart__checkout-title Дополнительные сведения
+                      .pcart__checkout-inputs
+                        .form__group-inputs
+                          .form__group.form__group--textarea
+                            label.form__group-label(for="ch-t") Примечания к вашему заказу, например пожелания к оформлению
+                            .form__group-input
+                              textarea(id="ch-t")
+                            span.form__group-message Ошибка
+                      label.checkbox.checkbox--small
+                        input(type="checkbox")
+                        span Даю согласие на обработку &#32;
+                          a(href="#" target="_blank") персональных данных
+                      label.checkbox.checkbox--small
+                        input(type="checkbox")
+                        span Перезвонить мне для уточнения деталей заказа
+                    button(data-text="Оформить заказ").btn.pcart__checkout-btn
+                      span Оформить заказ
+
+                .tabs__item#exist
+                  .pcart__login
+                    p.pcart__login-title Вход в учетную запись
+                    form(action="#")
+                      .form__group-inputs
+                        .form__group
+                          label.form__group-label(for="chf-n") Email или Телефон
+                          .form__group-input
+                            input(type="text" class="only-text-input" id="chf-n")
+                          span.form__group-message Ошибка
+                        .form__group
+                          label.form__group-label(for="chf-p") Пароль
+                          .form__group-input
+                            input(type="password" id="chf-p")
+                          span.form__group-message Ошибка
+                      .header__auth-form-bottom
+                        label.checkbox.checkbox--small
+                          input(type="checkbox")
+                          span Запомнить меня
+                        a(href="#" data-target="remind").dashed-link.header__auth-form-remind.header__auth-target Восстановить пароль
+                      button(data-text="Войти").btn.header__auth-form-btn
+                        span Войти

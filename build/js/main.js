@@ -695,6 +695,7 @@ jQuery(document).ready(function ($) {
     function closeAuth(tl, self, parts) {
       tl.fromTo($close, .5, {autoAlpha: 1, scaleX: 1, scaleY: 1}, {autoAlpha: 0, scaleX: .5, scaleY: .5, onStart: function() {
           $('body').addClass('disable-auth-opening');
+          $('.header').removeClass('auth-finished');
         }, onComplete: function() {
           $wrap.css('padding-right', wrapPadding + 'px');
           $close.css('right', closeRight + 'px');
@@ -739,6 +740,7 @@ jQuery(document).ready(function ($) {
               $close.css('right', (closeRight + scrollWidth) + 'px');
               $('body').addClass('no-scroll');
               $('body').removeClass('disable-auth-opening');
+              $('.header').addClass('auth-finished');
             }}, '-=.3');
         }
       }
@@ -1054,4 +1056,42 @@ jQuery(document).ready(function ($) {
   };
 
   initAmount();
+
+  function initCartPage() {
+    var $promocodeToggler = $('#promocode-toggler');
+    var $promocodeWrap =  $('.pcart__benefits');
+    var $promocodeInput =  $promocodeWrap.find('.form__group--promocode');
+    var $calendar = $('.form__group--calendar');
+    var $deliveryKey = $('.form__group--delivery-key');
+    var $deliveryVal = $('.pcart__checkout-delivery');
+
+    $deliveryKey.find('select').on('change', function(e) {
+      if (e.target.value === 'self') {
+        $deliveryVal.removeClass('hide');
+      } else {
+        $deliveryVal.addClass('hide');
+      }
+    });
+
+    $calendar.each(function() {
+      var $self = $(this);
+      var $target = $self.find('input');
+
+      $target.datepicker({
+        dateFormat: 'dd.mm.yy',
+        beforeShow: function(textbox, instance){
+          $self.append($('#ui-datepicker-div'));
+        },
+        prevText: '<svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>',
+        nextText: '<svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>',
+      });
+    });
+
+    $promocodeToggler.click(function(e) {
+      e.preventDefault();
+      $promocodeWrap.toggleClass('active');
+    });
+  }
+
+  initCartPage();
 });
