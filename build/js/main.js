@@ -865,14 +865,39 @@ jQuery(document).ready(function ($) {
     var $previews = $('#product-previews');
     var $wrap = $('.pproduct__gallery');
 
+    function setSlidesHeight(slider, h) {
+      $(slider).find('.swiper-slide').each(function() {
+        $(this).css('height', h + 'px');
+      });
+    }
+
     var previewsSwiper = new Swiper($previews, {
-      spaceBetween: 15,
-      slidesPerView: 3,
+      spaceBetween: 18,
+      slidesPerView: 9,
       speed: 250,
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
       watchOverflow: true,
       initialSlide: 4,
+      on: {
+        init: function() {
+          var h = $($(this.$el).find('.swiper-slide')[0]).width();
+          setSlidesHeight(this.$el, h);
+
+          $(window).resize(function() {
+            h = $($(this.$el).find('.swiper-slide')[0]).width();
+            setSlidesHeight(this.$el, h);
+          })
+        }
+      },
+      breakpoints: {
+        450: {
+          slidesPerView: 5,
+        },
+        1199: {
+          slidesPerView: 7,
+        },
+      }
     });
 
     var gallerySwiper = new Swiper($gallery, {

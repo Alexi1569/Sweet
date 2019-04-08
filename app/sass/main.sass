@@ -268,6 +268,9 @@ input[type="submit"]
       background-color: transparent
       &:before
         background-color: transparent
+        border-color: transparent
+      &:after
+        border-width: 1px
     &:before
       background-color: #ffffff
       color: $text
@@ -723,6 +726,16 @@ input[type="number"]
       border-radius: 29px
   &__gallery
     position: relative
+    &.disabled
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        z-index: 5
     .label
       opacity: 0
       visibility: hidden
@@ -780,12 +793,11 @@ input[type="number"]
   &__previews
     position: absolute
     bottom: 5.8%
-    right: calc(5.8% - 15px)
+    right: 5.8%
     left: 5.8%
     &-slider
       width: 100%
     &-item
-      //width: 4.1875rem
       border: 2px solid rgba(#fff, .6)
       border-radius: 50%
       transition: .25s border-color ease-in
@@ -801,7 +813,7 @@ input[type="number"]
         img
           opacity: 1
       img
-        width: 100%
+        width: 83%
         height: auto
         border-radius: 50%
         transition: .25s opacity ease-in

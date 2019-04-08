@@ -333,6 +333,11 @@ input[type="submit"] {
 
 .btn.btn--linear.btn--transparent:before {
   background-color: transparent;
+  border-color: transparent;
+}
+
+.btn.btn--linear.btn--transparent:after {
+  border-width: 1px;
 }
 
 .btn.btn--linear:before {
@@ -963,6 +968,17 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   position: relative;
 }
 
+.pproduct__gallery.disabled:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+
 .pproduct__gallery .label {
   opacity: 0;
   visibility: hidden;
@@ -1047,7 +1063,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 .pproduct__previews {
   position: absolute;
   bottom: 5.8%;
-  right: calc(5.8% - 15px);
+  right: 5.8%;
   left: 5.8%;
 }
 
@@ -1079,7 +1095,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 .pproduct__previews-item img {
-  width: 100%;
+  width: 83%;
   height: auto;
   border-radius: 50%;
   transition: .25s opacity ease-in;
