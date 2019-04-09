@@ -96,7 +96,7 @@ block main
                 button(data-text="Сохранить").btn.paccount__profile-btn
                   span Сохранить
 
-              .paccount__item.active.paccount__orders
+              .paccount__item.paccount__orders
                 p.paccount__item-title Мои заказы
                 .paccount__orders-content
                   .paccount__order.paccount__order--head
@@ -199,8 +199,8 @@ block main
                           span 2
                         .paccount__col-total
                           span 440 грн
-                        .paccount__col-status.in-process
-                          span В процессе
+                        .paccount__col-status.finished
+                          span Завершен
                     .paccount__order-bottom
                       .paccount__details
                         .paccount__details-row.paccount__details-row--head
@@ -247,9 +247,124 @@ block main
                             .paccount__details-weight
                               span 2 кг
                             .paccount__details-view
-                              span Фрукты
+                              span -
                           .paccount__details-right
                             .paccount__details-amount
                               span 1
                             .paccount__details-price
                               span 320 грн
+
+              .paccount__item.paccount__bonus
+                p.paccount__item-title Бонусы
+                .paccount__bonus-content
+                  .paccount__bonus-top
+                    .paccount__bonus-info
+                      p На вашем счету
+                      p 0 &#32;
+                        span бонусов
+                    p.paccount__bonus-tooltip 1 бонус = 1 грн
+                  .paccount__bonus-text
+                    p Бонусы начисляются после того, как сумма предыдущих заказов будет свыше 500 грн. Бонусный счет закрепляется за вашей учетной записью. Вы можете оплатить бонусами до 100% суммы заказа.
+                    br
+                    p Вы получаете бонусные проценты от суммы заказа. Процент зависит от общей суммы заказов.
+                  .paccount__bonus-bottom
+                    span * Бонусы действительны в течении 4 месяцев
+                    span Бонусы действительны до 25.06.2019
+
+              .paccount__item.paccount__favourites
+                p.paccount__item-title Избранные товары
+                .paccount__favourites-content
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      a(href="#").product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      a(href="#").product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      a(href="#").product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+                  .product
+                    a(href="#").product__img
+                      img(src="./img/product-img.jpg" alt="product")
+                      .product__labels
+                        span.label New
+                        span.label Top
+                    .product__info
+                      a(href="#").product__title Пряники “Медвежонок”
+                      .product__actions
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="15" height="14"><use xlink:href="#favourite-icon"/></svg>
+                          span.product__btn-tooltip В избранное
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="15"><use xlink:href="#cart-icon"/></svg>
+                          span.product__btn-tooltip В корзину
+                        .product__btn
+                          i.product__btn-icon
+                            <svg width="13" height="9"><use xlink:href="#view-icon"/></svg>
+                          span.product__btn-tooltip Подробнее
+
+              .paccount__item.paccount__subscribe.active
+                p.paccount__item-title Подписка
+                .paccount__subscribe-content
+                  p.paccount__subscribe-caption Будь в курсе наших акций и новинок!
+                  label.checkbox.checkbox--round
+                    input(type="checkbox")
+                    span Подписаться
+                  button(data-text="Сохранить").btn.paccount__subscribe-btn
+                    span Сохранить

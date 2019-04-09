@@ -1108,6 +1108,24 @@ jQuery(document).ready(function ($) {
   (function initAccountPage() {
     var $nav = $('#account-nav');
     var $list = $nav.find('ul');
+    var $orders = $('.paccount__order:not(.paccount__order--head)');
+
+    $orders.each(function() {
+      var $self = $(this);
+      var $top = $self.find('.paccount__order-top');
+      var $info = $self.find('.paccount__order-bottom');
+
+      $top.click(function() {
+        $self.toggleClass('opened');
+
+        if ($self.hasClass('opened')) {
+          $info.slideDown(500);
+        } else {
+          $info.slideUp(350);
+        }
+
+      });
+    });
 
     initAccountNav($list);
 
