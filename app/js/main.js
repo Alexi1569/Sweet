@@ -595,6 +595,7 @@ jQuery(document).ready(function ($) {
         var imgH = $img.height();
         var imgW = $img.outerWidth(true);
         var textH = $text.outerHeight(true);
+        var pLeft = parseInt($text.find('p:last-child').css('margin-left'), 10);
 
         if (textH > imgH) {
           if (windowWidth > 650) {
@@ -621,7 +622,7 @@ jQuery(document).ready(function ($) {
               $text[0].style.maxHeight = null;
               $(link).text('Скрыть');
               $(link).css({
-                'left': '0px'
+                'left': pLeft + 'px'
               });
             } else {
               if (windowWidth > 650) {

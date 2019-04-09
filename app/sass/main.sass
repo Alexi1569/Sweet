@@ -27,6 +27,28 @@ $smed: 'Museo Sans Cyrillic 500'
 *:focus
     outline: none
 
+h1, h2, h3
+  font-weight: normal
+  font-family: $light
+
+h1
+  font-size: 2em
+
+h2
+  font-size: 1.7em
+
+h3
+  font-size: 1.55555556em
+
+h4
+  font-size: 1.3em
+
+h5
+  font-size: 1.1em
+
+h6
+  font-size: 1em
+
 .fancybox-bg
   background: rgba(#384053, .8)
 
@@ -667,6 +689,156 @@ input[type="number"]
     width: 36%
     padding-right: 30px
 
+.blog-item
+  &__categories
+    &.blog-categories
+      font-size: .875em
+      margin-bottom: -0.6875rem
+      li
+        margin-right: 0.6875rem
+        margin-bottom: 0.6875rem
+      a
+        border-radius: 16.5px
+        border: 1px solid $darker
+        padding: .44rem .75rem
+  &__info
+    margin-top: 1.5rem
+  &__date
+    font-size: 14px
+    color: $placeholder
+    padding-bottom: 1.875rem
+    margin-bottom: 1.875rem
+    border-bottom: 1px solid $darker
+  &__bottom
+    margin-top: 1.5rem
+  &__title
+    text-decoration: none
+    color: inherit
+    height: 5rem
+    overflow: hidden
+    display: block
+    font-family: $med
+    font-size: 1.125em
+    line-height: 1.55555556
+  &:hover
+    .blog-item__img
+      img
+        transform: scale(1.02)
+    .blog-item__title
+      color: $accent
+  &__img
+    display: block
+    overflow: hidden
+    img
+      display: block
+      width: 100%
+      height: auto
+      transition: $tr
+
+.last-news
+
+
+.pblog-item
+  &__bottom
+    margin-top: 3.75rem
+    padding-top: 1.875rem
+    padding-left: 21.35vw
+    border-top: 1px solid $darker
+  &__info
+    margin-top: 1.4rem
+    font-family: $slight
+  &__views
+    display: inline-flex
+    align-items: center
+    justify-content: flex-start
+    color: $placeholder
+    svg
+      margin-right: 10px
+      fill: $placeholder
+  &__date
+    color: #828080
+    position: relative
+    padding-right: 1.6875rem
+    margin-right: calc(1.6875rem - 1px)
+    &:after
+      content: ''
+      display: inline-block
+      height: 9px
+      width: 1px
+      background-color: $placeholder
+      position: absolute
+      right: 0
+      top: 50%
+      margin-top: -4.5px
+  &__title
+    font-size: 2.5em
+    font-family: $bold
+    line-height: 1.35
+    text-transform: uppercase
+    margin-top: -14px
+  &__text
+    color: $lightText
+    font-size: 18px
+    line-height: 1.44
+    margin-top: 3.4375rem
+    *:not(h1):not(h2):not(h3)
+      font-family: $slight
+    & > *:not(img)
+      margin-left: 21.35vw
+  &__content
+    overflow: hidden
+    img
+      float: left
+      max-width: 53.04%
+      margin-right: 5.2vw
+      margin-bottom: 2.25rem
+
+ul.blog-categories
+  list-style-type: none
+  padding-left: 0
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: -1.25rem
+  a
+    display: block
+    text-decoration: none
+    color: inherit
+    border-radius: 20px
+    white-space: nowrap
+    padding: .55rem 1.5rem .65rem
+    border: 1px solid $darker
+  li
+    margin-right: 1.25rem
+    margin-bottom: 1.25rem
+    &.selected
+      a
+        border-color: $accent
+    &:last-of-type
+      margin-right: 0
+
+.pblog
+  &__items
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+    margin: 3.75rem -25px -4.375rem
+    .blog-item
+      margin-bottom: 4.375rem
+      margin-left: 25px
+      margin-right: 25px
+      width: calc(25% - 50px)
+  &__content
+    margin-top: 4.375rem
+  &__categories
+    display: flex
+    align-items: baseline
+    justify-content: flex-start
+    font-family: $med
+    &-title
+      color: $additional
+      margin-right: 2.6875rem
+
+
 .paccount
   &__subscribe
     &-content
@@ -694,7 +866,7 @@ input[type="number"]
       justify-content: space-between
       align-items: center
       font-size: 12px
-      color: #a0a2a6
+      color: $placeholder
       flex-wrap: wrap
       margin: 3.75rem -16px -12px
       & > *
@@ -795,7 +967,7 @@ input[type="number"]
           font-size: 1.14285714em
       &.paccount__details-row--head
         background-color: $lightBg
-        color: #a0a2a6
+        color: $placeholder
         padding-top: .75rem
         padding-bottom: .75rem
   &__col
@@ -1058,7 +1230,7 @@ input[type="number"]
       background-color: #f4f6fd
   .checkbox--small.checkbox
     span
-      color: #a0a2a6
+      color: $placeholder
       &:before
         border-color: $accent
   &__tabs
@@ -1501,7 +1673,7 @@ input[type="number"]
   &__attributes
     margin-top: 2rem
   &__attribute
-    color: #a0a2a6
+    color: $placeholder
     font-size: 14px
     display: flex
     justify-content: space-between
@@ -3367,6 +3539,8 @@ body.touch-device
     z-index: 0
     padding-bottom: 45px
     overflow: hidden
+    & > *:not(img):not(.text-link)
+      margin-left: 5.3vw
     &:after
       content: ''
       display: block
@@ -3378,6 +3552,8 @@ body.touch-device
       bottom: 2.5rem
 
 .about
+  .container
+    padding-left: 0
   &__title
     font-family: $med
     margin-bottom: 2.375rem
@@ -3526,6 +3702,21 @@ body.touch-device
 @media screen and (max-width: 1350px)
   html
     font-size: 15px
+  .pblog-item__title
+    font-size: 2.2em
+  .pblog-item__text
+    margin-top: 3rem
+  .pblog-item__text > *:not(img)
+    margin-left: 16vw
+  .pblog-item__bottom
+    padding-left: 16vw
+  .pblog__items
+    margin-left: -15px
+    margin-right: -15px
+    .blog-item
+      width: calc(25% - 30px)
+      margin-left: 15px
+      margin-right: 15px
   .paccount__right
     padding-left: 4vw
   .paccount__details
@@ -3621,6 +3812,21 @@ body.touch-device
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .pblog-item__text > *:not(img)
+    margin-left: 11vw
+  .pblog-item__bottom
+    padding-left: 11vw
+  .pblog-item__title
+    font-size: 2em
+  .pblog-item__text
+    margin-top: 2.7rem
+  .pblog__items
+    margin-left: -25px
+    margin-right: -25px
+    .blog-item
+      width: calc(33.33% - 50px)
+      margin-left: 25px
+      margin-right: 25px
   .paccount__right
     padding-left: 3vw
   .paccount__details
@@ -3758,6 +3964,21 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .pblog-item__title
+    font-size: 1.8em
+  .pblog-item__text > *:not(img)
+    margin-left: 6vw
+  .pblog-item__bottom
+    padding-left: 6vw
+  .blog-item__title
+    height: 5.2rem
+  .pblog__items
+    margin-left: -15px
+    margin-right: -15px
+    .blog-item
+      width: calc(33.33% - 30px)
+      margin-left: 15px
+      margin-right: 15px
   .paccount__nav
     li a:before
       display: none !important
@@ -3861,6 +4082,18 @@ body.touch-device
     width: 46.21%
 
 
+@media screen and (max-width: 950px)
+  .pblog-item__text > *:not(img)
+    margin-left: 0vw
+  .pblog-item__bottom
+    padding-left: 0vw
+  .pblog-item__content img
+    float: none
+    margin-left: auto
+    margin-right: auto
+    display: block
+
+
 @media screen and (max-width: 900px)
   .caption.instagram__caption
     font-size: 1.35em
@@ -3877,6 +4110,13 @@ body.touch-device
 @media screen and (max-width: 850px)
   .pproduct__right-top, .pproduct__right-bottom
     width: 100%
+  .pblog__items
+    margin-left: -25px
+    margin-right: -25px
+    .blog-item
+      width: calc(50% - 50px)
+      margin-left: 25px
+      margin-right: 25px
   .sreviews__content
     flex-direction: column
     justify-content: flex-start
@@ -3912,6 +4152,15 @@ body.touch-device
 @media screen and (max-width: 767px)
   html
     font-size: 12px
+  .pblog__categories
+    flex-wrap: wrap
+  .pblog__categories-title
+    width: 100%
+    padding-right: 0
+  .pblog__categories-list
+    margin-top: 16px
+  .blog-item__title
+    height: 5.9rem
   .buy-modal
     .product-row__left
       width: 29rem
@@ -4020,6 +4269,17 @@ body.touch-device
 @media screen and (max-width: 650px)
   .banner__title
     font-size: 2em
+  .about .container
+    padding-left: 5.3vw
+  .text-wrap > *:not(img):not(.text-link)
+    margin-left: 0
+  .pblog__items
+    margin-left: -15px
+    margin-right: -15px
+    .blog-item
+      width: calc(50% - 30px)
+      margin-left: 15px
+      margin-right: 15px
   .paccount__favourites-content
     margin-bottom: -25px
     .product
@@ -4074,6 +4334,9 @@ body.touch-device
 @media screen and (max-width: 600px)
   .paccount__profile-row .form__group
     width: 47%
+  .pblog-item__content img
+    max-width: 100%
+    width: 330px
   .paccount__col-left
     flex-wrap: wrap
     padding-right: 16px
@@ -4147,6 +4410,9 @@ body.touch-device
     margin-left: 0
 
 @media screen and (max-width: 550px)
+  .blog-item__title
+    font-size: 14px
+    height: 5.2rem
   .buy-modal__actions
     flex-direction: column
     justify-content: flex-start
@@ -4220,6 +4486,13 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .pblog__items
+    margin-left: -10px
+    margin-right: -10px
+    .blog-item
+      width: calc(50% - 20px)
+      margin-left: 10px
+      margin-right: 10px
   .paccount__col-left
     width: 110px
   .paccount__order--head
@@ -4315,6 +4588,18 @@ body.touch-device
       width: calc(50% - 14px)
       margin-right: 7px
       margin-left: 7px
+
+@media screen and (max-width: 380px)
+  .pblog__items
+    margin-left: -5px
+    margin-right: -5px
+    .blog-item
+      width: calc(50% - 10px)
+      margin-left: 5px
+      margin-right: 5px
+  .blog-item__title
+    font-size: 13px
+    height: 5rem
 
 @media screen and (max-width: 360px)
   .product__labels
