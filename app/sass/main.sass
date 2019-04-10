@@ -755,6 +755,80 @@ body.touch-device
       filter: grayscale(0)
       opacity: 1
 
+.pdelivery
+  &__advantage
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+    font-size: 1.125em
+    line-height: 1.33333333
+    color: $lightText
+    &:not(:last-of-type)
+      margin-bottom: 1.125rem
+    &-icon
+      display: inline-block
+      width: 23px
+      margin-right: 16px
+      margin-top: 1px
+      svg
+        fill: #77829b
+  &__col
+    width: calc(33.33% - 30px)
+    margin-left: 15px
+    margin-right: 15px
+    &-content
+      padding: 0 3.75rem
+      margin-top: 2.25rem
+    &-title
+      padding: 0 3.75rem
+      font-size: 1.75em
+  &__bottom
+    background-color: $lightBg
+    &-content
+      display: flex
+      align-items: flex-start
+      justify-content: flex-start
+      margin-left: -15px
+      margin-right: -15px
+  &__img
+    width: 31.92%
+    min-width: 350px
+    margin-top: 14px
+    img
+      width: 100%
+      height: auto
+  &__text
+    color: $lightText
+    font-size: 1.125em
+    line-height: 1.44
+    flex: 1
+    padding-left: 3.3rem
+    font-family: $slight
+    ul
+      padding-left: 0
+      list-style-type: none
+      li
+        &:before
+          display: inline-block
+          vertical-align: top
+          content: ''
+          width: 8px
+          height: 8px
+          border-radius: 50%
+          background-color: $accent
+          margin-left: 13px
+          margin-right: 13px
+          margin-top: 8px
+    h1, h2, h3
+      color: $text
+      font-family: $light
+  &__top
+    margin-top: 3.75rem
+    padding-left: 4.5vw
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+
 .pfaq
   .faq-pc
     display: none
@@ -767,6 +841,7 @@ body.touch-device
     justify-content: space-between
     font-size: 1.125em
     line-height: 1.444
+    margin-top: 3.75rem
   &__items
     border-right: 1px solid $darker
     width: 40.68%
@@ -778,6 +853,8 @@ body.touch-device
     &-answer
       &-text
         margin-top: 1.8rem
+        color: $lightText
+        font-family: $slight
       &-question
         font-size: 1.44444444em
     &.active,
@@ -3838,6 +3915,11 @@ body.touch-device
     font-size: 15px
   .footer__logo
     width: 5.2rem
+  .pdelivery__col-title,
+  .pdelivery__col-content
+    padding: 0 2.8rem
+  .pdelivery__col-title
+    font-size: 1.65em
 
 @media screen and (max-width: 1600px)
   .pcart__left
@@ -3855,6 +3937,13 @@ body.touch-device
 @media screen and (max-width: 1350px)
   html
     font-size: 15px
+  .pdelivery__text
+    padding-left: 2.5rem
+  .pdelivery__col-title,
+  .pdelivery__col-content
+    padding: 0 2rem
+  .pdelivery__col-title
+    font-size: 1.4em
   .pabout__top-img,
   .pabout__bottom-img
     width: 50%
@@ -3968,6 +4057,22 @@ body.touch-device
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .pdelivery__img
+    width: 400px
+    max-width: 100%
+    min-width: auto
+    margin-top: 0
+  .pdelivery__text
+    padding-left: 0
+    width: 100%
+    flex-basis: 100%
+  .pdelivery__top
+    flex-wrap: wrap
+    padding-left: 0
+    justify-content: center
+  .pdelivery__col-title,
+  .pdelivery__col-content
+    padding: 0
   .pfaq__item-answer-question
     font-size: 1.55em
   .pabout__top-img,
@@ -4125,11 +4230,23 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .pdelivery__col .line-item
+    display: none
   .pfaq__item-answer-question
     font-size: 1.4em
   .pfaq__item-question
     padding-left: 2.3rem
     padding-right: 2.3rem
+  .pdelivery__col
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+    &:not(:last-of-type)
+      margin-bottom: 4rem
+  .pdelivery__bottom-content
+    flex-wrap: wrap
+    margin-left: 0
+    margin-right: 0
   .pabout__top-content
     padding: 0
     width: 100%

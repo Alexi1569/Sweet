@@ -1,0 +1,79 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pdelivery
+      - var breadcrumbs = ['Доставка и оплата'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .container
+          p.caption Доставка и оплата
+          .pdelivery__content
+            .pdelivery__top.pb
+              .pdelivery__img
+                img(src="./img/delivery-img.png" alt="alt")
+              .pdelivery__text
+                h3 Оформление заказа
+                br
+                p Чтобы оформить заказ на нашем сайте, вы можете воспользоваться одним из следующих способов:
+                br
+                ul
+                  li Вы можете выбрать понравившийся вам продукт из нашего каталога и добавить его в корзину, после чего заполнить форму заказа.
+                  li Для оформления индивидуального заказа вы можете воспользоваться нашим конструктором, указав все необходимые детали.
+                br
+                p После оформления заказа в течении часа с вами свяжется наш менеджер, чтобы уточнить все детали и подтвердить заказ.
+                br
+                p В нашей кондитерской предусмотрена обязательная предоплата в размере 50%.
+                br
+                p Заказ необходимо оформлять предварительно (минимум за 1 день). Упаковка заказа возможна в коробочке (в необходимой стилистике), либо в простой упаковке (минимальное количество пряников в заказе - 10 шт)
+
+        .pdelivery__bottom.pb.pt.line-section(data-lines="delivery")
+          .container
+            .pdelivery__bottom-content
+              .pdelivery__col.line-wrap
+                .pdelivery__col-title.line-parent
+                  p Способы доставки
+                .pdelivery__col-content
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="20" height="19"><use xlink:href="#taxi-icon"/></svg>
+                    p Такси - оплачивается при получении по тарифам компании
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="22" height="18"><use xlink:href="#self-delivery-icon"/></svg>
+                    p Самовывоз - бесплатно
+              .pdelivery__col.line-wrap
+                .pdelivery__col-title.line-parent
+                  p Условия доставки
+                  <svg class="line-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.92 50.77"><path d="M.27 13C10.23 6.69 21 .17 32.77.51c8.49.25 16.46 4.1 23.57 8.74S70 19.39 77.39 23.57a69.49 69.49 0 0 0 33.22 9c4.85.06 9.82-.43 14.2-2.51s8.1-6 9-10.75a8.17 8.17 0 0 0-.12-3.87c-1.4-4.54-7.92-5.77-11.88-3.14s-5.63 7.66-6 12.4a20.27 20.27 0 0 0 1.3 9.55c2.62 6 8.94 9.57 15.06 12a53.8 53.8 0 0 0 12.89 3.69c9.68 1.31 19.57-1.34 28.29-5.73s16.47-10.5 24.14-16.54l20.12-15.87" stroke="#000" stroke-miterlimit="10" stroke-dasharray="4 5" fill="none"/></svg>
+                .pdelivery__col-content
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="20" height="20"><use xlink:href="#clock-icon"/></svg>
+                    p Время: ежедневно, с 11:00 до 18:00 (оговаривается индивидуально).
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="18" height="20"><use xlink:href="#gift-icon"/></svg>
+                    p Минимальный заказ - 150 грн
+              .pdelivery__col.line-wrap
+                .pdelivery__col-title.line-parent
+                  p Способы оплаты
+                  <svg class="line-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235.51 47.25"><path d="M.33 22.17c6.67-5.93 15-9.56 23.36-12.8 10.68-4.15 21.7-7.85 33.13-8.7s23.42 1.39 32.65 8.19c4.47 3.29 8.42 8.16 8.27 13.71s-6.28 10.78-11.26 8.33c-4.9-4.13-5-12.19-1.34-17.48s9.93-8.14 16.22-9.34c11.25-2.15 23.82.66 31.68 9 5.08 5.38 7.86 12.52 12.45 18.33C156 44.7 175.05 49.09 191.64 45.6s31-13.63 43.53-25.09" stroke="#000" stroke-miterlimit="10" stroke-dasharray="4 5" fill="none"/></svg>
+                .pdelivery__col-content
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="23" height="17"><use xlink:href="#cash-1-icon"/></svg>
+                    p Предоплата 50% + перевод на карту, перед отправкой заказа на такси
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="21" height="23"><use xlink:href="#cash-2-icon"/></svg>
+                    p Предоплата 50% + перевод на карту, перед отправкой заказа на такси
+                  .pdelivery__advantage
+                    i.pdelivery__advantage-icon
+                      <svg width="23" height="16"><use xlink:href="#card-icon"/></svg>
+                    p Предоплата 50% + перевод на карту, перед отправкой заказа на такси

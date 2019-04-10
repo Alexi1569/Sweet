@@ -350,23 +350,37 @@ jQuery(document).ready(function ($) {
             'width': left - TITLE_GUTTER + 'px'
           });
         } else if (idx === items.length - 1) {
-          var $prevP = $(items[idx - 1]).find('.line-parent p');
-          var prevRight = $prevP.position().left;
+          var $prevParent = $(items[idx - 1]).find('.line-parent');
+          var $prevP = $prevParent.find('p');
+          var prevRight = $prevParent.outerWidth() - ($prevP.position().left + $prevP.outerWidth());
 
-          $wrap.find('.line-item:first-of-type').css({
-            'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
-            'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
-          });
+          var lines = $wrap.find('.line-item');
 
-          $wrap.find('.line-item:last-of-type').css({
-            'width': left - TITLE_GUTTER + 'px',
-            'left': 'auto',
-            'right': '0',
-          });
+          if (lines.length > 1) {
+            $wrap.find('.line-item:first-of-type').css({
+              'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
+              'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
+            });
+
+            $wrap.find('.line-item:last-of-type').css({
+              'width': left - TITLE_GUTTER + 'px',
+              'left': 'auto',
+              'right': '0',
+            });
+          } else {
+            $wrap.find('.line-item').css({
+              'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
+              'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
+            });
+          }
+
         }
         else {
-          var $prevP = $(items[idx - 1]).find('.line-parent p');
-          var prevRight = $prevP.position().left;
+          var $prevParent = $(items[idx - 1]).find('.line-parent');
+          var $prevP = $prevParent.find('p');
+          var prevRight = $prevParent.outerWidth() - ($prevP.position().left + $prevP.outerWidth());
+
+          console.log(prevRight, ' ', left)
 
           $wrap.find('.line-item').css({
             'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
@@ -395,6 +409,14 @@ jQuery(document).ready(function ($) {
         } else if (windowWidth <= 1199 && windowWidth > 767) {
           COL_GUTTER = 15;
           TITLE_GUTTER = 10;
+        }
+      } else if (type === 'delivery') {
+        if (windowWidth > 1650) {
+          COL_GUTTER = 15;
+          TITLE_GUTTER = 40;
+        } else if (windowWidth <= 1650 && windowWidth > 991) {
+          COL_GUTTER = 15;
+          TITLE_GUTTER = 20;
         }
       }
 
