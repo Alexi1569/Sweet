@@ -735,7 +735,108 @@ input[type="number"]
       height: auto
       transition: $tr
 
-.last-news
+.text-blockquote
+  position: relative
+  padding: 1.375rem 0 1.375rem 1.75rem
+  &:before
+    content: ''
+    display: inline-block
+    position: absolute
+    top: 0
+    bottom: 0
+    height: 100%
+    background-color: $accent
+    width: 2px
+    left: 0
+
+body.touch-device
+  .partners__item
+    img
+      filter: grayscale(0)
+      opacity: 1
+
+.partners
+  .swiper-wrapper
+    align-items: baseline
+  .slider__nav
+    margin-top: 3.75rem
+  &__item
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    &:hover
+      img
+        filter: grayscale(0)
+        opacity: 1
+
+    img
+      max-width: 100%
+      height: auto
+      display: block
+      transition: $tr
+      filter: grayscale(1)
+      opacity: .35
+
+.pabout
+  &__bottom
+    display: flex
+    justify-content: space-between
+    &-img
+      width: 47.3%
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+      img
+        display: block
+        height: auto
+        width: 100%
+    &-images
+      display: flex
+      padding-left: 5.3vw
+      justify-content: space-between
+      width: 100%
+      height: 26.5625rem
+    &-image
+      width: 50%
+      height: 100%
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+      img
+        display: block
+        width: 100%
+        height: auto
+    &-text
+      width: 100%
+      padding: 4.375rem 5.2vw 0 5.3vw
+    &-content
+      display: flex
+      flex-direction: column
+      flex: 1
+      justify-content: space-between
+      align-items: flex-start
+  &__content
+    font-size: 1.125em
+    line-height: 1.4444
+    color: $lightText
+    font-family: $slight
+  &__top
+    display: flex
+    justify-content: space-between
+    &-content
+      flex: 1
+      padding-right: 5.3vw
+      padding-left: 5.2vw
+      padding-bottom: 4.375rem
+    &-img
+      width: 52.7%
+      background-position: center
+      background-size: cover
+      background-repeat: no-repeat
+      img
+        width: 100%
+        display: block
+        height: auto
 
 
 .pblog-item
@@ -3702,6 +3803,9 @@ body.touch-device
 @media screen and (max-width: 1350px)
   html
     font-size: 15px
+  .pabout__top-img,
+  .pabout__bottom-img
+    width: 50%
   .pblog-item__title
     font-size: 2.2em
   .pblog-item__text
@@ -3812,6 +3916,9 @@ body.touch-device
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .pabout__top-img,
+  .pabout__bottom-img
+    width: 40%
   .pblog-item__text > *:not(img)
     margin-left: 11vw
   .pblog-item__bottom
@@ -3964,6 +4071,37 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .pabout__top-content
+    padding: 0
+    width: 100%
+    flex-basis: 100%
+    margin-top: 4rem
+  .pabout__bottom-content
+    padding: 0
+    width: 100%
+    flex-basis: 100%
+    order: 2
+    margin-top: 4rem
+  .pabout__top-img,
+  .pabout__bottom-img
+    height: 420px
+    width: 500px
+    max-width: 100%
+  .pabout__bottom-img
+    order: 1
+  .pabout__bottom-images
+    padding-left: 0
+  .pabout__bottom-text
+    padding-left: 0
+    padding-top: 0
+  .pabout__bottom
+    margin-top: 4rem
+  .pabout__top,
+  .pabout__bottom
+    flex-wrap: wrap
+    justify-content: center
+    padding-left: 5.3vw
+    padding-right: 5.3vw
   .pblog-item__title
     font-size: 1.8em
   .pblog-item__text > *:not(img)
@@ -4486,6 +4624,12 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .pabout__bottom-images
+    flex-wrap: wrap
+    height: auto
+  .pabout__bottom-image
+    width: 100%
+    height: 26.5625rem
   .pblog__items
     margin-left: -10px
     margin-right: -10px

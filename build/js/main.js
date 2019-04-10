@@ -582,6 +582,73 @@ jQuery(document).ready(function ($) {
     });
   })();
 
+  (function initPartnersSlider() {
+    var $self = $('#partners-slider');
+    var $slider = $self.find('.partners__slider');
+    var $prev = $slider.find('.swiper-prev');
+    var $next = $slider.find('.swiper-next');
+    var $progress = $self.find('.slider__progress-range');
+    var slidesPerView;
+    var max;
+    var range;
+
+    if (windowWidth > 1650) {
+      slidesPerView = 8;
+    } else if (windowWidth <= 1650 && windowWidth > 1199) {
+      slidesPerView = 6;
+    } else if (windowWidth <= 1199 && windowWidth > 991) {
+      slidesPerView = 5;
+    } else if (windowWidth <= 991 && windowWidth > 600) {
+      slidesPerView = 4;
+    } else if (windowWidth <= 600 && windowWidth > 380) {
+      slidesPerView = 3;
+    } else if (windowWidth <= 380) {
+      slidesPerView = 2;
+    }
+
+    var mySwiper = new Swiper($slider, {
+      speed: 900,
+      spaceBetween: 55,
+      roundLengths: true,
+      watchOverflow: true,
+      slidesPerView: slidesPerView,
+      navigation: {
+        prevEl: $prev,
+        nextEl: $next,
+      },
+      on: {
+        init: function() {
+          max = $(this)[0].slides.length - slidesPerView;
+          step = 100 / max / 100;
+
+          range = initRangeSlider($progress, max, step, $(this)[0]);
+        }
+      },
+      breakpoints: {
+        380: {
+          spaceBetween: 40,
+          slidesPerView: 2
+        },
+        450: {
+          spaceBetween: 40,
+          slidesPerView: 3
+        },
+        600: {
+          slidesPerView: 3
+        },
+        991: {
+          slidesPerView: 4
+        },
+        1199: {
+          slidesPerView: 5
+        },
+        1650: {
+          slidesPerView: 6
+        },
+      }
+    });
+  })();
+
   (function initTextBlocks() {
     var $blocks = $('.text-content');
 

@@ -1,0 +1,84 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pabout.pb
+      - var breadcrumbs = ['О нас'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .pabout__content
+          .pabout__top
+            .pabout__top-img(style="background-image: url('./img/about-1.jpg')")
+            .pabout__top-content
+              p.pblog-item__title О нас
+              br
+              br
+              h3 Исполняем самые сладкие желания
+              br
+              p Традиции изготовления пряников ручной работы уходят в глубокое прошлое. В старину на Руси пряники были желанным угощеньем и на крестьянском, и на царском столе. В наше время этот тип выпечки постепенно возрождается, и пряники, выполненные на заказ, с индивидуальным дизайном становятся больше чем вкусное угощенье!
+              br
+              p Сладкая мастерская "Sugar&Canela" предлагает Вам вкусные, красивые, аккуратные пряники с уникальным индивидуальным дизайном. На Новый Год, Рождество, День рождение, свадьбу, 8 марта, День влюбленных и другие государственные праздники и Ваши семейные торжества, для детей, любимых мужей и жен, других родственников, для коллег и бизнес партнеров... для всех этих событий мы сделаем прянички и другие десерты! Торты, пирожные, капкейки, кейк-попсы, меренга - все это мы делаем для Вас из самых лучших и качественных продуктов!
+              br
+              br
+              br
+              br
+              p.text-blockquote Мы верим, что памятные события в жизни не должны доставлять много хлопот, поэтому есть место, где вы можете заказать вкусные кондитерские изделия с удобной доставкой и дружелюбным сервисом.
+
+          .pabout__bottom
+            .pabout__bottom-content
+              .pabout__bottom-text
+                p Наша карьера кондитеров началась с небольшого заказа тортов для сеймейных праздников и вечеринок. Наш первый заказ был сделан на 14 февраля и хоть заказ был не большой, но нас это только вдохновило.
+                br
+                p Спустя пару месяцев мы получили радостные известия, что проект получил поддержку и у нас будет финансирование для воплощения своего бизнеса. В января 2016 года мы получили долгожданный грант на сумму 95 тысяч гривен и мы смогли приобрести два холодильника, столы для мучных работ и художественной росписи, печь, тестомес и стеллаж.
+                br
+                p В феврале наша мини-кондитерская переехала из маленькой съемной квартиры в студию по адресу ул. Плехановской в городе Харькове.
+                br
+                br
+              .pabout__bottom-images
+                .pabout__bottom-image(style="background-image: url('./img/about-2.jpg')")
+                .pabout__bottom-image(style="background-image: url('./img/about-3.jpg')")
+            .pabout__bottom-img(style="background-image: url('./img/about-4.jpg')")
+
+    section.partners.pb
+      .container
+        p.caption с нами сотрудничают
+        .partners__content.mt#partners-slider
+          .partners__slider.swiper-container
+            .swiper-wrapper
+              .swiper-slide.partners__item
+                img(src="./img/partners/np.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/socar.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/wog.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/shell.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/privat24.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/rozetka.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/kasta.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/lamoda.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/rozetka.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/kasta.png" alt="alt")
+              .swiper-slide.partners__item
+                img(src="./img/partners/lamoda.png" alt="alt")
+
+
+            .slider__nav
+              .slider__progress.swiper-no-swiping
+                .slider__progress-range
+              .slider__arrows
+                i.swiper-prev
+                  <svg width="15" height="12"><use xlink:href="#long-arrow-icon"/></svg>
+                i.swiper-next
+                  <svg width="15" height="12"><use xlink:href="#long-arrow-icon"/></svg>
