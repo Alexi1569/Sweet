@@ -755,6 +755,58 @@ body.touch-device
       filter: grayscale(0)
       opacity: 1
 
+.pfaq
+  .faq-pc
+    display: none
+  .faq-mobile
+    display: none
+    margin: 1.4rem 0 3.2rem
+  &__content
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    font-size: 1.125em
+    line-height: 1.444
+  &__items
+    border-right: 1px solid $darker
+    width: 40.68%
+  &__answers
+    flex: 1
+    padding-left: 5.3vw
+    margin-top: .4rem
+  &__item
+    &-answer
+      &-text
+        margin-top: 1.8rem
+      &-question
+        font-size: 1.44444444em
+    &.active,
+    &:hover
+      .pfaq__item-question
+        background-color: $darker
+        &:before
+          opacity: 1
+          visibility: visible
+    &-question
+      cursor: pointer
+      position: relative
+      padding: 0.75rem 2.8125rem
+      transition: $tr
+      &:before
+        content: ''
+        position: absolute
+        display: block
+        top: 0
+        z-index: 0
+        bottom: 0
+        width: 500px
+        transition: $tr
+        height: 100%
+        background-color: $darker
+        right: 100%
+        opacity: 0
+        visibility: hidden
+
 .partners
   .swiper-wrapper
     align-items: baseline
@@ -3916,6 +3968,8 @@ body.touch-device
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .pfaq__item-answer-question
+    font-size: 1.55em
   .pabout__top-img,
   .pabout__bottom-img
     width: 40%
@@ -4071,6 +4125,11 @@ body.touch-device
 @media screen and (max-width: 991px)
   html
     font-size: 13px
+  .pfaq__item-answer-question
+    font-size: 1.4em
+  .pfaq__item-question
+    padding-left: 2.3rem
+    padding-right: 2.3rem
   .pabout__top-content
     padding: 0
     width: 100%
@@ -4248,6 +4307,18 @@ body.touch-device
 @media screen and (max-width: 850px)
   .pproduct__right-top, .pproduct__right-bottom
     width: 100%
+  .pfaq__items
+    width: 100%
+    border-right: 0
+  .pfaq__content
+    flex-wrap: wrap
+  .pfaq__answers
+    display: none
+  .pfaq__item .pfaq__item-question:before
+    display: none
+  .pfaq__item-question
+    padding-left: 1.8rem
+    padding-right: 1.8rem
   .pblog__items
     margin-left: -25px
     margin-right: -25px

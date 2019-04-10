@@ -992,6 +992,74 @@ body.touch-device .partners__item img {
   opacity: 1;
 }
 
+.pfaq .faq-pc {
+  display: none;
+}
+
+.pfaq .faq-mobile {
+  display: none;
+  margin: 1.4rem 0 3.2rem;
+}
+
+.pfaq__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 1.125em;
+  line-height: 1.444;
+}
+
+.pfaq__items {
+  border-right: 1px solid #e1e6f1;
+  width: 40.68%;
+}
+
+.pfaq__answers {
+  flex: 1;
+  padding-left: 5.3vw;
+  margin-top: .4rem;
+}
+
+.pfaq__item-answer-text {
+  margin-top: 1.8rem;
+}
+
+.pfaq__item-answer-question {
+  font-size: 1.44444444em;
+}
+
+.pfaq__item.active .pfaq__item-question, .pfaq__item:hover .pfaq__item-question {
+  background-color: #e1e6f1;
+}
+
+.pfaq__item.active .pfaq__item-question:before, .pfaq__item:hover .pfaq__item-question:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pfaq__item-question {
+  cursor: pointer;
+  position: relative;
+  padding: 0.75rem 2.8125rem;
+  transition: 0.25s all ease-in;
+}
+
+.pfaq__item-question:before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  z-index: 0;
+  bottom: 0;
+  width: 500px;
+  transition: 0.25s all ease-in;
+  height: 100%;
+  background-color: #e1e6f1;
+  right: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .partners .swiper-wrapper {
   align-items: baseline;
 }
@@ -5385,6 +5453,9 @@ body.touch-device .product__title {
   html {
     font-size: 14px;
   }
+  .pfaq__item-answer-question {
+    font-size: 1.55em;
+  }
   .pabout__top-img,
   .pabout__bottom-img {
     width: 40%;
@@ -5593,6 +5664,13 @@ body.touch-device .product__title {
 @media screen and (max-width: 991px) {
   html {
     font-size: 13px;
+  }
+  .pfaq__item-answer-question {
+    font-size: 1.4em;
+  }
+  .pfaq__item-question {
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
   }
   .pabout__top-content {
     padding: 0;
@@ -5824,6 +5902,23 @@ body.touch-device .product__title {
 @media screen and (max-width: 850px) {
   .pproduct__right-top, .pproduct__right-bottom {
     width: 100%;
+  }
+  .pfaq__items {
+    width: 100%;
+    border-right: 0;
+  }
+  .pfaq__content {
+    flex-wrap: wrap;
+  }
+  .pfaq__answers {
+    display: none;
+  }
+  .pfaq__item .pfaq__item-question:before {
+    display: none;
+  }
+  .pfaq__item-question {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
   }
   .pblog__items {
     margin-left: -25px;

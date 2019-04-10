@@ -649,6 +649,51 @@ jQuery(document).ready(function ($) {
     });
   })();
 
+  (function initFaqPage() {
+    var $questions = $('.pfaq__item-question');
+
+    $questions.each(function() {
+      $(this).click(function() {
+        var target = $(this).attr('data-faq');
+        var $self = $(this);
+        var isActive = $self.closest('.pfaq__item').hasClass('active');
+
+        if (windowWidth > 850) {
+          if ($('.pfaq__answer.faq-pc.active').length) {
+            if (isActive) {
+              $('.pfaq__answer.faq-pc.active').fadeOut(100, function() {
+                $('.pfaq__answer.faq-pc.active').removeClass('active');
+                $('.pfaq__item.active').removeClass('active');
+              })
+            } else {
+              $('.pfaq__answer.faq-pc.active').fadeOut(100, function() {
+                $('.pfaq__answer.faq-pc.active').removeClass('active');
+                $('.pfaq__item.active').removeClass('active');
+                $self.closest('.pfaq__item').addClass('active');
+                $('.' + target + '.faq-pc').fadeIn(200);
+                $('.' + target + '.faq-pc').addClass('active');
+              })
+            }
+          } else {
+            $self.closest('.pfaq__item').addClass('active');
+            $('.' + target + '.faq-pc').fadeIn(200);
+            $('.' + target + '.faq-pc').addClass('active');
+          }
+        } else {
+          if (isActive) {
+            $self.closest('.pfaq__item').removeClass('active');
+            $('.' + target + '.faq-mobile').slideUp(450);
+            $('.' + target + '.faq-mobile').removeClass('active');
+          } else {
+            $self.closest('.pfaq__item').addClass('active');
+            $('.' + target + '.faq-mobile').slideDown(600);
+            $('.' + target + '.faq-mobile').addClass('active');
+          }
+        }
+      });
+    });
+  })();
+
   (function initTextBlocks() {
     var $blocks = $('.text-content');
 

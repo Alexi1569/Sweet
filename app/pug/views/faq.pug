@@ -1,0 +1,58 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pfaq.pb
+      - var breadcrumbs = ['О нас'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .container
+          .pfaq__content
+            .pfaq__items
+              .pfaq__item
+                .pfaq__item-question(data-faq="item-1")
+                  span Как долго собирается заказ?
+                  i.arrow.pfaq__item-arrow
+                .pfaq__item-answer.faq-mobile.item-1
+                  p.pfaq__item-answer-question Из каких ингредиентов вы делаете торты?
+                  .pfaq__item-answer-text
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet architecto deserunt dolorum, est fugit, harum maxime natus non odit officia omnis sapiente sit tempore vel. Asperiores consequuntur exercitationem reiciendis.
+              .pfaq__item
+                .pfaq__item-question(data-faq="item-2")
+                  span При какой температуре нужно хранить торт?
+                  i.arrow.pfaq__item-arrow
+                .pfaq__item-answer.faq-mobile.item-2
+                  p.pfaq__item-answer-question При какой температуре нужно хранить торт?
+                  .pfaq__item-answer-text
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet architecto deserunt dolorum, est fugit, harum maxime
+              .pfaq__item
+                .pfaq__item-question(data-faq="item-3")
+                  span Из каких ингредиентов вы делаете торты?
+                  i.arrow.pfaq__item-arrow
+                .pfaq__item-answer.faq-mobile.item-3
+                  p.pfaq__item-answer-question Из каких ингредиентов вы делаете торты?
+                  .pfaq__item-answer-text
+                    p Мы понимаем, что торты заказывают для детей и взрослых. Именно поэтому мы тщательно разрабатываем рецептуры наших десертов, чтобы не возникало аллергической реакции ни у тех, ни у других. Выбирая любую начинку на нашем сайте, вы можете быть уверены, что она состоит из натуральных ингредиентов, а именно: из яиц категории С1 и С2, пшеничной муки высшего сорта, натурального сливочного масла.
+                    br
+                    p Также мы предлагаем вариации специальных начинок, таких как: безглютеновые, для кормящих мам, вегетарианские и диабетические. Каждая из них адоптирована под нестандартные нужды наших клиентов, которые также могут быть уверены в натуральности и качестве используемых ингредиентов.
+            .pfaq__answers
+              .pfaq__answer.faq-pc.pfaq__item-answer.item-1
+                p.pfaq__item-answer-question Какой срок годности тортов и капкейков?
+                .pfaq__item-answer-text
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt eligendi enim esse laboriosam repellat? Accusamus, atque consectetur, deserunt dicta dignissimos, esse eveniet explicabo harum non repellat reprehenderit sed similique temporibus.
+              .pfaq__answer.faq-pc.pfaq__item-answer.item-2
+                p.pfaq__item-answer-question При какой температуре нужно хранить торт?
+                .pfaq__item-answer-text
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet architecto deserunt dolorum, est fugit, harum maxime
+              .pfaq__answer.faq-pc.pfaq__item-answer.item-3
+                p.pfaq__item-answer-question Из каких ингредиентов вы делаете торты?
+                .pfaq__item-answer-text
+                  p Мы понимаем, что торты заказывают для детей и взрослых. Именно поэтому мы тщательно разрабатываем рецептуры наших десертов, чтобы не возникало аллергической реакции ни у тех, ни у других. Выбирая любую начинку на нашем сайте, вы можете быть уверены, что она состоит из натуральных ингредиентов, а именно: из яиц категории С1 и С2, пшеничной муки высшего сорта, натурального сливочного масла.
+                  br
+                  p Также мы предлагаем вариации специальных начинок, таких как: безглютеновые, для кормящих мам, вегетарианские и диабетические. Каждая из них адоптирована под нестандартные нужды наших клиентов, которые также могут быть уверены в натуральности и качестве используемых ингредиентов.
+
