@@ -1,0 +1,480 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.pcontacts
+      - var breadcrumbs = ['Контакты'];
+      script.
+        var map;
+        function initMap() {
+          map = new google.maps.Map(
+            document.getElementById('contacts-map'),
+            {
+              center: new google.maps.LatLng(49.9826, 36.2493),
+              zoom: 17,
+              styles: [
+                {
+                  "featureType": "administrative",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "administrative.locality",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#62bbf8"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "color": "#5c6b88"
+                    },
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    },
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "landscape.man_made",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#edf0f8"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.attraction",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.business",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#7e96b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.business",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.business",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#fffcfc"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.government",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "color": "#7e96b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    },
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.medical",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "color": "#7e96b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#8192b2"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "color": "#5c6b88"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.park",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#4e647f"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.school",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.school",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                      "color": "#7e96b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.school",
+                  "elementType": "labels.text.stroke",
+                  "stylers": [
+                    {
+                      "color": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.school",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "color": "#7e96b3"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "poi.sports_complex",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.highway",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                      "color": "#e1e6f1"
+                    },
+                    {
+                      "visibility": "simplified"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.arterial",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "road.local",
+                  "elementType": "geometry.fill",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#e1e6f1"
+                    },
+                    {
+                      "lightness": "0"
+                    },
+                    {
+                      "saturation": "0"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#009cff"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "transit",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "hue": "#009cff"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "all",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#e1e6f1"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    },
+                    {
+                      "hue": "#6300ff"
+                    }
+                  ]
+                },
+                {
+                  "featureType": "water",
+                  "elementType": "labels.text.fill",
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    },
+                    {
+                      "color": "#5c6b88"
+                    }
+                  ]
+                }
+              ],
+              disableDefaultUI: true,
+              gestureHandling: 'cooperative'
+            }
+          );
+
+          var marker = new google.maps.Marker({
+            position: map.getCenter(),
+            icon: new google.maps.MarkerImage(
+              './img/location.svg',
+              new google.maps.Size(44, 44),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(22, 44),
+              new google.maps.Size(44, 44)
+            ),
+            map: map
+          });
+        }
+      script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApM6qupvvsPcz3Psa-HIsca9cImXS-tKo&callback=initMap")
+      include ../includes/_breadcrumbs
+      .inner__content
+        .pcontacts__content
+          .pcontacts__left
+            #contacts-map.pcontacts__map
+          .pcontacts__right
+            p.pblog-item__title Контакты
+            .pcontacts__items
+              .pcontacts__item.pcontacts__item--time
+                p.pcontacts__item-title Режим работы
+                .pcontacts__item-values
+                  .pcontacts__item-value
+                    p ПН-ПТ
+                    p 10:00 - 18:00
+                  .pcontacts__item-value
+                    p СБ
+                    p 10:00 - 14:00
+                  .pcontacts__item-value
+                    p ВС
+                    p Выходной
+              .pcontacts__item.pcontacts__item--address
+                p.pcontacts__item-title Адрес
+                .pcontacts__item-values
+                  .pcontacts__item-value
+                    p г. Харьков,<br>ул. Плехановская, 12
+              .pcontacts__item.pcontacts__item--phones
+                p.pcontacts__item-title Контакты
+                .pcontacts__item-values
+                  .pcontacts__item-value
+                    a(href="tel:+38 (097) 816-46-86") +38 (097) 816-46-86
+                    a(href="tel:+38 (097) 816-46-87") +38 (097) 816-46-87
+              .pcontacts__item.pcontacts__item--socials
+                p.pcontacts__item-title Социальные сети
+                .pcontacts__item-values
+                  ul.pcontacts__item-socials.socials-list
+                    li
+                      a(href="#")
+                        <svg width="24" height="19"><use xlink:href="#telegram-icon" /></svg>
+                    li
+                      a(href="#")
+                        <svg width="20" height="20"><use xlink:href="#instagram-icon" /></svg>
+                    li
+                      a(href="#")
+                        <svg width="20" height="20"><use xlink:href="#fb-icon" /></svg>
+
+            .pcontacts__questions
+              p.pcontacts__item-title Остались вопросы?
+              form(action="#").pcontacts__questions-form
+                .form__group-inputs
+                  .form__group
+                    label.form__group-label(for="cf-n") Имя
+                    .form__group-input
+                      input(type="text" class="only-text-input" id="cf-n")
+                    span.form__group-message Ошибка
+                  .form__group
+                    label.form__group-label(for="cf-p") Телефон
+                    .form__group-input
+                      input(type="tel" class="only-numbers-input" id="cf-p")
+                    span.form__group-message Ошибка
+                  .form__group.form__group--textarea
+                    label.form__group-label(for="cf-t") Комментарий
+                    .form__group-input
+                      textarea(id="cf-t")
+                    span.form__group-message Ошибка
+                button(data-text="Задать вопрос").btn.pcontacts__questions-btn
+                  span Задать вопрос

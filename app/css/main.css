@@ -494,6 +494,16 @@ textarea:-moz-placeholder {
   background-color: #30c0c0;
 }
 
+.form__group.form__group--select .form__group-label {
+  opacity: 0;
+}
+
+.form__group.form__group--calendar.opened .form__group-label {
+  bottom: calc(100% + 3px);
+  font-size: 13px;
+  font-family: "Museo Cyrillic 500";
+}
+
 .form__group.form__group--calendar .form__group-label {
   bottom: 6px;
 }
@@ -1196,6 +1206,119 @@ body.touch-device .partners__item img {
   transition: 0.25s all ease-in;
   filter: grayscale(1);
   opacity: .35;
+}
+
+.pcontacts__questions {
+  margin-top: 3.75rem;
+}
+
+.pcontacts__questions-btn {
+  margin-top: 2.1875rem;
+  margin-left: auto;
+}
+
+.pcontacts__questions-form {
+  margin-top: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.pcontacts__questions-form .form__group-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pcontacts__questions-form .form__group {
+  width: 46.15%;
+}
+
+.pcontacts__questions-form .form__group.form__group--textarea {
+  width: 100%;
+}
+
+.pcontacts__items {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -3.4375rem;
+}
+
+.pcontacts__map {
+  height: 100%;
+}
+
+.pcontacts__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pcontacts__right {
+  padding-right: 5.3vw;
+  padding-left: 5.3vw;
+  width: 51.125rem;
+}
+
+.pcontacts__left {
+  flex: 1;
+  min-height: 53.375rem;
+}
+
+.pcontacts__item {
+  margin-bottom: 3.4375rem;
+}
+
+.pcontacts__item-socials svg {
+  transition: 0.25s all ease-in;
+}
+
+.pcontacts__item-socials svg:hover {
+  fill: #33cccc;
+}
+
+.pcontacts__item:nth-of-type(odd) {
+  width: 53.84%;
+  padding-right: 2rem;
+}
+
+.pcontacts__item:nth-of-type(event) {
+  width: 46.16%;
+}
+
+.pcontacts__item.pcontacts__item--time .pcontacts__item-value {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pcontacts__item.pcontacts__item--time .pcontacts__item-value *:first-of-type {
+  width: 7.25rem;
+  padding-right: 16px;
+}
+
+.pcontacts__item.pcontacts__item--time .pcontacts__item-value *:last-of-type {
+  flex: 1;
+}
+
+.pcontacts__item-title {
+  font-size: 1.75em;
+}
+
+.pcontacts__item-values {
+  margin-top: 2.25rem;
+  line-height: 1.44444444;
+  font-size: 1.125em;
+}
+
+.pcontacts__item-values a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.pcontacts__item-values a:hover {
+  color: #33cccc;
 }
 
 .pabout__bottom {
@@ -4202,7 +4325,7 @@ body.touch-device .menu > .container {
 
 .banner__title {
   font-family: "Museo Cyrillic 500";
-  font-size: 3.75em;
+  font-size: 3.3em;
 }
 
 .banner__descr {
@@ -4220,11 +4343,15 @@ body.touch-device .menu > .container {
 
 .line-item {
   position: absolute;
-  opacity: .2;
+  opacity: 0;
   left: 0;
   height: auto;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.line-item.visible {
+  opacity: .2;
 }
 
 .constructor {

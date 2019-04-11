@@ -138,7 +138,7 @@ jQuery(document).ready(function ($) {
           var tl = new TimelineLite();
 
           tl.fromTo($active, 0, {autoAlpha: 0}, {autoAlpha: 1})
-            .fromTo($active.find('.banner__bg'), 1.3, {webkitClipPath:'circle(0% at 0 50%)'}, {webkitClipPath:'circle(150% at 0 50%)', ease: Power1.easeIn}, 0)
+            .fromTo($active.find('.banner__bg'), 1.3, {webkitClipPath:'circle(0% at 0% 50%)'}, {webkitClipPath:'circle(150% at 0% 50%)', ease: Power1.easeIn}, 0)
             .fromTo($active.find('.banner__title'), .8, {x: -30, autoAlpha: 0}, {x: 0, autoAlpha: 1}, '-=0.3')
             .fromTo($active.find('.banner__descr'), .8, {x: -30, autoAlpha: 0}, {x: 0, autoAlpha: 1, onComplete: function() {
                 $wrap.removeClass('active');
@@ -156,11 +156,11 @@ jQuery(document).ready(function ($) {
           $wrap.addClass('active');
         }})
         .fromTo($prev.find('.banner__descr'), .8, {x: 0, autoAlpha: 1}, {x: -30, autoAlpha: 0}, '-=.3')
-        .fromTo($prev.find('.banner__bg'), 1.3, {webkitClipPath:'circle(150% at 0 50%)'}, {webkitClipPath:'circle(0% at 0 50%)', ease: Power1.easeIn}, '-=1')
+        .fromTo($prev.find('.banner__bg'), 1.3, {webkitClipPath:'circle(150% at 0% 50%)'}, {webkitClipPath:'circle(0% at 0% 50%)', ease: Power1.easeIn}, '-=1')
         .add('start')
         .fromTo($prev, 2, {autoAlpha: 1}, {autoAlpha: 0})
         .fromTo($active, 0, {autoAlpha: 0}, {autoAlpha: 1}, 'start')
-        .fromTo($active.find('.banner__bg'), 1.3, {webkitClipPath:'circle(0% at 0 50%)'}, {webkitClipPath:'circle(150% at 0 50%)', ease: Power1.easeIn}, 'start')
+        .fromTo($active.find('.banner__bg'), 1.3, {webkitClipPath:'circle(0% at 0% 50%)'}, {webkitClipPath:'circle(150% at 0% 50%)', ease: Power1.easeIn}, 'start')
         .fromTo($active.find('.banner__title'), .8, {x: -30, autoAlpha: 0}, {x: 0, autoAlpha: 1}, '-=1')
         .fromTo($active.find('.banner__descr'), .8, {x: -30, autoAlpha: 0}, {x: 0, autoAlpha: 1, onComplete: function() {
             $wrap.removeClass('active');
@@ -310,7 +310,10 @@ jQuery(document).ready(function ($) {
             $img.find('img').attr('src', $field.select2('data')[0].element.dataset.img);
             $img.fadeIn(100);
           });
+        });
 
+        $field.on('select2:close', function (e) {
+          $self.removeClass('focused');
         });
       }
     });
@@ -380,13 +383,13 @@ jQuery(document).ready(function ($) {
           var $prevP = $prevParent.find('p');
           var prevRight = $prevParent.outerWidth() - ($prevP.position().left + $prevP.outerWidth());
 
-          console.log(prevRight, ' ', left)
-
           $wrap.find('.line-item').css({
             'width': prevRight + left - TITLE_GUTTER * 2 + COL_GUTTER * 2 + 'px',
             'left': - (prevRight - TITLE_GUTTER + COL_GUTTER * 2) + 'px',
           });
         }
+
+        $wrap.find('.line-item').addClass('visible');
       });
     }
   }
@@ -1008,6 +1011,20 @@ jQuery(document).ready(function ($) {
       });
     }
 
+    $('[data-fancybox="product-images"]').fancybox({
+      infobar: false,
+      buttons: [
+        "zoom",
+        "close",
+      ],
+      protect: true,
+      transitionEffect: 'slide',
+      touch: {
+        vertical: false,
+        momentum: true
+      },
+    });
+
     var previewsSwiper = new Swiper($previews, {
       spaceBetween: 18,
       slidesPerView: 9,
@@ -1212,10 +1229,23 @@ jQuery(document).ready(function ($) {
       var $self = $(this);
       var $target = $self.find('input');
 
+      $('body').delegate('#ui-datepicker-div', 'click', function(e) {
+        $target.focus();
+      });
+
       $target.datepicker({
         dateFormat: 'dd.mm.yy',
         beforeShow: function(textbox, instance){
           $self.append($('#ui-datepicker-div'));
+          $self.addClass('opened');
+        },
+        onSelect: function(dateText, instance) {
+          if (!(instance.currentDay === 0 && instance.currentMonth === 0 && instance.currentYear === 0)) {
+            $self.addClass('filled')
+          }
+        },
+        onClose: function(dateText, instance) {
+          $self.removeClass('opened');
         },
         prevText: '<svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>',
         nextText: '<svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>',

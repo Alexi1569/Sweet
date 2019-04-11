@@ -325,310 +325,490 @@
             </div>
         </header>
         <main class="main">
-            <section class="pproduct">
+            <section class="pcontacts">
+                <script>var map;
+function initMap() {
+  map = new google.maps.Map(
+    document.getElementById('contacts-map'),
+    {
+      center: new google.maps.LatLng(49.9826, 36.2493),
+      zoom: 17,
+      styles: [
+        {
+          "featureType": "administrative",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#62bbf8"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "color": "#5c6b88"
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.man_made",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#edf0f8"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.attraction",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#7e96b3"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#fffcfc"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.government",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.medical",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.medical",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "color": "#7e96b3"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.medical",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.medical",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "color": "#7e96b3"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#8192b2"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "color": "#5c6b88"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#4e647f"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.school",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.school",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "color": "#7e96b3"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.school",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.school",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "color": "#7e96b3"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.sports_complex",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "simplified"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#e1e6f1"
+            },
+            {
+              "visibility": "simplified"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#e1e6f1"
+            },
+            {
+              "lightness": "0"
+            },
+            {
+              "saturation": "0"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#009cff"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "hue": "#009cff"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#e1e6f1"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "off"
+            },
+            {
+              "hue": "#6300ff"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#5c6b88"
+            }
+          ]
+        }
+      ],
+      disableDefaultUI: true,
+      gestureHandling: 'cooperative'
+    }
+  );
+
+  var marker = new google.maps.Marker({
+    position: map.getCenter(),
+    icon: new google.maps.MarkerImage(
+      './img/location.svg',
+      new google.maps.Size(44, 44),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(22, 44),
+      new google.maps.Size(44, 44)
+    ),
+    map: map
+  });
+}</script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApM6qupvvsPcz3Psa-HIsca9cImXS-tKo&amp;callback=initMap"></script>
                 <div class="breadcrumbs">
                     <div class="container">
                         <ul>
                             <li><a href="/">Главная</a></li>
-                            <li><a href="#">Каталог</a></li>
-                            <li>Торт “Sweet 16”</li>
+                            <li>Контакты</li>
                         </ul>
                     </div>
                 </div>
                 <div class="inner__content">
-                    <div class="container">
-                        <div class="pproduct__content pb">
-                            <div class="pproduct__left">
-                                <div class="pproduct__gallery">
-                                    <div class="pproduct__gallery-slider swiper-container" id="product-gallery" dir="rtl">
-                                        <div class="swiper-wrapper"><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span></div>
-                                            </a><a class="swiper-slide pproduct__gallery-item" href="./img/product-img.jpg" data-fancybox="product-images"><img src="./img/product-img.jpg" alt="product">
-                                                <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                            </a></div><i class="swiper-prev pproduct__gallery-arrow"><svg width="12" height="12">
-                                                <use xlink:href="#arrow-icon" /></svg></i><i class="swiper-next pproduct__gallery-arrow"><svg width="12" height="12">
-                                                <use xlink:href="#arrow-icon" /></svg></i>
+                    <div class="pcontacts__content">
+                        <div class="pcontacts__left">
+                            <div class="pcontacts__map" id="contacts-map"></div>
+                        </div>
+                        <div class="pcontacts__right">
+                            <p class="pblog-item__title">Контакты</p>
+                            <div class="pcontacts__items">
+                                <div class="pcontacts__item pcontacts__item--time">
+                                    <p class="pcontacts__item-title">Режим работы</p>
+                                    <div class="pcontacts__item-values">
+                                        <div class="pcontacts__item-value">
+                                            <p>ПН-ПТ</p>
+                                            <p>10:00 - 18:00</p>
+                                        </div>
+                                        <div class="pcontacts__item-value">
+                                            <p>СБ</p>
+                                            <p>10:00 - 14:00</p>
+                                        </div>
+                                        <div class="pcontacts__item-value">
+                                            <p>ВС</p>
+                                            <p>Выходной</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="pproduct__previews">
-                                    <div class="pproduct__previews-slider swiper-container" id="product-previews" dir="rtl">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
-                                            <div class="swiper-slide pproduct__previews-item"><img src="./img/product-img.jpg" alt="product"></div>
+                                <div class="pcontacts__item pcontacts__item--address">
+                                    <p class="pcontacts__item-title">Адрес</p>
+                                    <div class="pcontacts__item-values">
+                                        <div class="pcontacts__item-value">
+                                            <p>г. Харьков,<br>ул. Плехановская, 12</p>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="pcontacts__item pcontacts__item--phones">
+                                    <p class="pcontacts__item-title">Контакты</p>
+                                    <div class="pcontacts__item-values">
+                                        <div class="pcontacts__item-value"><a href="tel:+38 (097) 816-46-86">+38 (097) 816-46-86</a><a href="tel:+38 (097) 816-46-87">+38 (097) 816-46-87</a></div>
+                                    </div>
+                                </div>
+                                <div class="pcontacts__item pcontacts__item--socials">
+                                    <p class="pcontacts__item-title">Социальные сети</p>
+                                    <div class="pcontacts__item-values">
+                                        <ul class="pcontacts__item-socials socials-list">
+                                            <li><a href="#"><svg width="24" height="19">
+                                                        <use xlink:href="#telegram-icon" /></svg></a></li>
+                                            <li><a href="#"><svg width="20" height="20">
+                                                        <use xlink:href="#instagram-icon" /></svg></a></li>
+                                            <li><a href="#"><svg width="20" height="20">
+                                                        <use xlink:href="#fb-icon" /></svg></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pproduct__right">
-                                <div class="pproduct__right-top">
-                                    <p class="caption caption--left">Торт “Sweet 16”</p>
-                                    <div class="pproduct__top">
-                                        <div class="pproduct__top-prices"><span class="pproduct__top-sale">185 грн</span><span class="pproduct__top-price">160 грн</span></div><span class="pproduct__top-additional">цена за 1 кг (мин. 1,5 кг)</span>
-                                    </div>
-                                    <div class="pproduct__descr">
-                                        <p>Бисквитный торт с начинкой “красный бархат” украшенный пряником и сусальным серебром</p>
-                                    </div>
-                                    <div class="pproduct__options">
-                                        <div class="pproduct__options-item pproduct__options-item--checkbox">
-                                            <div class="pproduct__options-key"><span>Вес</span></div>
-                                            <div class="pproduct__options-values"><label class="radio radio--product"><input type="radio" checked name="weight"><span>1,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>2 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>2,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>3 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>3,5 кг</span></label><label class="radio radio--product"><input type="radio" name="weight"><span>4 кг</span></label></div>
+                            <div class="pcontacts__questions">
+                                <p class="pcontacts__item-title">Остались вопросы?</p>
+                                <form class="pcontacts__questions-form" action="#">
+                                    <div class="form__group-inputs">
+                                        <div class="form__group"><label class="form__group-label" for="cf-n">Имя</label>
+                                            <div class="form__group-input"><input class="only-text-input" type="text" id="cf-n"></div><span class="form__group-message">Ошибка</span>
                                         </div>
-                                        <div class="pproduct__options-item pproduct__options-item--checkbox">
-                                            <div class="pproduct__options-key"><span>Оформление</span></div>
-                                            <div class="pproduct__options-values"><label class="radio radio--product"><input type="radio" checked name="view"><span>Зеркальная глазурь</span></label><label class="radio radio--product"><input type="radio" name="view"><span>Шоколадный велюр</span></label></div>
+                                        <div class="form__group"><label class="form__group-label" for="cf-p">Телефон</label>
+                                            <div class="form__group-input"><input class="only-numbers-input" type="tel" id="cf-p"></div><span class="form__group-message">Ошибка</span>
                                         </div>
-                                        <div class="pproduct__options-item">
-                                            <div class="pproduct__options-key"><span>Цвет</span></div>
-                                            <div class="pproduct__options-values">
-                                                <div class="form__group form__group--product">
-                                                    <div class="form__group-input"><input class="only-text-input" type="text" placeholder="Цвет оформления"></div><span class="form__group-message">Ошибка</span>
-                                                </div>
-                                            </div>
+                                        <div class="form__group form__group--textarea"><label class="form__group-label" for="cf-t">Комментарий</label>
+                                            <div class="form__group-input"><textarea id="cf-t"></textarea></div><span class="form__group-message">Ошибка</span>
                                         </div>
-                                        <div class="pproduct__options-item">
-                                            <div class="pproduct__options-key"><span>Декор</span></div>
-                                            <div class="pproduct__options-values"><a class="pproduct__options-link" href="#" data-fancybox data-src="#decor-modal" id="decor-option">Меренга</a></div>
-                                        </div>
-                                        <div class="pproduct__options-item">
-                                            <div class="pproduct__options-key"><span>Начинка</span></div>
-                                            <div class="pproduct__options-values"><a class="pproduct__options-link" href="#" data-fancybox data-src="#filling-modal" id="filling-option">Красный бархат</a></div>
-                                        </div>
-                                        <div class="pproduct__options-item">
-                                            <div class="pproduct__options-key"></div>
-                                            <div class="pproduct__options-values">
-                                                <div class="form__group form__group--file"><label class="form__group-input"><span>Прикрепить фото или логотип</span><svg>
-                                                            <use xlink:href="#file-icon" /></svg><input type="file"></label></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pproduct__right-bottom">
-                                    <div class="pproduct__actions">
-                                        <div class="pproduct__amount amount"><button class="amount__minus"><span class="amount__icon"><svg>
-                                                        <use xlink:href="#minus-icon" /></svg></span></button>
-                                            <div class="amount__input"><input type="number" value="1" min="0" max="10"></div><button class="amount__plus"><span class="amount__icon"><svg>
-                                                        <use xlink:href="#plus-icon" /></svg></span></button>
-                                        </div><a class="btn pproduct__add" href="#" data-fancybox data-src="#buy-modal" data-text="В корзину"><span>В корзину</span></a><button class="pproduct__favourite"><svg width="23" height="22">
-                                                <use xlink:href="#favourite-icon" /></svg><span>В избранное</span></button>
-                                    </div>
-                                    <div class="pproduct__attributes">
-                                        <div class="pproduct__attributes-inner scrollbar-inner">
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Категория</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>Торты</p>
-                                                </div>
-                                            </div>
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Вес</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>1 кг, 2 кг, 3 кг</p>
-                                                </div>
-                                            </div>
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Начинка</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>Красный бархат</p>
-                                                </div>
-                                            </div>
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Срок хранения</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>7 дней при t от +4 до +6 °С</p>
-                                                </div>
-                                            </div>
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Праздники</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>День рождения</p>
-                                                </div>
-                                            </div>
-                                            <div class="pproduct__options-item">
-                                                <div class="pproduct__options-key"><span>Рекомендации</span></div>
-                                                <div class="pproduct__options-values">
-                                                    <p>Хранить следует при t от +4 до +6 °С, при относительной влажности не более 65%. Запрещается хранить пряники в местах попадания солнечных лучей, возле батареи и других мест с интенсивной теплоотдачей.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </div><button class="btn pcontacts__questions-btn" data-text="Задать вопрос"><span>Задать вопрос</span></button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="sreviews pt pb">
-                <div class="container">
-                    <p class="caption">Отзывы</p>
-                    <div class="sreviews__content mt">
-                        <div class="sreviews__left">
-                            <div class="sreviews__items">
-                                <div class="reviews__item">
-                                    <div class="reviews__top"><i class="reviews__icon"><svg>
-                                                <use xlink:href="#quote-icon" /></svg></i>
-                                        <div class="reviews__info">
-                                            <p class="reviews__name">Катерина Польченко</p>
-                                            <p class="reviews__date">11.03.2018</p>
-                                        </div>
-                                    </div>
-                                    <div class="reviews__text">
-                                        <p>Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!!</p>
-                                    </div>
-                                </div>
-                                <div class="reviews__item">
-                                    <div class="reviews__top"><i class="reviews__icon"><svg>
-                                                <use xlink:href="#quote-icon" /></svg></i>
-                                        <div class="reviews__info">
-                                            <p class="reviews__name">Виктория Малышева</p>
-                                            <p class="reviews__date">05.03.2018</p>
-                                        </div>
-                                    </div>
-                                    <div class="reviews__text">
-                                        <p>Заказала тортик своему молодому человеку на День рождения и осталась бесконечно довольна! Спасибо что делаете такие маленькие чудеса, которые делают людей счастливее!</p>
-                                    </div>
-                                </div>
-                                <div class="reviews__item">
-                                    <div class="reviews__top"><i class="reviews__icon"><svg>
-                                                <use xlink:href="#quote-icon" /></svg></i>
-                                        <div class="reviews__info">
-                                            <p class="reviews__name">Надежда Николаевна</p>
-                                            <p class="reviews__date">19.02.2018</p>
-                                        </div>
-                                    </div>
-                                    <div class="reviews__text">
-                                        <p>Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!! Ему он предназначался на наш праздник!!!! Обязательно буду заказывать торт себе на свадьбу и на другие торжества, ведь заморачиваться с подарком теперь не надо!!!! Спасибо огромное за вашу волшебную работу!</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><a class="btn btn--linear sreviews__btn btn--transparent" href="#" data-fancybox data-src="#reviews-modal" data-text="Оставить отзыв"><span>Оставить отзыв</span></a>
-                    </div>
-                </div>
-            </section>
-            <div class="products pt pb">
-                <div class="container">
-                    <p class="caption">Похожие товары</p>
-                    <div class="products__slider swiper-container mt">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide product"><a class="product__img" href="#"><img src="./img/product-img.jpg" alt="product">
-                                    <div class="product__labels"><span class="label">New</span><span class="label">Top</span></div>
-                                </a>
-                                <div class="product__info">
-                                    <p class="product__title">Пряники “Медвежонок”</p>
-                                    <div class="product__actions">
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="15" height="14">
-                                                    <use xlink:href="#favourite-icon" /></svg></i><span class="product__btn-tooltip">В избранное</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="15">
-                                                    <use xlink:href="#cart-icon" /></svg></i><span class="product__btn-tooltip">В корзину</span></div>
-                                        <div class="product__btn"><i class="product__btn-icon"><svg width="13" height="9">
-                                                    <use xlink:href="#view-icon" /></svg></i><span class="product__btn-tooltip">Подробнее</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__nav">
-                            <div class="slider__progress swiper-no-swiping" id="range">
-                                <div class="slider__progress-range"></div>
-                            </div>
-                            <div class="slider__arrows"><i class="swiper-prev"><svg width="15" height="12">
-                                        <use xlink:href="#long-arrow-icon" /></svg></i><i class="swiper-next"><svg width="15" height="12">
-                                        <use xlink:href="#long-arrow-icon" /></svg></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
         <footer class="footer">
             <div class="footer__top">
