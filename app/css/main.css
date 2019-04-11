@@ -866,6 +866,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   background-color: #e1e6f1;
 }
 
+.sreviews.sreviews--transparent {
+  background-color: transparent;
+}
+
 .sreviews__content {
   display: flex;
   align-items: flex-start;

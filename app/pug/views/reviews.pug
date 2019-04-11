@@ -1,0 +1,67 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  include ../includes/_header
+
+block main
+
+  main.main
+    section.previews.mb--small
+      - var breadcrumbs = ['Отзывы'];
+      include ../includes/_breadcrumbs
+      .inner__content
+        .container
+          .previews__content.sreviews.sreviews--transparent
+            p.caption Отзывы
+            .sreviews__content.mt
+              .sreviews__left
+                .sreviews__items
+                  .reviews__item
+                    .reviews__top
+                      i.reviews__icon
+                        <svg><use xlink:href="#quote-icon"/></svg>
+                      .reviews__info
+                        p.reviews__name Катерина Польченко
+                        p.reviews__date 11.03.2018
+                    .reviews__text
+                      p Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!!
+                  .reviews__item
+                    .reviews__top
+                      i.reviews__icon
+                        <svg><use xlink:href="#quote-icon"/></svg>
+                      .reviews__info
+                        p.reviews__name Виктория Малышева
+                        p.reviews__date 05.03.2018
+                    .reviews__text
+                      p Заказала тортик своему молодому человеку на День рождения и осталась бесконечно довольна! Спасибо что делаете такие маленькие чудеса, которые делают людей счастливее!
+                  .reviews__item
+                    .reviews__top
+                      i.reviews__icon
+                        <svg><use xlink:href="#quote-icon"/></svg>
+                      .reviews__info
+                        p.reviews__name Надежда Николаевна
+                        p.reviews__date 19.02.2018
+                    .reviews__text
+                      p Очень люблю «теддиков». Но никогда не думала, что они могут быть не только мягкие, но и съедобные, и главное — сладкие:))) Так вот двое этих милых сладких мишек восседали на голубом тортике. Мой будущий муж пищал от радости, когда увидел тортик!!! Ему он предназначался на наш праздник!!!! Обязательно буду заказывать торт себе на свадьбу и на другие торжества, ведь заморачиваться с подарком теперь не надо!!!! Спасибо огромное за вашу волшебную работу!
+              a(href="#" data-fancybox data-src="#reviews-modal" data-text="Оставить отзыв").btn.btn--linear.sreviews__btn.btn--transparent
+                span Оставить отзыв
+          .pagination.mt--small
+            ul
+              li.pagination-prev
+                a(href="#")
+                  <svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>
+              li
+                a(href="#") 01
+              li
+                a(href="#") 02
+              li.pagination--current
+                a(href="#") 03
+              li
+                a(href="#") 04
+              li
+                a(href="#") 05
+              li.pagination-next
+                a(href="#")
+                  <svg width="8" height="8"><use xlink:href="#arrow-icon"/></svg>
+
