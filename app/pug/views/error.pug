@@ -1,0 +1,21 @@
+extends ../includes/_layout
+
+block header
+  - var isMainPage = false;
+  - var isHeaderWhite = true;
+  include ../includes/_header
+
+block main
+
+  main.main.main--info.main--error
+    .pinfo__bg
+    section.pinfo.pinfo--success
+      .container.pt.pb
+        .pinfo__content
+          .pinfo__img
+            img(src='./img/error-img.png' alt="alt")
+          .pinfo__bottom
+            p.pinfo__title Страница не найдена
+            p.pinfo__descr Вы находитесь здесь, потому что ввели адрес страницы, которая уже<br>не существует или была перемещена по другому адресу.
+            a(href="#" data-text="На главную").btn.pinfo__btn
+              span На главную

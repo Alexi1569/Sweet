@@ -1,4 +1,4 @@
-﻿header(class={'header': true, 'header--main': isMainPage, 'header--inner': !isMainPage})
+﻿header(class={'header': true, 'header--main': isMainPage, 'header--inner': !isMainPage, 'header--white': isHeaderWhite})
   .menu#sidebar-menu
     .menu__bg
     .container
@@ -171,7 +171,7 @@
   .header__line
     .container
       a(href="#").logo.header__logo
-        if isMainPage
+        if isMainPage || isHeaderWhite
           img(src="./img/logo--white.png" alt="alt")
         else
           img(src="./img/logo.png" alt="alt")

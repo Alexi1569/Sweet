@@ -189,6 +189,16 @@ a
   &.main--info
     display: flex
     flex-direction: column
+  &.main--error
+    color: #ffffff
+    .pinfo.pinfo--success
+      .pinfo__img
+        width: 71.8125rem
+      .pinfo__bottom
+        margin-top: -8.5rem
+    .pinfo__bg
+      opacity: .99
+      background: radial-gradient(#a6b3d0, #687590)
 
 html
   font-size: 16px
@@ -2636,6 +2646,18 @@ body.touch-device
     border-radius: 4px
 
 .header
+  &.header--white
+    &.header--inner
+      .header__line
+        color: #ffffff
+      .header__search-icon svg:nth-of-type(1)
+        fill: #fff
+      .cta-link
+        color: rgba(#fff, .7) !important
+        border-bottom-color: rgba(#fff, .7) !important
+      .header__phones .dropdown__arrow svg,
+      .header__socials svg
+        fill: #fff
   &.auth-finished
     .header__auth
       background-color: #ffffff
@@ -3962,6 +3984,7 @@ body.touch-device
     padding: 11px 0
     font-size: 12px
     overflow: hidden
+    background-color: #f0f3f8
     color: #a9b5d1
     & > .container
       display: flex
@@ -4160,6 +4183,8 @@ body.touch-device
 @media screen and (max-width: 1199px)
   html
     font-size: 14px
+  .main.main--error .pinfo.pinfo--success .pinfo__bottom
+    margin-top: -3rem
   .pdelivery__img
     width: 400px
     max-width: 100%
@@ -4934,6 +4959,8 @@ body.touch-device
 @media screen and (max-width: 450px)
   .menu__bottom
     flex-wrap: wrap
+  .main.main--error .pinfo.pinfo--success .pinfo__bottom
+    margin-top: -1rem
   .pabout__bottom-images
     flex-wrap: wrap
     height: auto
