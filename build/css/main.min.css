@@ -1685,7 +1685,7 @@ body.touch-device .partners__item img {
 }
 
 .pcontacts__questions-form {
-  margin-top: 3.75rem;
+  margin-top: 3.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -1763,7 +1763,8 @@ body.touch-device .partners__item img {
 .pcontacts__right {
   padding-right: 5.3vw;
   padding-left: 5.3vw;
-  width: 51.125rem;
+  width: 48%;
+  padding-bottom: 3.5rem;
 }
 
 .pcontacts__left {
@@ -1795,7 +1796,7 @@ body.touch-device .partners__item img {
   padding-right: 2rem;
 }
 
-.pcontacts__item:nth-of-type(event) {
+.pcontacts__item:nth-of-type(even) {
   width: 46.16%;
 }
 
@@ -1815,14 +1816,14 @@ body.touch-device .partners__item img {
 .pcontacts__item.pcontacts__item--time .pcontacts__item-value *:first-of-type {
   width: 7.25rem;
   padding-right: 16px;
+  white-space: nowrap;
 }
 
 .pcontacts__item.pcontacts__item--time .pcontacts__item-value *:last-of-type {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -moz-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  width: -webkit-calc(100% - 7.25rem);
+  width: -moz-calc(100% - 7.25rem);
+  width: calc(100% - 7.25rem);
+  white-space: nowrap;
 }
 
 .pcontacts__item-title {
@@ -2045,7 +2046,6 @@ body.touch-device .partners__item img {
   font-family: "Museo Cyrillic 700";
   line-height: 1.35;
   text-transform: uppercase;
-  margin-top: -14px;
 }
 
 .pblog-item__text {
@@ -7679,6 +7679,14 @@ body.touch-device .product__title {
   .footer__right {
     margin-right: 0;
   }
+  .pcontacts__item.pcontacts__item--time .pcontacts__item-value *:first-of-type {
+    width: 6.5rem;
+  }
+  .pcontacts__item.pcontacts__item--time .pcontacts__item-value *:last-of-type {
+    width: -webkit-calc(100% - 6.5rem);
+    width: -moz-calc(100% - 6.5rem);
+    width: calc(100% - 6.5rem);
+  }
   .footer__top {
     font-size: 15px;
   }
@@ -7715,6 +7723,24 @@ body.touch-device .product__title {
 @media screen and (max-width: 1350px) {
   html {
     font-size: 15px;
+  }
+  .pcontacts__item-title {
+    font-size: 1.55em;
+  }
+  .pcontacts__right {
+    width: 52%;
+  }
+  .pcontacts__right {
+    padding-left: 4vw;
+  }
+  .pcontacts__items {
+    margin-top: 3rem;
+  }
+  .pcontacts__item-values {
+    margin-top: 1.8rem;
+  }
+  .pcontacts__questions-form {
+    margin-top: 3rem;
   }
   .pdelivery__text {
     padding-left: 2.5rem;
@@ -7901,6 +7927,9 @@ body.touch-device .product__title {
     max-width: 100%;
     min-width: auto;
     margin-top: 0;
+  }
+  .pcontacts__item-title {
+    font-size: 1.4em;
   }
   .pdelivery__text {
     padding-left: 0;
@@ -8205,6 +8234,34 @@ body.touch-device .product__title {
 @media screen and (max-width: 991px) {
   html {
     font-size: 13px;
+  }
+  .pcontacts__content {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .pcontacts__right {
+    padding-left: 5.3vw;
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 100%;
+  }
+  .pcontacts__left {
+    width: 100%;
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    margin-top: 4rem;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    height: 320px;
+    min-height: auto;
   }
   .pdelivery__col .line-item {
     display: none;
@@ -9165,6 +9222,11 @@ body.touch-device .product__title {
   .banner__inner {
     width: 63%;
   }
+  .pcontacts__item:nth-of-type(odd),
+  .pcontacts__item:nth-of-type(even) {
+    padding-right: 0;
+    width: 100%;
+  }
   .paccount__col-amount {
     width: 60%;
     padding-right: 16px;
@@ -9259,6 +9321,9 @@ body.touch-device .product__title {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     height: auto;
+  }
+  .pcontacts__questions-form .form__group {
+    width: 100%;
   }
   .pabout__bottom-image {
     width: 100%;
