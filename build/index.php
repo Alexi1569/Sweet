@@ -62,19 +62,17 @@
             <li><a href="<?php echo $home; ?>main.html">Главная</a></li>
             <li><a href="<?php echo $home; ?>catalog.html">Каталог</a></li>
             <li><a href="<?php echo $home; ?>product.html">Карточка товара</a></li>
-            <li><a href="<?php echo $home; ?>buy-successs.html">Корзина</a></li>
+            <li><a href="<?php echo $home; ?>cart.html">Корзина</a></li>
+            <li><a href="<?php echo $home; ?>buy-success.html">Успешная покупка</a></li>
             <li><a href="<?php echo $home; ?>account.html">Личный кабинет</a></li>
             <li><a href="<?php echo $home; ?>blog.html">Блог</a></li>
             <li><a href="<?php echo $home; ?>blog-item.html">Статья блога</a></li>
             <li><a href="<?php echo $home; ?>about.html">О нас</a></li>
             <li><a href="<?php echo $home; ?>faq.html">Вопросы и ответы</a></li>
             <li><a href="<?php echo $home; ?>delivery.html">Доставка и оплата</a></li>
-            <!--li-->
-            <!--  a(href="/reviews.html") Отзывы-->
-            <!--li-->
-            <!--  a(href="/contacts.html") Контакты-->
-            <!--li-->
-            <!--  a(href="/error.html") 404-->
+            <li><a href="<?php echo $home; ?>reviews.html">Отзывы</a></li>
+            <li><a href="<?php echo $home; ?>contacts.html">Контакты</a></li>
+            <li><a href="<?php echo $home; ?>error.html">404</a></li>
         </ul>
     </div>
 </body>

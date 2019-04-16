@@ -222,14 +222,14 @@ jQuery(document).ready(function ($) {
               $('body').addClass('no-scroll');
             }}, '-=.5');
       } else {
-        tl.fromTo($bottom, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 50, onStart: function() {
+        tl.fromTo($bottom, .6, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 50, onStart: function() {
             $toggler.addClass('disabled');
             $menu.css('padding-right', '0px');
             $('body').removeClass('no-scroll');
             window.scrollTo(0, topOffset);
           }})
-          .staggerFromTo(liItems, .8, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.5')
-          .fromTo($bg, 1, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')', onComplete: function() {
+          .staggerFromTo(liItems, .5, {autoAlpha: 1, y: 0}, {autoAlpha: 0, y: 20}, -0.15, '-=.4')
+          .fromTo($bg, .7, {autoAlpha: 1, webkitClipPath: 'circle(150% at 0 0)'}, {autoAlpha: 0, webkitClipPath: 'circle(' + beginPath[0] + ' at ' + beginPath[1] + ' ' + beginPath[2] + ')', onComplete: function() {
               $toggler.removeClass('disabled');
               $('.header').removeClass('menu-opened');
             }}, '-=.35')
